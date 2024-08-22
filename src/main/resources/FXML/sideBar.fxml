@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="757.0" prefWidth="88.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <AnchorPane fx:id="sidebar" layoutY="70.0" prefHeight="758.0" prefWidth="34.0" styleClass="sidebar" stylesheets="@../CSS/style.css">
+<VBox prefHeight="880.0" prefWidth="88.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane fx:id="sidebar" layoutY="70.0" prefHeight="880.0" prefWidth="34.0" styleClass="sidebar" stylesheets="@../CSS/style.css">
       <children>
          <!-- Logo Image -->
          <ImageView fitHeight="59.0" fitWidth="76.0" layoutX="20.0" layoutY="25.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +34,7 @@
          </AnchorPane>
 
          <!-- Statistics Button -->
-         <AnchorPane layoutX="20.0" layoutY="200.0">
+         <AnchorPane layoutX="20.0" layoutY="201.0">
             <children>
                <Hyperlink>
                   <graphic>
@@ -49,7 +49,7 @@
          </AnchorPane>
 
          <!-- Shop Button -->
-         <AnchorPane layoutX="20.0" layoutY="270.0">
+         <AnchorPane layoutX="21.0" layoutY="282.0">
             <children>
                <Hyperlink>
                   <graphic>
@@ -66,32 +66,26 @@
          <!-- Profile Button -->
          <AnchorPane layoutX="20.0" layoutY="340.0">
             <children>
-               <Hyperlink>
-                  <graphic>
-                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../images/profile.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Hyperlink>
+               <Hyperlink />
             </children>
          </AnchorPane>
 
          <!-- Logout Button -->
          <AnchorPane layoutX="20.0" layoutY="584.0">
             <children>
-               <Hyperlink>
-                  <graphic>
-                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../images/log-out.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Hyperlink>
+               <Hyperlink />
             </children>
          </AnchorPane>
+         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="28.0" layoutY="685.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/log-out.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="28.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/profile.png" />
+            </image>
+         </ImageView>
 
 
 

@@ -1,12 +1,46 @@
 .sidebar{
     -fx-background-color: white;
+    background-color: white;
     -fx-font-size: 20;
+    font-size: 20px;
     -fx-padding: 10;
+    padding: 10px;
     -fx-spacing: 10;
     -fx-alignment: center;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
-
 .home{
-    -fx-background-color:#00CBF9 ;
+    background-color: #007bff;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+        
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.menu-button-selected {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: blue;
+    -fx-font-size: 14px;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: gray;
+}
+
+.primary-button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
 }
