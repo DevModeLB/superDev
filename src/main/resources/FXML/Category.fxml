@@ -4,16 +4,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-     
-      <fx:include source="/FXML/sideBar.fxml"/>
-   </left>
+<AnchorPane fx:id="anchorPane" prefHeight="758.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <BorderPane prefHeight="758.0" prefWidth="110.0">
+      <left>
+         <fx:include source="./sideBar.fxml" />
+      </left>
 
-   <!-- Main content area -->
-   <center>
-      <AnchorPane>
-         <Label text="Category Content Goes Here"/>
-      </AnchorPane>
-   </center>
-</BorderPane>
+      <!-- Main content area -->
+      <center>
+         <AnchorPane>
+            <Label layoutY="14.0" text="Category Content Goes Here" />
+         </AnchorPane>
+      </center>
+   </BorderPane>
+</AnchorPane>
