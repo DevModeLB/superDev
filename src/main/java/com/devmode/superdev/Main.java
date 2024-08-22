@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/newProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/login.fxml"));
         Parent root = loader.load();
         
         // Set the scene with the loaded UI
@@ -22,6 +22,7 @@ public class Main extends Application {
         
         // Set the stage title and scene
         primaryStage.setTitle("Category");
+        primaryStage.setFullScreen(true);
         primaryStage.setScene(scene);
         
         // Show the stage
