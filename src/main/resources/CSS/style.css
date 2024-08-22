@@ -1,0 +1,18 @@
+.sidebar{
+    -fx-background-color: #ffffff;
+    background-color: #333;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    font-size: 20px;
+    -fx-padding: 10px;
+    padding: 10px;
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+    -fx-border-width: 0 0 0 5px;
+    border-width: 0 0 0 5px;
+    -fx-border-color: #00CBF9;
+    border-color: #00CBF9;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+
+}
