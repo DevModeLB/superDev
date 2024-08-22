@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/navBar.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Category.fxml"));
         Parent root = loader.load();
         
         // Set the scene with the loaded UI
