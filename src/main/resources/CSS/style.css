@@ -1,46 +1,183 @@
-.sidebar{
-    -fx-background-color: white;
-    background-color: white;
-    -fx-font-size: 20;
-    font-size: 20px;
+/* .sidebar */
+.sidebar {
+    -fx-background-color: #f0f0f0;
+    background-color: #f0f0f0;
     -fx-padding: 10;
     padding: 10px;
     -fx-spacing: 10;
-    -fx-alignment: center;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-}
-.home{
-    background-color: #007bff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);
 }
 
+/* .home */
+.home {
+    -fx-background-color: #00CBF9;
+    background-color: #00CBF9;
+}
+
+/* .menu-button */
 .menu-button {
     -fx-background-color: transparent;
-        
+    background-color: transparent;
     -fx-text-fill: black;
     -fx-font-size: 14px;
+    font-size: 14px;
 }
 
+/* .menu-button-selected */
 .menu-button-selected {
     -fx-background-color: #e0e0e0;
+    background-color: #e0e0e0;
     -fx-text-fill: blue;
     -fx-font-size: 14px;
+    font-size: 14px;
 }
 
+/* .title-label */
 .title-label {
     -fx-font-size: 24px;
+    font-size: 24px;
     -fx-font-weight: bold;
+    font-weight: bold;
 }
 
+/* .field-label */
 .field-label {
     -fx-font-size: 14px;
-    -fx-text-fill: gray;
+    font-size: 14px;
+    -fx-font-weight: bold;
+    font-weight: bold;
 }
 
+/* .primary-button */
 .primary-button {
     -fx-background-color: #007bff;
+    background-color: #007bff;
     -fx-text-fill: white;
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-padding: 10;
+    padding: 10px;
+    -fx-border-radius: 5;
+    border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 10);
+}
+
+/* .anchor-pane */
+.anchor-pane {
+    -fx-background-color: #f0f0f0; /* Light grey background */
+    background-color: #f0f0f0;
+}
+
+/* .search-field */
+.search-field {
+    -fx-background-color: #ffffff; /* Light grey background */
+    background-color: #ffffff;
+    -fx-text-fill: #000000; /* Black text color */
+    -fx-font-size: 16px; /* Font size for the text */
+    font-size: 16px;
+    -fx-padding: 10px; /* Padding inside the text field */
+    padding: 10px;
+    -fx-border-color: transparent; /* No border */
+    border-color: transparent;
+    -fx-effect: drop-shadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1); /* Drop shadow for a floating effect */
+}
+
+/* .search-button */
+.search-button {
+    -fx-background-color: #00CBF9; /* Blue background */
+    background-color: #00CBF9;
+    -fx-text-fill: #ffffff; /* White text color */
+    -fx-font-size: 16px; /* Font size for the text */
+    font-size: 16px;
+    -fx-padding: 10px; /* Padding inside the button */
+    padding: 10px;
+    -fx-border-color: transparent; /* No border */
+    border-color: transparent;
+    -fx-effect: drop-shadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1); /* Drop shadow for a floating effect */
+}
+
+/* .hyperlink */
+.hyperlink {
+    -fx-text-fill: #0d134b; /* Dark blue text */
+    -fx-underline: false; /* No underline for a cleaner look */
+    -fx-padding: 10px; /* Padding around the text */
+    padding: 10px;
+    -fx-font-size: 22px; /* Slightly larger font size */
+    font-size: 22px;
+    -fx-font-weight: bold; /* Bold text for emphasis */
+    font-weight: bold;
+    -fx-effect: drop-shadow(gaussian, rgba(0,0,0,0.2), 3, 0.5, 0, 1); /* Drop shadow for a subtle 3D effect */
+}
+
+/* .hyperlink:hover */
+.hyperlink:hover {
+    -fx-text-fill: #00CBF9;
+}
+
+/* .password-field */
+.password-field {
+    -fx-border-color: #0D134B;
+    border-color: #0D134B;
+    -fx-border-width: 2;
+    border-width: 2;
+    -fx-border-radius: 10;
+    border-radius: 10;
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-text-fill: #0D134B;
+}
+
+/* .text-field */
+.text-field {
+    -fx-border-color: #0D134B;
+    border-color: #0D134B;
+    -fx-border-width: 2;
+    border-width: 2;
+    -fx-border-radius: 10;
+    border-radius: 10;
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-text-fill: #0D134B;
+}
+
+/* .button */
+.button {
+    -fx-background-color: #0D134B;
+    background-color: #0D134B;
+    -fx-border-width: 2;
+    border-width: 2;
+    -fx-border-color: #0D134B;
+    border-color: #0D134B;
+    -fx-border-radius: 7;
+    border-radius: 7;
+    -fx-text-fill: #ffffff;
+}
+
+/* .password-field:hover */
+.password-field:hover {
+    -fx-border-color: #00CBF9;
+    border-color: #00CBF9;
+}
+
+/* .text-field:hover */
+.text-field:hover {
+    -fx-border-color: #00CBF9;
+    border-color: #00CBF9;
+}
+
+/* .button:hover */
+.button:hover {
+    -fx-background-color: #00CBF9;
+    background-color: #00CBF9;
+    -fx-border-color: #00CBF9;
+    border-color: #00CBF9;
+}
+
+/* .label */
+.label {
+    -fx-text-fill: #0D134B;
+    -fx-font-size: 42px;
+    font-size: 42px;
     -fx-font-weight: bold;
-    -fx-padding: 10px;
-    -fx-cursor: hand;
+    font-weight: bold;
 }

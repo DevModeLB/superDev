@@ -5,6 +5,10 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <BorderPane layoutY="-6.0" prefHeight="890.0" prefWidth="98.0">
+      <!-- Navigation bar -->
+      <top>
+         <fx:include source="./navBar.fxml" />
+      </top>
       <left>
          <fx:include source="./sideBar.fxml" />
       </left>
