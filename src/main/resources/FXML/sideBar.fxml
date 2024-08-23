@@ -19,7 +19,7 @@
             </ImageView>
 
             <!-- Home Button -->
-            <AnchorPane fx:id="home" layoutX="20.0" layoutY="130.0" styleClass="home">
+            <AnchorPane layoutX="20.0" layoutY="140.0" styleClass="link">
                 <children>
                     <Hyperlink alignment="CENTER" textAlignment="CENTER">
                         <graphic>
@@ -34,7 +34,7 @@
             </AnchorPane>
 
             <!-- Statistics Button -->
-            <AnchorPane layoutX="20.0" layoutY="201.0">
+            <AnchorPane layoutX="20.0" layoutY="220.0" styleClass="link">
                 <children>
                     <Hyperlink>
                         <graphic>
@@ -49,7 +49,7 @@
             </AnchorPane>
 
             <!-- Shop Button -->
-            <AnchorPane layoutX="21.0" layoutY="282.0">
+            <AnchorPane layoutX="21.0" layoutY="300.0" styleClass="link">
                 <children>
                     <Hyperlink>
                         <graphic>
@@ -64,7 +64,7 @@
             </AnchorPane>
 
             <!-- Profile Button -->
-            <AnchorPane layoutX="20.0" layoutY="340.0">
+            <AnchorPane layoutX="20.0" layoutY="380.0" styleClass="link">
                 <children>
                     <Hyperlink>
                         <graphic>
@@ -79,7 +79,7 @@
             </AnchorPane>
 
             <!-- Logout Button -->
-            <AnchorPane layoutX="20.0" layoutY="700.0">
+            <AnchorPane layoutX="20.0" layoutY="700.0" styleClass="link">
                 <children>
                     <Hyperlink fx:id="logoutLink" onAction="#handleLogout">
                         <graphic>

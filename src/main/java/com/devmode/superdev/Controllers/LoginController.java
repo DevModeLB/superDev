@@ -19,8 +19,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.devmode.superdev.DatabaseConnector.*;
-
 public class LoginController {
 
     public LoginController(){
@@ -100,7 +98,7 @@ public class LoginController {
     private void switchView() {
         try {
             // Load the Category FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Category.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categories/addCategory.fxml"));
             Parent categoryView = loader.load();
             // Get the current stage
             Stage stage = (Stage) loginButton.getScene().getWindow();
