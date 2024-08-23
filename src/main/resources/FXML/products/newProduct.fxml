@@ -7,7 +7,7 @@
 <BorderPane prefHeight="40.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <left>
      
-      <fx:include source="./sideBar.fxml" />
+      <fx:include source="../sideBar.fxml" />
    </left>
 
    
