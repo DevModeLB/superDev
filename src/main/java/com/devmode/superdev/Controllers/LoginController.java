@@ -106,8 +106,7 @@ public class LoginController {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             // Set the new scene
             stage.setScene(new Scene(categoryView));
-            stage.sizeToScene();
-            stage.setMaximized(true);
+            stage.setFullScreen(true);
             System.out.println("Switched view");
             stage.show();
         } catch (IOException e) {
