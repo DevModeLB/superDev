@@ -26,8 +26,7 @@ public class AuthUtils {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Login.fxml"));
             Parent loginView = loader.load();
-
-            Stage stage = Main.getPrimaryStage(); // Use the primaryStage from Main
+            Stage stage = Main.getPrimaryStage();
             if (stage != null) {
                 stage.setScene(new Scene(loginView));
                 stage.show();
