@@ -2,12 +2,17 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <BorderPane layoutY="-6.0" prefHeight="890.0" prefWidth="98.0">
-      <left>
-         <fx:include source="./sideBar.fxml" />
-      </left>
+   <BorderPane layoutY="-6.0" prefHeight="890.0" prefWidth="1530.0">
+      <!-- Navigation bar and Sidebar -->
+      <top>
+         <HBox>
+            <fx:include source="./sideBar.fxml" />
+            <fx:include source="./navBar.fxml" />
+         </HBox>
+      </top>
 
       <!-- Main content area -->
       <center>
