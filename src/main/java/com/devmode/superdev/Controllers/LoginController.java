@@ -69,7 +69,7 @@ public class LoginController {
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
 
-            return resultSet.next(); // Eza user mawjod => return true
+            return resultSet.next(); // Returns true if user is found
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,7 +106,8 @@ public class LoginController {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             // Set the new scene
             stage.setScene(new Scene(categoryView));
-            stage.setFullScreen(true);
+            stage.sizeToScene();
+            stage.setMaximized(true);
             System.out.println("Switched view");
             stage.show();
         } catch (IOException e) {
