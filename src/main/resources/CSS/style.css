@@ -86,7 +86,7 @@
     padding: 10px;
     -fx-border-color: transparent; /* No border */
     border-color: transparent;
-    -fx-effect: drop-shadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1); /* Drop shadow for a floating effect */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0); /* Drop shadow for a floating effect */
 }
 
 /* .search-button */
@@ -100,7 +100,7 @@
     padding: 10px;
     -fx-border-color: transparent; /* No border */
     border-color: transparent;
-    -fx-effect: drop-shadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1); /* Drop shadow for a floating effect */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 1); /* Drop shadow for a floating effect */
 }
 
 /* .hyperlink */
@@ -113,7 +113,7 @@
     font-size: 22px;
     -fx-font-weight: bold; /* Bold text for emphasis */
     font-weight: bold;
-    -fx-effect: drop-shadow(gaussian, rgba(0,0,0,0.2), 3, 0.5, 0, 1); /* Drop shadow for a subtle 3D effect */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0.5, 0, 1); /* Drop shadow for a subtle 3D effect */
 }
 
 /* .hyperlink:hover */

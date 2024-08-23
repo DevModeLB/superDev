@@ -1,31 +1,39 @@
 package com.devmode.superdev;
 
+import com.devmode.superdev.Controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import com.devmode.superdev.StageManager;
 
 public class Main extends Application {
 
+    private static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Main.primaryStage = primaryStage;
+
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Category.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Login.fxml"));
         Parent root = loader.load();
-        
-        // Set the scene with the loaded UI
+
+        Object controller = loader.getController();
+
+
+        // Set up the scene and stage
         Scene scene = new Scene(root);
-        
-        // Optionally, apply an external CSS stylesheet
         scene.getStylesheets().add(getClass().getResource("/CSS/style.css").toExternalForm());
-        
-        // Set the stage title and scene
-        primaryStage.setTitle("Category");
         primaryStage.setFullScreen(true);
-        primaryStage.setScene(scene);
-        
-        // Show the stage
+        if(controller != null) {
+            if (controller instanceof LoginController) {
+                primaryStage.setScene(scene);
+            }
+        }
+
+
         primaryStage.show();
     }
 
@@ -33,4 +41,7 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="880.0" prefWidth="88.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="880.0" prefWidth="88.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.SidebarController">
     <AnchorPane fx:id="sidebar" layoutY="70.0" prefHeight="880.0" prefWidth="78.0" styleClass="sidebar" stylesheets="@../CSS/style.css">
         <children>
             <!-- Logo Image -->
@@ -81,7 +81,7 @@
             <!-- Logout Button -->
             <AnchorPane layoutX="20.0" layoutY="700.0">
                 <children>
-                    <Hyperlink>
+                    <Hyperlink fx:id="logoutLink" onAction="#handleLogout">
                         <graphic>
                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

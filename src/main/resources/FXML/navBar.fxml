@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="95.0" prefWidth="1530.0" styleClass="anchor-pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="95.0" prefWidth="1530.0" styleClass="anchor-pane" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
     <!-- Search and Button HBox -->
     <HBox alignment="CENTER_LEFT" layoutX="324.0" layoutY="19.0" prefHeight="63.0" prefWidth="464.0" spacing="10.0">
         <TextField prefHeight="40.0" prefWidth="300.0" promptText="Search..." styleClass="search-field" />
@@ -25,7 +25,7 @@
     </HBox>
 
     <!-- Hyperlinks HBox -->
-    <HBox alignment="CENTER_RIGHT" layoutX="965.0" layoutY="32.0" prefHeight="63.0" spacing="20.0">
+    <HBox alignment="CENTER_RIGHT" layoutX="900.0" layoutY="32.0" prefHeight="63.0" spacing="20.0">
         <Hyperlink styleClass="hyperlink" text="Products">
             <font>
                 <Font size="30.0" />
