@@ -79,7 +79,7 @@
             </AnchorPane>
 
             <!-- Logout Button -->
-            <AnchorPane layoutX="20.0" layoutY="584.0">
+            <AnchorPane layoutX="20.0" layoutY="700.0">
                 <children>
                     <Hyperlink>
                         <graphic>
