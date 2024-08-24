@@ -98,7 +98,7 @@ public class LoginController {
     private void switchView() {
         try {
             // Load the Category FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/categories/addCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/products/addProduct.fxml"));
             Parent categoryView = loader.load();
             // Get the current stage
             Stage stage = (Stage) loginButton.getScene().getWindow();
