@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1530.0"  xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.LoginController">
+
    <children>
       <!-- Image displayed in the background -->
       <ImageView fitHeight="1059.0" fitWidth="1606.0" layoutX="-38.0" layoutY="-151.0" pickOnBounds="true" preserveRatio="true">
@@ -37,13 +38,19 @@
       </TextField>
 
       <!-- Button to trigger login action -->
-      <Button fx:id="loginButton" layoutX="403.0" layoutY="528.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-width: 2; -fx-border-color: #0D134B; -fx-border-radius: 7;" text="Log in" textFill="#0d134b" onAction="#handleLoginButtonAction">
-         <font>
-            <Font name="Arial Bold" size="28.0" />
-         </font>
-         <padding>
-            <Insets bottom="7.0" left="28.0" right="28.0" top="7.0" />
-         </padding>
+      <Button fx:id="loginButton" layoutX="403.0" layoutY="528.0" mnemonicParsing="false" style="
+        -fx-background-color: #0D134B; 
+        -fx-border-width: 2; 
+        -fx-border-color: #0D134B; 
+        -fx-border-radius: 7; 
+        -fx-text-fill: #FFFFFF;
+        -fx-font-size: 28px;
+        -fx-font-family: 'Arial Bold';
+        -fx-padding: 7px 28px;
+        -fx-background-radius: 7px;
+        -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 1);
+      " text="Log in" onAction="#handleLoginButtonAction">
+         <!-- You can't directly apply hover effects in FXML; consider applying styles in CSS -->
       </Button>
    </children>
 </AnchorPane>

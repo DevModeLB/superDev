@@ -19,7 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.devmode.superdev.DatabaseConnector.*;
+// import static com.devmode.superdev.DatabaseConnector.*;
 
 public class LoginController {
 
