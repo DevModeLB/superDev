@@ -6,9 +6,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.ProductController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
@@ -21,27 +24,31 @@
       </top>
     </BorderPane>
 
-    <!-- Main content area -->
+                               <!-- Main content area -->
    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
-         <Label layoutX="129.0" layoutY="56.0" styleClass="product-title" text="Products" />
-         <Button layoutX="1007.0" layoutY="68.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="217.0" styleClass="add-product-button" text="+ADD PRODUCTS" onAction="#handleGetAddProduct" />
-         <ScrollPane layoutX="129.0" layoutY="117.0" prefHeight="600.0" prefWidth="1095.0" styleClass="custom-scroll-pane">
+         <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Products" />
+         <Button layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleGetAddProduct" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="      ADD PRODUCTS">
+            <font>
+               <Font size="32.0" />
+            </font>
+         </Button>
+         <ScrollPane layoutX="129.0" layoutY="107.0" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" prefWidth="1095.0" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="custom-scroll-pane" AnchorPane.bottomAnchor="90.59999999999991" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="202.20000000000005" AnchorPane.topAnchor="107.0">
             <content>
-                  <TableView fx:id="productTable" prefHeight="598.0" prefWidth="1096.0" styleClass="product-table">
+                  <TableView fx:id="productTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                       <!-- Define Table Columns -->
                       <columns>
-                          <TableColumn fx:id="productIdColumn" minWidth="0.0" prefWidth="100.0" text="Product ID">
+                          <TableColumn fx:id="productIdColumn" minWidth="0.0" prefWidth="142.40000343322754" text="Product ID">
                               <cellValueFactory>
                                   <PropertyValueFactory property="productId" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="productNameColumn" prefWidth="180.0" text="Name">
+                          <TableColumn fx:id="productNameColumn" prefWidth="129.60003662109375" style="-fx-font-size: 10;" text="Name">
                               <cellValueFactory>
                                   <PropertyValueFactory property="name" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="priceColumn" text="Price">
+                          <TableColumn fx:id="priceColumn" prefWidth="108.0" text="Price">
                               <cellValueFactory>
                                   <PropertyValueFactory property="price" />
                               </cellValueFactory>
@@ -51,22 +58,22 @@
                                   <PropertyValueFactory property="stock" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="barcodeColumn" prefWidth="120.0" text="Barcode">
+                          <TableColumn fx:id="barcodeColumn" prefWidth="147.19989013671875" text="Barcode">
                               <cellValueFactory>
                                   <PropertyValueFactory property="barcode" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="categoryColumn" prefWidth="200.0" text="Category">
+                          <TableColumn fx:id="categoryColumn" prefWidth="172.800048828125" text="Category">
                               <cellValueFactory>
                                   <PropertyValueFactory property="category" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="supplierIdColumn" prefWidth="100.0" text="Supplier ID">
+                          <TableColumn fx:id="supplierIdColumn" prefWidth="146.6666259765625" text="Supplier ">
                               <cellValueFactory>
                                   <PropertyValueFactory property="supplierId" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="actionColumn" prefWidth="200.0" text="Action">
+                          <TableColumn fx:id="actionColumn" prefWidth="126.9332275390625" text="Action">
                               <cellValueFactory>
                                   <PropertyValueFactory property="action" />
                               </cellValueFactory>
@@ -75,6 +82,11 @@
                   </TableView>
             </content>
          </ScrollPane>
+         <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="961.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../images/Plus.png" />
+            </image>
+         </ImageView>
       </children>
    </AnchorPane>
 </AnchorPane>
