@@ -28,7 +28,7 @@
       </Label>
 
       <!-- Password field for user input -->
-      <PasswordField fx:id="passwordField" layoutX="236.0" layoutY="410.0" prefHeight="48.0" prefWidth="485.0" promptText="Password" style="-fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: transparent;" />
+      <PasswordField fx:id="passwordField" layoutX="236.0" layoutY="410.0" prefHeight="48.0" prefWidth="485.0" promptText="Password" style="-fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: transparent;"  onAction="#handleLoginButtonAction"/>
 
       <!-- Text field for user input -->
       <TextField fx:id="usernameField" layoutX="233.0" layoutY="332.0" prefHeight="48.0" prefWidth="485.0" promptText="Username" style="-fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: transparent;">

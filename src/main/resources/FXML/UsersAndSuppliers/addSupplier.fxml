@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.CategoryController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.SupplierController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -33,14 +33,14 @@
                      <Font size="57.0" />
                   </font>
                </Label>
-               <TextField layoutX="115.0" layoutY="88.0" prefHeight="54.0" prefWidth="690.0" promptText="add Name" />
+               <TextField fx:id="nameField" layoutX="115.0" layoutY="88.0" prefHeight="54.0" prefWidth="690.0" promptText="add Name" />
                 <!--phone number-->
                <Label layoutX="115.0" layoutY="171.0" style="-fx-font-size: 28;" text="Phone Number" />
-               <TextField layoutX="115.0" layoutY="232.0" prefHeight="55.0" prefWidth="690.0" promptText="add phone number" />
+               <TextField fx:id="phoneField" layoutX="115.0" layoutY="232.0" prefHeight="55.0" prefWidth="690.0" promptText="Ex: +96112345678" />
 
             </children>
          </AnchorPane>
-          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" style="-fx-background-color: #0D134B;" text="Add Supplier" textFill="WHITE">
+          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" style="-fx-background-color: #0D134B;" text="Add Supplier" textFill="WHITE" onAction="#handleAddSupplier">
               <font>
                   <Font size="25.0" />
               </font>
