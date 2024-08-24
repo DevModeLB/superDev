@@ -37,16 +37,16 @@
                         <Font size="57.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="115.0" layoutY="60.0" prefHeight="50.0" prefWidth="690.0" promptText="add Name" />
+                  <TextField layoutX="115.0" layoutY="60.0" prefHeight="50.0" prefWidth="690.0" promptText="add Name" fx:id="productName" />
                   <!--price-->
                   <Label layoutX="115.0" layoutY="119.0" style="-fx-font-size: 28;" text="Price" />
-                  <TextField layoutX="115.0" layoutY="159.0" prefHeight="50.0" prefWidth="325.0" promptText="0" />
+                  <TextField layoutX="115.0" layoutY="159.0" prefHeight="50.0" prefWidth="325.0" promptText="0" fx:id="productPrice" />
    <!--               quantity-->
                   <Label layoutX="482.0" layoutY="119.0" style="-fx-font-size: 28;" text="Quantity" />
-                  <TextField layoutX="482.0" layoutY="159.0" prefHeight="50.0" prefWidth="325.0" promptText="0" />
+                  <TextField layoutX="482.0" layoutY="159.0" prefHeight="50.0" prefWidth="325.0" promptText="0" fx:id="productQuantity" />
    <!--               barcode-->
                   <Label layoutX="119.0" layoutY="225.0" style="-fx-font-size: 28;" text="BarCode" />
-                  <TextField layoutX="115.0" layoutY="265.0" prefHeight="50.0" prefWidth="690.0" promptText="Enter code" />
+                  <TextField layoutX="115.0" layoutY="265.0" prefHeight="50.0" prefWidth="690.0" promptText="Enter code" fx:id="productBarCode" />
 
                            <!--category-->
                   <Label layoutX="115.0" layoutY="326.0" style="-fx-font-size: 28;" text="Category" />
@@ -73,7 +73,7 @@
 
                            <!--image-->
                   <Label layoutX="482.0" layoutY="430.0" style="-fx-font-size: 26;" text="Add Image " />
-                  <ImageView fx:id="imageView" fitHeight="200" fitWidth="300" preserveRatio="true" />
+                  <ImageView fx:id="productImage" fitHeight="200" fitWidth="300" preserveRatio="true" />
                   <!-- Button to trigger image selection -->
               <Button layoutX="482.0" layoutY="472.0"  prefHeight="50.0" prefWidth="325.0" style="-fx-background-color: white; -fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10;" text="Select Image" />
 
@@ -84,11 +84,11 @@
                      </font>
 
                            </Label>
-                  <TextField layoutX="115.0" layoutY="472.0" prefHeight="50.0" prefWidth="325.0" promptText="add deacription" />
+                  <TextField fx:id="productDescription" layoutX="115.0" layoutY="472.0" prefHeight="50.0" prefWidth="325.0" promptText="add deacription" />
 
                         </children>
             </AnchorPane>
-            <Button layoutX="633.0" layoutY="663.0" mnemonicParsing="false" style="-fx-background-color: #0D134B;" text="Add Product" textFill="WHITE">
+            <Button layoutX="633.0" layoutY="663.0" mnemonicParsing="false" style="-fx-background-color: #0D134B;" text="Add Product" textFill="WHITE" onAction="#handleAddProduct">
                <font>
                   <Font size="25.0" />
                </font>
