@@ -36,7 +36,6 @@ public class CategoryController {
             new ErrorDialog().showErrorDialog("Category already exists", "Error");
             return;
         }
-
         try (Connection conn = DatabaseConnector.getConnection()) {
             String sql = "INSERT INTO category (name) VALUES (?)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
