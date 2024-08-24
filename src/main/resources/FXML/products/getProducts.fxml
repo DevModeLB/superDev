@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.CategoryController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.ProductController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
       <!-- Navigation bar and Sidebar -->
       <top>
@@ -25,7 +25,7 @@
    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
          <Label layoutX="129.0" layoutY="56.0" styleClass="product-title" text="Products" />
-         <Button layoutX="1007.0" layoutY="68.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="217.0" styleClass="add-product-button" text="+ADD PRODUCTS" />
+         <Button layoutX="1007.0" layoutY="68.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="217.0" styleClass="add-product-button" text="+ADD PRODUCTS" onAction="#handleGetAddProduct" />
          <ScrollPane layoutX="129.0" layoutY="117.0" prefHeight="600.0" prefWidth="1095.0" styleClass="custom-scroll-pane">
             <content>
                   <TableView fx:id="productTable" prefHeight="598.0" prefWidth="1096.0" styleClass="product-table">

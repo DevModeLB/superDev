@@ -2,11 +2,20 @@ package com.devmode.superdev.Controllers;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Supplier;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import com.devmode.superdev.utils.DataFetcher;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class ProductController {
@@ -28,8 +37,10 @@ public class ProductController {
     private void initialize() {
         ObservableList<Category> categories = DataFetcher.fetchCategories();
         ObservableList<Supplier> suppliers = DataFetcher.fetchSuppliers();
-        categoryComboBox.setItems(categories);
-        supplierComboBox.setItems(suppliers);
+        if(categoryComboBox != null && supplierComboBox != null){
+            categoryComboBox.setItems(categories);
+            supplierComboBox.setItems(suppliers);
+        }
     }
 
     @FXML
@@ -60,5 +71,27 @@ public class ProductController {
 
     private void saveProduct(int categoryId, int supplierId) {
         // Implement saving product with categoryId and supplierId to the database
+    }
+
+    public void handleGetAddProduct(ActionEvent event){
+        switchScene(event, "/FXML/products/addProduct.fxml", "Add product");
+    }
+    @FXML
+    private void switchScene(ActionEvent event, String path, String title) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Parent root = loader.load();
+
+            // Ensure the scene is attached before getting the window
+            Scene currentScene = ((Node) event.getSource()).getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error while switching");
+        }
     }
 }

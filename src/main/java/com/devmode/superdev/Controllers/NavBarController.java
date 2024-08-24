@@ -46,7 +46,7 @@ public class NavBarController {
 
     @FXML
     private void handleProductsLinkAction(MouseEvent event) {
-        switchScene(event, "/FXML/products/addProduct.fxml", "Products");
+        switchScene(event, "/FXML/products/getProducts.fxml", "Products");
     }
 
     @FXML
