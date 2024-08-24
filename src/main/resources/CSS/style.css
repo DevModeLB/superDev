@@ -84,14 +84,17 @@
 
 /* .search-button */
 .search-button {
-    -fx-background-color: #00CBF9; /* Blue background */
-    -fx-text-fill: #ffffff; /* White text color */
+    -fx-background-color: "white";
     -fx-font-size: 16px; /* Font size for the text */
     font-size: 16px;
     -fx-padding: 10px; /* Padding inside the button */
     padding: 10px;
-    -fx-border-color: transparent; /* No border */
-    border-color: transparent;
+    -fx-border-color: #0D134B;
+    -fx=border-width: 2;
+}
+.search-button:hover {
+    -fx-background-color:#00CBF9 ;
+    -fx-border-color: "transparent";
 }
 
 /* .hyperlink */
