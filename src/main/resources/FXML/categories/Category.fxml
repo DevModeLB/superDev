@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.CategoryController" stylesheets="@../../CSS/style.css">
    <BorderPane layoutY="-6.0" prefHeight="890.0" prefWidth="1530.0">
-      <!-- Navigation bar and Sidebar -->
+
       <top>
          <HBox>
             <fx:include source="../sideBar.fxml" />
@@ -15,9 +15,5 @@
       </top>
 
 
-         <!-- Main content area -->
-      <center>
-         <AnchorPane fx:id="mainContentPane" />
-      </center>
    </BorderPane>
 </AnchorPane>

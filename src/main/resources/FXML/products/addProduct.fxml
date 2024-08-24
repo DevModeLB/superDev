@@ -71,11 +71,13 @@
                      </items>
                   </ComboBox>
 
+
                            <!--image-->
                   <Label layoutX="482.0" layoutY="430.0" style="-fx-font-size: 26;" text="Add Image " />
                   <ImageView fx:id="productImage" fitHeight="200" fitWidth="300" preserveRatio="true" />
                   <!-- Button to trigger image selection -->
               <Button layoutX="482.0" layoutY="472.0"  prefHeight="50.0" prefWidth="325.0" style="-fx-background-color: white; -fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10;" text="Select Image" />
+
 
                            <!--desc-->
                   <Label layoutX="115.0" layoutY="430.0" style="-fx-font-size: 27;" text="Description">
