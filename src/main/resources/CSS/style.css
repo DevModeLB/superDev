@@ -182,33 +182,25 @@
 .product-table {
     -fx-background-color: #FFFFFF;
     -fx-table-cell-border-color: transparent;
-    -fx-padding: 10px;
-    -fx-border-color: #00CBF9;
-    -fx-border-width: 2px;
-    -fx-border-radius: 7px;
+    -fx-padding: 10;
 }
 
 /* Styles for the table columns */
-.product-table .column-header {
+.product-table .column-header .label {
+    -fx-background-color: white;
+    -fx-alignment: CENTER;
+    -fx-padding: 10;
+    -fx-font-size:20;
+    -fx-border-color: #B5B7C0;
+    -fx-border-width: 0 0 1px 0;
+    -fx-text-fill:#87888C;
+}
+.product-table .column-header{
     -fx-background-color: #FFFFFF;
-    -fx-text-fill: white;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
     -fx-alignment: CENTER-LEFT;
-    -fx-padding: 10px;
-    -fx-border-color: #00CBF9;
+    -fx-padding: 10;
+    -fx-border-color: #B5B7C0;
     -fx-border-width: 0 0 1px 0;
-}
-
-.product-table .table-row-cell {
-    -fx-background-color: #F5F5F5;
-    -fx-border-color: #E0E0E0;
-    -fx-border-width: 0 0 1px 0;
-}
-
-.product-table .table-row-cell:selected {
-    -fx-background-color: #00CBF9;
-    -fx-text-fill: white;
 }
 
 /* Styles for the table cells */
@@ -219,17 +211,12 @@
     -fx-font-size: 14px;
 }
 
-.product-table .table-cell:selected {
-    -fx-background-color: #00CBF9;
-    -fx-text-fill: white;
-}
 
 /* Style for the add product button */
 .add-product-button {
     -fx-background-color: #00CBF9;
-    -fx-text-fill: #0D134B;
-    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-font-size: 22;
     -fx-font-weight: bold;
     -fx-background-radius: 5px;
-
 }
