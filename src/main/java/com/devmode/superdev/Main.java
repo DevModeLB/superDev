@@ -22,12 +22,12 @@ public class Main extends Application {
 
         Object controller = loader.getController();
 
-
         // Set up the scene and stage
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/CSS/style.css").toExternalForm());
         primaryStage.setFullScreen(true);
         if(controller != null) {
+
             if (controller instanceof LoginController) {
                 primaryStage.setScene(scene);
             }

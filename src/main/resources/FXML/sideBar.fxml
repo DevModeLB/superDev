@@ -66,7 +66,7 @@
             <!-- Profile Button -->
             <AnchorPane layoutX="20.0" layoutY="380.0" styleClass="link">
                 <children>
-                    <Hyperlink>
+                    <Hyperlink onMouseClicked="#handleSuppliers">
                         <graphic>
                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
