@@ -28,7 +28,7 @@
    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
          <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Categories" />
-         <Button layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleGetAddProduct" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="      ADD CATEGORY">
+         <Button layoutX="979.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleGetAddProduct" prefHeight="53.0" prefWidth="238.0" styleClass="add-product-button" text="      ADD CATEGORY">
             <font>
                <Font size="32.0" />
             </font>
@@ -59,9 +59,9 @@
 
             </content>
          </ScrollPane>
-         <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="961.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="990.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../images/Plus.png" />
+               <Image url="@../../images/plus.png" />
             </image>
          </ImageView>
       </children>
