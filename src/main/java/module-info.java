@@ -5,12 +5,14 @@ module com.devmode.superdev {
     requires java.sql;
 
 
+
     opens com.devmode.superdev to javafx.fxml;
     exports com.devmode.superdev;
 
-    // Export the package that contains the controllers
-    exports com.devmode.superdev.Controllers;
 
-    // Open the package to JavaFX for reflection
+    exports com.devmode.superdev.Controllers;
     opens com.devmode.superdev.Controllers to javafx.fxml;
+
+    opens com.devmode.superdev.models to javafx.base;
+    exports com.devmode.superdev.models;
 }

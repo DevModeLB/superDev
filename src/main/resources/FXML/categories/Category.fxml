@@ -35,23 +35,20 @@
          </Button>
          <ScrollPane layoutX="129.0" layoutY="107.0" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" prefWidth="1095.0" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="custom-scroll-pane" AnchorPane.bottomAnchor="90.59999999999991" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="202.20000000000005" AnchorPane.topAnchor="107.0">
             <content>
-               <TableView fx:id="productTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
+               <TableView fx:id="categoryTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                   <!-- Define Table Columns -->
                   <columns>
-                     <TableColumn fx:id="productIdColumn" minWidth="0.0" prefWidth="331.20012855529785" text="Category ID">
+                     <TableColumn fx:id="categoryId" minWidth="0.0" prefWidth="331.20012855529785" text="Category ID">
                         <cellValueFactory>
                            <PropertyValueFactory property="catId" />
                         </cellValueFactory>
                      </TableColumn>
-                     <TableColumn fx:id="supplierIdColumn" prefWidth="472.7999267578125" text="Name">
+                     <TableColumn fx:id="name" prefWidth="472.7999267578125" text="Name">
                         <cellValueFactory>
                            <PropertyValueFactory property="name" />
                         </cellValueFactory>
                      </TableColumn>
                      <TableColumn fx:id="actionColumn" prefWidth="273.5997314453125" text="Action">
-                        <cellValueFactory>
-                           <PropertyValueFactory property="action" />
-                        </cellValueFactory>
                      </TableColumn>
                   </columns>
                </TableView>

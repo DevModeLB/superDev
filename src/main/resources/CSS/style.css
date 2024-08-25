@@ -240,3 +240,37 @@
 .checkboxRole:selected .text {
     -fx-text-fill: #00CBF9; 
 }
+
+#productImage {
+    -fx-fit-width: 200;
+    -fx-fit-height: 200;
+    -fx-preserve-ratio: true;
+    -fx-layout-x: 100;
+    -fx-layout-y: 50;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.updateButton {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-border-color: transparent;
+    -fx-graphic: url('../images/Edit.png');
+    -fx-graphic-position: left;
+    -fx-cursor: hand;
+}
+
+
+.deleteButton {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-border-color: transparent;
+    -fx-graphic: url('../images/deleteIcon.png');
+    -fx-graphic-position: left;
+    -fx-cursor: hand;
+}
+
+.updateButton:hover,
+.deleteButton:hover {
+    -fx-effect: dropshadow(gaussian, #666, 10, 0, 0, 1);
+}

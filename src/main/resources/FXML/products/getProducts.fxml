@@ -73,11 +73,7 @@
                                   <PropertyValueFactory property="supplierId" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="actionColumn" prefWidth="126.9332275390625" text="Action">
-                              <cellValueFactory>
-                                  <PropertyValueFactory property="action" />
-                              </cellValueFactory>
-                          </TableColumn>
+                          <TableColumn fx:id="actionColumn" text="Action" prefWidth="126.9332275390625"/>
                       </columns>
                   </TableView>
             </content>
