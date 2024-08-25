@@ -38,22 +38,22 @@
                     <TableView fx:id="usersTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                         <!-- Define Table Columns -->
                         <columns>
-                            <TableColumn fx:id="userId" minWidth="0.0" prefWidth="165.6" text="User ID">
+                            <TableColumn fx:id="userId" minWidth="0.0" prefWidth="303.2000217437744" text="User ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="userId" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="username" prefWidth="385.6" style="-fx-font-size: 10;" text="Username">
+                            <TableColumn fx:id="username" prefWidth="350.4000244140625" style="-fx-font-size: 10;" text="Username">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="username" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="role" prefWidth="267.2" text="Role">
+                            <TableColumn fx:id="role" prefWidth="271.20013427734375" text="Role">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="role" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="actionsColumn" prefWidth="260.8" text="Action">
+                            <TableColumn fx:id="actionsColumn" prefWidth="157.5997314453125" text="Action">
                             </TableColumn>
                         </columns>
                     </TableView>

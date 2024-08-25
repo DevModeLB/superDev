@@ -37,7 +37,7 @@
                   </padding>
                </TextField>
                <Label layoutX="406.0" layoutY="77.0" text="Name" textFill="#0d134b" />
-               <Button fx:id="addButton" layoutX="395.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleAddCategory" style="-fx-background-color: #0D134B;" styleClass="add-product-button2" text="Add Category" textFill="WHITE">
+               <Button fx:id="addButton" layoutX="395.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleAddCategory"  styleClass="add-product-button2" text="Add Category" textFill="WHITE">
                   <font>
                      <Font size="18.0" />
                   </font>

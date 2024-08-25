@@ -28,7 +28,7 @@
    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
          <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Products" />
-         <Button layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#handleGetAddProduct" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="      ADD PRODUCTS">
+         <Button alignment="CENTER" layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#handleGetAddProduct" prefHeight="53.0" prefWidth="275.0" styleClass="add-product-button" text="      ADD PRODUCTS">
             <font>
                <Font size="32.0" />
             </font>
@@ -73,7 +73,7 @@
                                   <PropertyValueFactory property="supplierId" />
                               </cellValueFactory>
                           </TableColumn>
-                          <TableColumn fx:id="actionColumn" text="Action" prefWidth="126.9332275390625"/>
+                          <TableColumn fx:id="actionColumn" prefWidth="126.9332275390625" text="Action" />
                       </columns>
                   </TableView>
             </content>
