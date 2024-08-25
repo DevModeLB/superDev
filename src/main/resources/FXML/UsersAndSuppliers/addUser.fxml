@@ -3,7 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -24,23 +26,25 @@
     <!-- Main content area -->
     <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
-         <Label layoutX="253.0" layoutY="93.0" text="Supplier info" />
-         <AnchorPane layoutX="253.0" layoutY="185.0" prefHeight="342.0" prefWidth="901.0" style="-fx-background-color: white;">
+         <Label layoutX="253.0" layoutY="72.0" text="User info" />
+         <AnchorPane layoutX="253.0" layoutY="185.0" prefHeight="342.0" prefWidth="920.0" style="-fx-background-color: white;">
             <children>
                 <!--name-->
-               <Label layoutX="115.0" layoutY="37.0" style="-fx-font-size: 30;" text="Name">
+               <Label layoutX="115.0" layoutY="37.0" style="-fx-font-size: 30;" text="Username">
                   <font>
                      <Font size="57.0" />
                   </font>
                </Label>
-               <TextField fx:id="nameField" layoutX="115.0" layoutY="88.0" prefHeight="54.0" prefWidth="690.0" promptText="add Name" />
+               <TextField fx:id="nameField" layoutX="115.0" layoutY="88.0" prefHeight="54.0" prefWidth="690.0" promptText="Add Username" />
                 <!--phone number-->
-               <Label layoutX="115.0" layoutY="171.0" style="-fx-font-size: 28;" text="Phone Number" />
-               <TextField fx:id="phoneField" layoutX="115.0" layoutY="211.0" prefHeight="55.0" prefWidth="690.0" promptText="Ex: +96112345678" />
+               <Label layoutX="115.0" layoutY="171.0" style="-fx-font-size: 28;" text="Password" />
+               <PasswordField layoutX="115.0" layoutY="211.0" prefHeight="54.0" prefWidth="431.0" promptText="Enter Password" />
+               <CheckBox layoutX="584.0" layoutY="218.0" mnemonicParsing="false" styleClass="checkboxRole" text="Admin" />
+               <CheckBox layoutX="680.0" layoutY="218.0" mnemonicParsing="false" styleClass="checkboxRole" text="Cashier" />
 
-            </children>
+                     </children>
          </AnchorPane>
-          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier" style="-fx-background-color: #0D134B;" styleClass="add-product-button2" text="Add Supplier" textFill="WHITE">
+          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier" prefHeight="58.0" prefWidth="222.0" style="-fx-background-color: #0D134B;" styleClass="add-product-button2" text="Add User" textFill="WHITE">
               <font>
                   <Font size="25.0" />
               </font>

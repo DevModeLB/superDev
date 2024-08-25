@@ -1,14 +1,14 @@
-.buttonLogin{
--fx-background-color: transparent;
--fx-border-width: 2;
--fx-border-color: #0D134B;
- -fx-border-radius: 7;
--fx-text-fill:#0D134B;
- }
+.buttonLogin {
+    -fx-background-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-color: #0D134B;
+    -fx-border-radius: 7;
+    -fx-text-fill: #0D134B;
+}
 
-.buttonLogin:hover{
--fx-background-color: #0D134B;
--fx-text-fill: white;
+.buttonLogin:hover {
+    -fx-background-color: #0D134B;
+    -fx-text-fill: white;
 }
 
 .sidebar {
@@ -17,20 +17,15 @@
     -fx-spacing: 10;
 }
 
-
 .link:hover {
     -fx-background-color: #00CBF9;
 }
 
-
 .menu-button {
     -fx-background-color: transparent;
-    background-color: transparent;
     -fx-text-fill: black;
     -fx-font-size: 14px;
-    font-size: 14px;
 }
-
 
 .menu-button-selected {
     -fx-background-color: #e0e0e0;
@@ -38,48 +33,35 @@
     -fx-font-size: 14px;
 }
 
-
 .title-label {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
 
-
 .field-label {
     -fx-font-size: 14px;
-
     -fx-font-weight: bold;
 }
 
-
 .primary-button {
     -fx-background-color: #007bff;
-    background-color: #007bff;
     -fx-text-fill: white;
     -fx-font-size: 14px;
-    font-size: 14px;
-    -fx-padding: 10;
-    padding: 10px;
-    -fx-border-radius: 5;
-    border-radius: 5px;
-
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
 }
 
 /* .anchor-pane */
 .anchor-pane {
     -fx-background-color: #f0f0f0;
-    background-color: #f0f0f0;
-    -fx-padding: 10;
-    padding: 10px;
-    -fx-spacing: 10;
-
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
 }
 
 /* .search-field */
 .search-field {
     -fx-text-fill: #000000; /* Black text color */
     -fx-font-size: 16px; /* Font size for the text */
-    font-size: 16px;
     -fx-padding: 10px; /* Padding inside the text field */
 }
 
@@ -87,14 +69,13 @@
 .search-button {
     -fx-background-color: white;
     -fx-font-size: 16px; /* Font size for the text */
-    font-size: 16px;
     -fx-padding: 10px; /* Padding inside the button */
-    padding: 10px;
     -fx-border-color: #0D134B;
     -fx-border-width: 2;
 }
+
 .search-button:hover {
-    -fx-background-color:#00CBF9 ;
+    -fx-background-color: #00CBF9;
     -fx-border-color: transparent;
 }
 
@@ -103,18 +84,14 @@
     -fx-text-fill: #0d134b; /* Dark blue text */
     -fx-underline: false; /* No underline for a cleaner look */
     -fx-padding: 10px; /* Padding around the text */
-    padding: 10px;
     -fx-font-size: 22px; /* Slightly larger font size */
-    font-size: 22px;
     -fx-font-weight: bold; /* Bold text for emphasis */
-    font-weight: bold;
 }
 
-/* .hyperlink:hover */
 .hyperlink:hover {
     -fx-text-fill: #00CBF9;
-    -fx-border-width:2;
-    -fx-border-color:#00CBF9;
+    -fx-border-width: 2;
+    -fx-border-color: #00CBF9;
 }
 
 /* .password-field */
@@ -129,38 +106,27 @@
 /* .text-field */
 .text-field {
     -fx-border-color: #0D134B;
-    border-color: #0D134B;
     -fx-border-width: 2;
-    border-width: 2;
     -fx-border-radius: 10;
-    border-radius: 10;
     -fx-background-color: transparent;
-    background-color: transparent;
     -fx-text-fill: #0D134B;
 }
-
 
 /* .password-field:hover */
 .password-field:hover {
     -fx-border-color: #00CBF9;
-    border-color: #00CBF9;
 }
 
-/* .text-field:hover*/
+/* .text-field:focused */
 .text-field:focused {
     -fx-border-color: #00CBF9; /* Border color when focused */
-    -fx-border-width: 2px;     /* Optional: Set border width */
 }
-
-
 
 /* .label */
 .label {
     -fx-text-fill: #0D134B;
     -fx-font-size: 42px;
-    font-size: 42px;
     -fx-font-weight: bold;
-    font-weight: bold;
 }
 
 /* Styles for the ScrollPane */
@@ -190,12 +156,13 @@
     -fx-background-color: white;
     -fx-alignment: CENTER;
     -fx-padding: 10;
-    -fx-font-size:20;
+    -fx-font-size: 20px;
     -fx-border-color: #B5B7C0;
     -fx-border-width: 0 0 1px 0;
-    -fx-text-fill:#87888C;
+    -fx-text-fill: #87888C;
 }
-.product-table .column-header{
+
+.product-table .column-header {
     -fx-background-color: #FFFFFF;
     -fx-alignment: CENTER-LEFT;
     -fx-padding: 10;
@@ -211,12 +178,65 @@
     -fx-font-size: 14px;
 }
 
-
 /* Style for the add product button */
 .add-product-button {
     -fx-background-color: #00CBF9;
-    -fx-text-fill: white;
-    -fx-font-size: 22;
+    -fx-text-fill: #0D134B;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
     -fx-background-radius: 5px;
+}
+
+.add-product-button2 {
+    -fx-background-color: #0D134B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.add-product-button:hover {
+    -fx-background-color: #0D134B;
+    -fx-text-fill: #FFFFFF;
+}
+
+.add-product-button2:hover {
+    -fx-background-color: #00CBF9;
+}
+
+
+.checkboxRole {
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+
+.checkboxRole .box {
+    -fx-background-color: #eee;
+    -fx-background-radius: 50%; 
+    -fx-border-radius: 50%;
+    -fx-border-color: #0D134B;
+    -fx-border-width: 2px;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-alignment: center;
+}
+
+.checkboxRole:selected .box {
+    -fx-background-color: #00CBF9;
+    -fx-border-color: #00CBF9;
+}
+
+.checkboxRole:hover .box {
+    -fx-background-color: #ccc;
+}
+
+.checkboxRole .text {
+    -fx-text-fill: #0D134B; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-padding: 0 0 0 10px; /* Padding between the box and the label text */
+}
+
+.checkboxRole:selected .text {
+    -fx-text-fill: #00CBF9; 
 }
