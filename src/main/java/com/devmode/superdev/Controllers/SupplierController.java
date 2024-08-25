@@ -5,11 +5,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import com.devmode.superdev.DatabaseConnector;
+import javafx.scene.input.MouseEvent;
+
 import java.sql.ResultSet;
 
 public class SupplierController {
@@ -102,5 +105,14 @@ public class SupplierController {
     private void clearFields() {
         nameField.clear();
         phoneField.clear();
+    }
+
+    public void handleGetAddSupplier(MouseEvent event) {
+        new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/addSupplier.fxml", "Add Supplier");
+    }
+
+    public void handleGetUsers(MouseEvent event) {
+        new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/getUser.fxml", "Users");
+
     }
 }

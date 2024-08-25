@@ -81,7 +81,7 @@
             <!-- Logout Button -->
             <AnchorPane layoutX="20.0" layoutY="700.0" styleClass="link">
                 <children>
-                    <Hyperlink fx:id="logoutLink" onAction="#handleLogout">
+                    <Hyperlink fx:id="logoutLink" onMouseClicked="#handleLogout">
                         <graphic>
                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

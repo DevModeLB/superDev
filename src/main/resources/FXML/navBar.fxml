@@ -26,19 +26,19 @@
     </HBox>
 
     <!-- Hyperlinks HBox -->
-    <HBox alignment="CENTER_RIGHT" layoutX="865.0" layoutY="25.0" prefHeight="63.0" spacing="10.0">
+    <HBox alignment="CENTER_RIGHT" layoutX="700.0" layoutY="25.0" prefHeight="63.0" spacing="10.0">
         <Hyperlink styleClass="hyperlink" text="Products" onMouseClicked="#handleProductsLinkAction">
             <font>
                 <Font size="30.0" />
             </font>
         </Hyperlink>
     </HBox>
-     <Hyperlink layoutX="1265.0" layoutY="25.0" styleClass="hyperlink" text="Order" onMouseClicked="#handleOrderLinkAction">
+     <Hyperlink layoutX="1100.0" layoutY="25.0" styleClass="hyperlink" text="Order" onMouseClicked="#handleOrderLinkAction">
          <font>
              <Font size="30.0" />
          </font>
      </Hyperlink>
-     <Hyperlink layoutX="1065.0" layoutY="25.0" styleClass="hyperlink" text="Category" onMouseClicked="#handleCategoryLinkAction">
+     <Hyperlink layoutX="900.0" layoutY="25.0" styleClass="hyperlink" text="Category" onMouseClicked="#handleCategoryLinkAction">
          <font>
              <Font size="30.0" />
          </font>

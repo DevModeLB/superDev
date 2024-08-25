@@ -8,7 +8,8 @@ import com.devmode.superdev.utils.ErrorDialog;
 
 import com.devmode.superdev.utils.AuthUtils;
 import com.devmode.superdev.DatabaseConnector;
-
+import javafx.scene.input.MouseEvent;
+import com.devmode.superdev.utils.SceneSwitcher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,5 +74,8 @@ public class CategoryController {
             e.printStackTrace();
             return false;
         }
+    }
+    public void handleGetAddCategory(MouseEvent event){
+        new SceneSwitcher().switchScene(event, "/FXML/categories/addCategory.fxml", "Add Category");
     }
 }

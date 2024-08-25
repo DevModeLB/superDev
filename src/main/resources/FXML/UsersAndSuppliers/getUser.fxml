@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.ProductController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.UserController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -28,7 +28,7 @@
     <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
         <children>
             <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Users" />
-            <Button layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleGetAddProduct" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="      ADD USER">
+            <Button layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#handleGetAddUser" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="      ADD USER">
                 <font>
                     <Font size="32.0" />
                 </font>
@@ -67,7 +67,7 @@
                     <Image url="@../../images/Plus.png" />
                 </image>
             </ImageView>
-         <Button layoutX="649.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleGetAddProduct" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="SUPPLIER">
+         <Button layoutX="649.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#handleGetSuppliers" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="SUPPLIERS">
             <font>
                <Font size="32.0" />
             </font>

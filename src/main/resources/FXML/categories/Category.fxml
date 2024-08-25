@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.ProductController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.CategoryController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
       <!-- Navigation bar and Sidebar -->
       <top>
@@ -28,7 +28,7 @@
    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
          <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Categories" />
-         <Button layoutX="979.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleGetAddProduct" prefHeight="53.0" prefWidth="238.0" styleClass="add-product-button" text="      ADD CATEGORY">
+         <Button layoutX="979.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#handleGetAddCategory" prefHeight="53.0" prefWidth="238.0" styleClass="add-product-button" text="      ADD CATEGORY">
             <font>
                <Font size="32.0" />
             </font>
