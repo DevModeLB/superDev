@@ -35,28 +35,25 @@
             </Button>
             <ScrollPane layoutX="129.0" layoutY="107.0" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" prefWidth="1095.0" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="custom-scroll-pane" AnchorPane.bottomAnchor="90.59999999999991" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="202.20000000000005" AnchorPane.topAnchor="107.0">
                 <content>
-                    <TableView fx:id="productTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
+                    <TableView fx:id="usersTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                         <!-- Define Table Columns -->
                         <columns>
-                            <TableColumn fx:id="productIdColumn" minWidth="0.0" prefWidth="165.6000156402588" text="User ID">
+                            <TableColumn fx:id="userId" minWidth="0.0" prefWidth="165.6" text="User ID">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="productId" />
+                                    <PropertyValueFactory property="userId" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="productNameColumn" prefWidth="385.6000061035156" style="-fx-font-size: 10;" text="Username">
+                            <TableColumn fx:id="username" prefWidth="385.6" style="-fx-font-size: 10;" text="Username">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="name" />
+                                    <PropertyValueFactory property="username" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="stockColumn" prefWidth="267.20013427734375" text="role">
+                            <TableColumn fx:id="role" prefWidth="267.2" text="Role">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="stock" />
+                                    <PropertyValueFactory property="role" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="actionColumn" prefWidth="260.7999267578125" text="Action">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="action" />
-                                </cellValueFactory>
+                            <TableColumn fx:id="actionsColumn" prefWidth="260.8" text="Action">
                             </TableColumn>
                         </columns>
                     </TableView>
@@ -67,11 +64,11 @@
                     <Image url="@../../images/Plus.png" />
                 </image>
             </ImageView>
-         <Button layoutX="649.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#handleGetSuppliers" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="SUPPLIERS">
-            <font>
-               <Font size="32.0" />
-            </font>
-         </Button>
+            <Button layoutX="649.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#handleGetSuppliers" prefHeight="53.0" prefWidth="276.0" styleClass="add-product-button" text="SUPPLIERS">
+                <font>
+                    <Font size="32.0" />
+                </font>
+            </Button>
         </children>
     </AnchorPane>
 </AnchorPane>

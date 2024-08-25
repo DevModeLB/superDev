@@ -1,17 +1,25 @@
 package com.devmode.superdev.Controllers;
 
+import com.devmode.superdev.models.Supplier;
+import com.devmode.superdev.utils.DataFetcher;
 import com.devmode.superdev.utils.ErrorDialog;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javafx.scene.control.TableCell;
 import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import com.devmode.superdev.DatabaseConnector;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 
 import java.sql.ResultSet;
 
@@ -27,8 +35,78 @@ public class SupplierController {
     private Button addButton;
 
     @FXML
+    private TableView<Supplier> supplierTable;
+
+    @FXML
+    private TableColumn<Supplier, Integer> id;
+
+    @FXML
+    private TableColumn<Supplier, String> name;
+
+    @FXML
+    private TableColumn<Supplier, Void> actionColumn;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
     public void initialize() {
-        // Initialization code, if needed
+        if(id != null){
+            id.setCellValueFactory(new PropertyValueFactory<>("id"));
+            name.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+
+            addButtonToTable();
+
+            // Fetch and load suppliers
+            loadSuppliers();
+        }
+    }
+
+    private void loadSuppliers() {
+        supplierTable.getItems().setAll(DataFetcher.fetchSuppliers());
+    }
+
+    private void addButtonToTable() {
+        actionColumn.setCellFactory(param -> new TableCell<Supplier, Void>() {
+            private final Button updateButton = new Button("");
+            private final Button deleteButton = new Button("");
+
+            {
+                updateButton.getStyleClass().add("updateButton");
+                deleteButton.getStyleClass().add("deleteButton");
+
+                updateButton.setOnAction(event -> {
+                    Supplier supplier = getTableView().getItems().get(getIndex());
+                    handleUpdate(supplier);
+                });
+
+                deleteButton.setOnAction(event -> {
+                    Supplier supplier = getTableView().getItems().get(getIndex());
+                    handleDelete(supplier);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox hbox = new HBox(updateButton, deleteButton);
+                    hbox.setSpacing(10); // Set spacing between buttons
+                    setGraphic(hbox);
+                }
+            }
+        });
+    }
+
+    private void handleUpdate(Supplier supplier) {
+        // Implement update logic here
+    }
+
+    private void handleDelete(Supplier supplier) {
+        // Implement delete logic here
     }
 
     @FXML

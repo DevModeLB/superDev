@@ -35,28 +35,25 @@
             </Button>
             <ScrollPane layoutX="129.0" layoutY="107.0" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" prefWidth="1095.0" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="custom-scroll-pane" AnchorPane.bottomAnchor="90.59999999999991" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="202.20000000000005" AnchorPane.topAnchor="107.0">
                 <content>
-                    <TableView fx:id="productTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
+                    <TableView fx:id="supplierTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                         <!-- Define Table Columns -->
                         <columns>
-                            <TableColumn fx:id="productIdColumn" minWidth="0.0" prefWidth="165.6000156402588" text=" Supplier ID">
+                            <TableColumn fx:id="id" minWidth="0.0" prefWidth="165.6000156402588" text=" Supplier ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productId" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="productNameColumn" prefWidth="385.6000061035156" style="-fx-font-size: 10;" text="Name">
+                            <TableColumn fx:id="name" prefWidth="385.6000061035156" style="-fx-font-size: 10;" text="Name">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="name" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="stockColumn" prefWidth="267.20013427734375" text="Phone nb">
+                            <TableColumn fx:id="phone_nb" prefWidth="267.20013427734375" text="Phone nb">
                                 <cellValueFactory>
-                                    <PropertyValueFactory property="stock" />
+                                    <PropertyValueFactory property="phone_nb" />
                                 </cellValueFactory>
                             </TableColumn>
                             <TableColumn fx:id="actionColumn" prefWidth="260.7999267578125" text="Action">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="action" />
-                                </cellValueFactory>
                             </TableColumn>
                         </columns>
                     </TableView>

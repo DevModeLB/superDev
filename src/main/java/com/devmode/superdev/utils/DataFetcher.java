@@ -1,11 +1,9 @@
 package com.devmode.superdev.utils;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import com.devmode.superdev.models.Product;
+import com.devmode.superdev.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.devmode.superdev.DatabaseConnector;
@@ -38,7 +36,7 @@ public class DataFetcher {
 
     public static ObservableList<Supplier> fetchSuppliers() {
         ObservableList<Supplier> suppliers = FXCollections.observableArrayList();
-        String query = "SELECT id, name FROM supplier";
+        String query = "SELECT id, name, phone_nb FROM supplier";
         try (Connection conn = DatabaseConnector.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -46,7 +44,8 @@ public class DataFetcher {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                suppliers.add(new Supplier(id, name));
+                String phone_nb = rs.getString("phone_nb");
+                suppliers.add(new Supplier(id, name, phone_nb));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,6 +83,31 @@ public class DataFetcher {
             throw new RuntimeException(e);
         }
         return products;
+    }
+
+    public static ObservableList<User> fetchUsers() {
+        ObservableList<User> users = FXCollections.observableArrayList();
+
+        String query = "SELECT id, username, role FROM user";
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Integer userId = rs.getInt("id");
+                String username = rs.getString("username");
+                String role = rs.getString("role");
+                User user = new User(userId, username, role);
+                users.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exception properly
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return users;
     }
 
 }

@@ -76,7 +76,7 @@ public class CategoryController {
                     @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
-                        setAlignment();
+
                         if (empty) {
                             setGraphic(null);
                         } else {

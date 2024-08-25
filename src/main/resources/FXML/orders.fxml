@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.ProductController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.OrderController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -26,40 +26,40 @@
             <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Orders" />
             <ScrollPane layoutX="129.0" layoutY="107.0" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" prefWidth="1095.0" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="custom-scroll-pane" AnchorPane.bottomAnchor="90.59999999999991" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="202.20000000000005" AnchorPane.topAnchor="107.0">
                 <content>
-                    <TableView fx:id="productTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
+                    <TableView fx:id="ordersTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                         <!-- Define Table Columns -->
                         <columns>
-                            <TableColumn fx:id="productIdColumn" minWidth="0.0" prefWidth="126.39994239807129" text="Order ID">
+                            <TableColumn fx:id="orderId" minWidth="0.0" prefWidth="126.39994239807129" text="Order ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="OrderId" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="productNameColumn" prefWidth="148.80007934570312" style="-fx-font-size: 10;" text="Customer">
+                            <TableColumn fx:id="cursomer" prefWidth="148.80007934570312" style="-fx-font-size: 10;" text="Customer">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="customer" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="priceColumn" prefWidth="154.39990234375" text="Order items">
+                            <TableColumn fx:id="orderItems" prefWidth="154.39990234375" text="Order items">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="order item" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="stockColumn" prefWidth="101.5999755859375" text="Total">
+                            <TableColumn fx:id="total" prefWidth="101.5999755859375" text="Total">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="total" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="barcodeColumn" minWidth="0.0" prefWidth="153.60009765625" text="Order Date">
+                            <TableColumn fx:id="orderDate" minWidth="0.0" prefWidth="153.60009765625" text="Order Date">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="prder date" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="categoryColumn" prefWidth="145.60003662109375" text="User">
+                            <TableColumn fx:id="user" prefWidth="145.60003662109375" text="User">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="user" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="supplierIdColumn" prefWidth="106.39990234375" text="Status">
+                            <TableColumn fx:id="status" prefWidth="106.39990234375" text="Status">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="status" />
                                 </cellValueFactory>

@@ -105,7 +105,6 @@ public class ProductController {
                                 setGraphic(null);
                                 return;
                             }
-
                             HBox hbox = new HBox(10, updateButton, deleteButton);
                             setGraphic(hbox);
                         }
