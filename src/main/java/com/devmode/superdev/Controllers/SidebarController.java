@@ -21,11 +21,17 @@ public class SidebarController {
         SessionManager.getInstance().setUsername(null);
         redirectToLogin(event);
     }
+    @FXML
+    private void handleGets(MouseEvent event) {
+        new SceneSwitcher().switchScene(event, "/FXML/products/getProducts.fxml", "Products");
+    }
+
 
     @FXML
     private void handleSuppliers(MouseEvent event){
         new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/getUser.fxml", "Suppliers");
     }
+
 
     private void redirectToLogin(MouseEvent event) {
         new SceneSwitcher().switchScene(event ,"/FXML/login.fxml", "Login");

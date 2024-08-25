@@ -163,8 +163,8 @@
 }
 
 .product-table .column-header {
-    -fx-background-color: #FFFFFF;
-    -fx-alignment: CENTER-LEFT;
+    -fx-background-color: white;
+    -fx-alignment: CENTER;
     -fx-padding: 10;
     -fx-border-color: #B5B7C0;
     -fx-border-width: 0 0 1px 0;
@@ -172,32 +172,32 @@
 
 /* Styles for the table cells */
 .product-table .table-cell {
-    -fx-padding: 10px;
-    -fx-alignment: CENTER-LEFT;
-    -fx-text-fill: #333333;
+    -fx-padding: 15;
+    -fx-alignment: CENTER;
+    -fx-text-fill: #0D134B;
     -fx-font-size: 14px;
 }
 
 /* Style for the add product button */
 .add-product-button {
     -fx-background-color: #00CBF9;
-    -fx-text-fill: #0D134B;
-    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-size: 21px;
     -fx-font-weight: bold;
     -fx-background-radius: 5px;
 }
 
 .add-product-button2 {
     -fx-background-color: #0D134B;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: white;
     -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-background-radius: 5px;
+    -fx-background-radius: 5;
+    -fx-padding : 10 30 10 30;
 }
 
 .add-product-button:hover {
     -fx-background-color: #0D134B;
-    -fx-text-fill: #FFFFFF;
 }
 
 .add-product-button2:hover {
@@ -256,8 +256,9 @@
     -fx-font-size: 16px;
     -fx-border-color: transparent;
     -fx-graphic: url('../images/Edit.png');
-    -fx-graphic-position: left;
+    -fx-graphic-position: center;
     -fx-cursor: hand;
+    -fx-alignment: center;
 }
 
 
@@ -266,11 +267,15 @@
     -fx-font-size: 16px;
     -fx-border-color: transparent;
     -fx-graphic: url('../images/deleteIcon.png');
-    -fx-graphic-position: left;
+    -fx-graphic-position: center;
     -fx-cursor: hand;
+    -fx-alignment: center;
+
 }
 
 .updateButton:hover,
 .deleteButton:hover {
-    -fx-effect: dropshadow(gaussian, #666, 10, 0, 0, 1);
+  -fx-scale-x:1.2;
+  -fx-scale-y:1.2;
+
 }

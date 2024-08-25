@@ -28,7 +28,7 @@
    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
       <children>
          <Label layoutX="129.0" layoutY="33.0" styleClass="product-title" text="Categories" />
-         <Button layoutX="979.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#handleGetAddCategory" prefHeight="53.0" prefWidth="238.0" styleClass="add-product-button" text="      ADD CATEGORY">
+         <Button layoutX="948.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#handleGetAddCategory" prefHeight="53.0" prefWidth="275.0" styleClass="add-product-button" text="      ADD CATEGORY">
             <font>
                <Font size="32.0" />
             </font>
@@ -38,17 +38,17 @@
                <TableView fx:id="categoryTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
                   <!-- Define Table Columns -->
                   <columns>
-                     <TableColumn fx:id="categoryId" minWidth="0.0" prefWidth="331.20012855529785" text="Category ID">
+                     <TableColumn fx:id="categoryId" minWidth="0.0" prefWidth="354.3999729156494" text="Category ID">
                         <cellValueFactory>
                            <PropertyValueFactory property="catId" />
                         </cellValueFactory>
                      </TableColumn>
-                     <TableColumn fx:id="name" prefWidth="472.7999267578125" text="Name">
+                     <TableColumn fx:id="name" prefWidth="429.5999755859375" text="Name">
                         <cellValueFactory>
                            <PropertyValueFactory property="name" />
                         </cellValueFactory>
                      </TableColumn>
-                     <TableColumn fx:id="actionColumn" prefWidth="273.5997314453125" text="Action">
+                     <TableColumn fx:id="actionColumn" prefWidth="297.59991455078125" text="Action">
                      </TableColumn>
                   </columns>
                </TableView>
@@ -56,9 +56,9 @@
 
             </content>
          </ScrollPane>
-         <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="990.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="964.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../images/plus.png" />
+               <Image url="@../../images/Plus.png" />
             </image>
          </ImageView>
       </children>

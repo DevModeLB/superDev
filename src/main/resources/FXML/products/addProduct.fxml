@@ -93,7 +93,7 @@
 
                         </children>
             </AnchorPane>
-            <Button layoutX="638.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleAddProduct" style="-fx-background-color: #0D134B;" styleClass="add-product-button2" text="Add Product" textFill="WHITE">
+            <Button layoutX="638.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleAddProduct"  styleClass="add-product-button2" text="Add Product" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>

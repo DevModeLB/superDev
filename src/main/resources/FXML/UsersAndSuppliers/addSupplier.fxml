@@ -40,7 +40,7 @@
 
             </children>
          </AnchorPane>
-          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier" style="-fx-background-color: #0D134B;" styleClass="add-product-button2" text="Add Supplier" textFill="WHITE">
+          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier"  styleClass="add-product-button2" text="Add Supplier" textFill="WHITE">
               <font>
                   <Font size="25.0" />
               </font>

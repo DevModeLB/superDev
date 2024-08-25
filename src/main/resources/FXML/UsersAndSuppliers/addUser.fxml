@@ -44,7 +44,7 @@
 
                      </children>
          </AnchorPane>
-          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier" prefHeight="58.0" prefWidth="222.0" style="-fx-background-color: #0D134B;" styleClass="add-product-button2" text="Add User" textFill="WHITE">
+          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier" prefHeight="58.0" prefWidth="222.0"  styleClass="add-product-button2" text="Add User" textFill="WHITE">
               <font>
                   <Font size="25.0" />
               </font>
