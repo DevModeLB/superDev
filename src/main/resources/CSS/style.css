@@ -172,9 +172,10 @@
 
 /* Styles for the table cells */
 .product-table .table-cell {
+
     -fx-padding: 15;
     -fx-alignment: CENTER;
-    -fx-text-fill: #0D134B;
+    -fx-text-fill: #0D134B;      
     -fx-font-size: 14px;
 }
 
@@ -186,6 +187,7 @@
     -fx-font-weight: bold;
     -fx-background-radius: 5px;
 }
+
 
 .add-product-button2 {
     -fx-background-color: #0D134B;
@@ -278,4 +280,11 @@
   -fx-scale-x:1.2;
   -fx-scale-y:1.2;
 
+}
+
+.paymanetcontainer{
+    -fx-background-color: #f0f0f0bb;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+        
 }
