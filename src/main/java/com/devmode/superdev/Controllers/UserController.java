@@ -1,7 +1,9 @@
 package com.devmode.superdev.Controllers;
 
+import com.devmode.superdev.DatabaseConnector;
 import com.devmode.superdev.models.User;
 import com.devmode.superdev.utils.DataFetcher;
+import com.devmode.superdev.utils.ErrorDialog;
 import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class UserController {
 
@@ -24,49 +30,76 @@ public class UserController {
     private TableColumn<User, String> role;
     @FXML
     private TableColumn<User, Void> actionsColumn;
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private CheckBox adminCheckBox;
+
+    @FXML
+    private CheckBox cashierCheckBox;
 
     @FXML
     private void initialize() {
-        // Initialize columns
-        userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
-        username.setCellValueFactory(new PropertyValueFactory<>("username"));
-        role.setCellValueFactory(new PropertyValueFactory<>("role"));
+        if(adminCheckBox != null && cashierCheckBox != null){
+            adminCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    cashierCheckBox.setSelected(false);
+                }
+            });
 
-        // Set up the actions column with buttons
-        actionsColumn.setCellFactory(new Callback<TableColumn<User, Void>, TableCell<User, Void>>() {
-            @Override
-            public TableCell<User, Void> call(TableColumn<User, Void> param) {
-                return new TableCell<User, Void>() {
-                    private final Button updateButton = new Button("");
-                    private final Button deleteButton = new Button("");
+            cashierCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    adminCheckBox.setSelected(false);
+                }
+            });
+        }
 
-                    {
-                        updateButton.getStyleClass().add("updateButton");
-                        deleteButton.getStyleClass().add("deleteButton");
+        if(usersTable != null){
+            // Initialize columns
+            userId.setCellValueFactory(new PropertyValueFactory<>("userId"));
+            username.setCellValueFactory(new PropertyValueFactory<>("username"));
+            role.setCellValueFactory(new PropertyValueFactory<>("role"));
 
-                        updateButton.setOnAction(e -> handleUpdateAction(getTableRow().getItem()));
-                        deleteButton.setOnAction(e -> handleDeleteAction(getTableRow().getItem()));
-                    }
+            // Set up the actions column with buttons
+            actionsColumn.setCellFactory(new Callback<TableColumn<User, Void>, TableCell<User, Void>>() {
+                @Override
+                public TableCell<User, Void> call(TableColumn<User, Void> param) {
+                    return new TableCell<User, Void>() {
+                        private final Button updateButton = new Button("");
+                        private final Button deleteButton = new Button("");
 
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
+                        {
+                            updateButton.getStyleClass().add("updateButton");
+                            deleteButton.getStyleClass().add("deleteButton");
 
-                        if (empty || getTableRow() == null || getTableRow().getItem() == null) {
-                            setGraphic(null);
-                            return;
+                            updateButton.setOnAction(e -> handleUpdateAction(getTableRow().getItem()));
+                            deleteButton.setOnAction(e -> handleDeleteAction(getTableRow().getItem()));
                         }
 
-                        HBox hbox = new HBox(10, updateButton, deleteButton);
-                        setGraphic(hbox);
-                        setAlignment(javafx.geometry.Pos.CENTER); // Center the buttons
-                    }
-                };
-            }
-        });
+                        @Override
+                        protected void updateItem(Void item, boolean empty) {
+                            super.updateItem(item, empty);
 
-        // Load users
-        loadUsers();
+                            if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                                setGraphic(null);
+                                return;
+                            }
+
+                            HBox hbox = new HBox(10, updateButton, deleteButton);
+                            setGraphic(hbox);
+                            setAlignment(javafx.geometry.Pos.CENTER); // Center the buttons
+                        }
+                    };
+                }
+            });
+
+            // Load users
+            loadUsers();
+        }
     }
 
     private void loadUsers() {
@@ -76,8 +109,65 @@ public class UserController {
 
     @FXML
     private void handleGetAddUser(MouseEvent event) {
-        new SceneSwitcher().switchScene(event, "/FXML/users/addUser.fxml", "Add User");
+        new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/addUser.fxml", "Add User");
     }
+
+    @FXML
+    private void handleAddUser() {
+        String username = nameField.getText();
+        String password = passwordField.getText();
+        boolean isAdmin = adminCheckBox.isSelected();
+        boolean isCashier = cashierCheckBox.isSelected();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            new ErrorDialog().showErrorDialog("Username and Password fields cannot be empty.", "Error");
+            return;
+        }
+
+        if (!isAdmin && !isCashier) {
+            new ErrorDialog().showErrorDialog("Please select a role", "Error");
+            return;
+        }
+
+        // Insert user into database
+        String roles = isAdmin ? "admin" : "cashier";
+
+        try (Connection connection = DatabaseConnector.getConnection()) {
+            String query = "INSERT INTO user (username, password, role) VALUES (?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            preparedStatement.setString(3, roles);
+
+            int result = preparedStatement.executeUpdate();
+
+            if (result > 0) {
+                new ErrorDialog().showErrorDialog("User added succesfully", "success");
+                clearFields();
+
+            } else {
+                new ErrorDialog().showErrorDialog("Something wen wrong, try again", "Error");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("Connection to database failed", "Error");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+
+
+        private void clearFields() {
+            nameField.clear();
+            passwordField.clear();
+            adminCheckBox.setSelected(false);
+            cashierCheckBox.setSelected(false);
+        }
+
 
     private void handleUpdateAction(User user) {
         System.out.println("Update user: " + user.getUserId());

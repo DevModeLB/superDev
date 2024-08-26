@@ -46,50 +46,52 @@ public class CategoryController {
     public void initialize() {
         AuthUtils authUtils = new AuthUtils();
         authUtils.checkAuthentication();
+        if(categoryTable != null){
 
-        // Initialize columns
-        // Initialize columns
-        categoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            // Initialize columns
+            // Initialize columns
+            categoryId.setCellValueFactory(new PropertyValueFactory<>("id"));
+            name.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        // Set up action column with buttons
-        actionColumn.setCellFactory(new Callback<TableColumn<Category, Void>, TableCell<Category, Void>>() {
-            @Override
-            public TableCell<Category, Void> call(TableColumn<Category, Void> param) {
-                return new TableCell<>() {
-                    private final Button updateButton = new Button("");
-                    private final Button deleteButton = new Button("");
+            // Set up action column with buttons
+            actionColumn.setCellFactory(new Callback<TableColumn<Category, Void>, TableCell<Category, Void>>() {
+                @Override
+                public TableCell<Category, Void> call(TableColumn<Category, Void> param) {
+                    return new TableCell<>() {
+                        private final Button updateButton = new Button("");
+                        private final Button deleteButton = new Button("");
 
-                    {
-                        updateButton.setOnAction(e -> handleUpdateButton(getTableRow().getItem()));
-                        deleteButton.setOnAction(e -> handleDeleteButton(getTableRow().getItem()));
+                        {
+                            updateButton.setOnAction(e -> handleUpdateButton(getTableRow().getItem()));
+                            deleteButton.setOnAction(e -> handleDeleteButton(getTableRow().getItem()));
 
-                        // Style buttons if needed
-                        updateButton.getStyleClass().add("updateButton");
-                        deleteButton.getStyleClass().add("deleteButton");
+                            // Style buttons if needed
+                            updateButton.getStyleClass().add("updateButton");
+                            deleteButton.getStyleClass().add("deleteButton");
 
-                        HBox hbox = new HBox(10, updateButton, deleteButton);
-                        hbox.setAlignment(Pos.CENTER);
-                        setGraphic(hbox);
-                    }
+                            HBox hbox = new HBox(10, updateButton, deleteButton);
 
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(new HBox(10, updateButton, deleteButton));
+                            setGraphic(hbox);
                         }
-                    }
-                };
-            }
-        });
 
-        // Fetch categories and populate the table
-        ObservableList<Category> categories = DataFetcher.fetchCategories();
-        categoryTable.setItems(categories);
+                        @Override
+                        protected void updateItem(Void item, boolean empty) {
+                            super.updateItem(item, empty);
+                            setAlignment(Pos.BASELINE_CENTER);
+                            if (empty) {
+                                setGraphic(null);
+                            } else {
+                                setGraphic(new HBox(10, updateButton, deleteButton));
+                            }
+                        }
+                    };
+                }
+            });
+
+            // Fetch categories and populate the table
+            ObservableList<Category> categories = DataFetcher.fetchCategories();
+            categoryTable.setItems(categories);
+        }
     }
 
 

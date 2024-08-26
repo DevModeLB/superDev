@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.SupplierController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.UserController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -36,15 +36,15 @@
                   </font>
                </Label>
                <TextField fx:id="nameField" layoutX="115.0" layoutY="88.0" prefHeight="54.0" prefWidth="690.0" promptText="Add Username" />
-                <!--phone number-->
+
                <Label layoutX="115.0" layoutY="171.0" style="-fx-font-size: 28;" text="Password" />
-               <PasswordField layoutX="115.0" layoutY="211.0" prefHeight="54.0" prefWidth="431.0" promptText="Enter Password" />
-               <CheckBox layoutX="584.0" layoutY="218.0" mnemonicParsing="false" styleClass="checkboxRole" text="Admin" />
-               <CheckBox layoutX="680.0" layoutY="218.0" mnemonicParsing="false" styleClass="checkboxRole" text="Cashier" />
+               <PasswordField fx:id="passwordField" layoutX="115.0" layoutY="211.0" prefHeight="54.0" prefWidth="431.0" promptText="Enter Password" />
+               <CheckBox fx:id="adminCheckBox" layoutX="584.0" layoutY="218.0" mnemonicParsing="false" styleClass="checkboxRole" text="Admin" />
+               <CheckBox fx:id="cashierCheckBox" layoutX="680.0" layoutY="218.0" mnemonicParsing="false" styleClass="checkboxRole" text="Cashier" />
 
                      </children>
          </AnchorPane>
-          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier" prefHeight="58.0" prefWidth="222.0"  styleClass="add-product-button2" text="Add User" textFill="WHITE">
+          <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddUser" prefHeight="58.0" prefWidth="222.0"  styleClass="add-product-button2" text="Add User" textFill="WHITE">
               <font>
                   <Font size="25.0" />
               </font>
