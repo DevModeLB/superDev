@@ -21,7 +21,7 @@
             <!-- Home Button -->
             <AnchorPane layoutX="20.0" layoutY="140.0" styleClass="link">
                 <children>
-                    <Hyperlink alignment="CENTER" textAlignment="CENTER">
+                    <Hyperlink alignment="CENTER" textAlignment="CENTER" onMouseClicked="#handleHomePage">
                         <graphic>
                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

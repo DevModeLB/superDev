@@ -36,4 +36,9 @@ public class SidebarController {
     private void redirectToLogin(MouseEvent event) {
         new SceneSwitcher().switchScene(event ,"/FXML/login.fxml", "Login");
     }
+
+    @FXML
+    private void handleHomePage(MouseEvent event){
+        new SceneSwitcher().switchScene(event, "/FXML/home.fxml", "Home");
+    }
 }
