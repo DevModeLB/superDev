@@ -137,7 +137,6 @@
 
 .custom-scroll-pane .scroll-bar:vertical {
     -fx-background-color: #FFFFFF;
-    -fx-padding: 2px;
 }
 
 .custom-scroll-pane .scroll-bar:vertical .thumb {
@@ -287,6 +286,8 @@
 .categorisation{
 -fx-background-color: white;
  -fx-background-radius: 15;
+ -fx-alignment:center;
+ -fx-text-fill: #0d134b;
 }
 .categorisation:hover{
   -fx-background-color:#00CBF9;

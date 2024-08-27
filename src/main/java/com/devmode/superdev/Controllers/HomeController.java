@@ -23,7 +23,7 @@ public class HomeController {
         // Dynamically create Hyperlink nodes for each category
         for (Category category : categories) {
             Hyperlink categoryLink = new Hyperlink(category.getName());
-            categoryLink.setStyle("-fx-font-size: 24; -fx-text-fill: #0d134b;");
+            categoryLink.setStyle("-fx-font-size: 24; ");
             categoryLink.setPrefHeight(85.0);
             categoryLink.setPrefWidth(230.0);
             categoryLink.getStyleClass().add("categorisation");
