@@ -6,7 +6,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.utils.DataFetcher;
-import javafx.scene.text.Font;
 
 public class HomeController {
     @FXML
