@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
       <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
          <!-- Navigation bar and Sidebar -->
          <top>
@@ -21,51 +25,83 @@
                   <AnchorPane layoutX="1128.0" layoutY="-6.0" prefHeight="880.0" prefWidth="297.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <ScrollPane layoutX="7.0" layoutY="58.0" prefHeight="456.0" prefWidth="283.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 0;" />
-                        <Label layoutX="7.0" layoutY="22.0" prefHeight="30.0" prefWidth="106.0" text="Invoice" textAlignment="CENTER" textFill="#0d134b">
+                        <Label layoutX="7.0" layoutY="14.0" prefHeight="52.0" prefWidth="174.0" style="-fx-font-size: 30;" text="Invoice" textAlignment="CENTER" textFill="#0d134b">
                            <font>
-                              <Font name="System Bold" size="25.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                         </Label>
-                        <AnchorPane layoutX="7.0" layoutY="528.0" prefHeight="220.0" prefWidth="281.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 10;" styleClass="paymanetcontainer">
+                        <AnchorPane layoutX="7.0" layoutY="528.0" prefHeight="234.0" prefWidth="284.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 10;" styleClass="paymanetcontainer">
                            <children>
                               <Line endX="131.0" layoutX="145.0" layoutY="58.0" opacity="0.64" startX="-133.0" stroke="#0d134b94" strokeWidth="2.0" />
                               <Line endX="137.0" layoutX="145.0" layoutY="166.0" startX="-138.0" stroke="#0d134b" strokeWidth="2.0" />
-                              <Label layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="149.0" text="Payment Summary" textAlignment="CENTER" textFill="#0d134b">
+                              <Label layoutX="14.0" layoutY="4.0" prefHeight="62.0" prefWidth="224.0" style="-fx-font-size: 24;" text="Payment Summary" textAlignment="CENTER" textFill="#0d134b">
                                  <font>
                                     <Font name="Britannic Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="19.0" layoutY="118.0" prefHeight="22.0" prefWidth="55.0" text="val" textFill="#0d134b">
+                              <Label layoutX="19.0" layoutY="129.0" prefHeight="22.0" prefWidth="55.0" style="-fx-font-size: 18;" text="vat" textFill="#0d134b">
                                  <font>
                                     <Font name="Calibri Bold" size="19.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="19.0" layoutY="75.0" text="subtotal" textFill="#0d134b">
+                              <Label layoutX="13.0" layoutY="86.0" style="-fx-font-size: 18;" text="subtotal" textFill="#0d134b">
                                  <font>
                                     <Font name="Calibri Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="220.0" layoutY="78.0" text="12$" textFill="#0d134b" />
-                              <Label layoutX="220.0" layoutY="121.0" text="11%" textFill="#0d134b" />
-                              <Label layoutX="14.0" layoutY="179.0" prefHeight="17.0" prefWidth="74.0" text="Total" textFill="#0d134b">
+                              <Label alignment="CENTER" layoutX="184.0" layoutY="88.0" prefHeight="20.0" prefWidth="100.0" style="-fx-font-size: 16;" text="12$" textAlignment="CENTER" textFill="#0d134b" />
+                              <Label alignment="CENTER" layoutX="184.0" layoutY="131.0" prefHeight="20.0" prefWidth="100.0" style="-fx-font-size: 16;" text="11%" textAlignment="CENTER" textFill="#0d134b" />
+                              <Label layoutX="14.0" layoutY="185.0" prefHeight="34.0" prefWidth="98.0" style="-fx-font-size: 28;" text="Total" textFill="#0d134b">
                                  <font>
                                     <Font name="Britannic Bold" size="27.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="204.0" layoutY="175.0" prefHeight="36.0" prefWidth="55.0" text="13.32$" textAlignment="CENTER" textFill="#0d134b">
+                              <Label alignment="CENTER" layoutX="156.0" layoutY="176.0" prefHeight="52.0" prefWidth="134.0" style="-fx-font-size: 22;" text="13.32$" textAlignment="CENTER" textFill="#0d134b">
                                  <font>
                                     <Font name="Britannic Bold" size="15.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="16.0" layoutY="789.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="194.0" style="-fx-background-color: #0D134B;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
+                        <Button layoutX="14.0" layoutY="777.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="Agency FB" size="27.0" />
+                              <Font size="55.0" />
                            </font>
                         </Button>
+                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="223.0" layoutY="777.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/print.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="Beverages" textAlignment="CENTER" textFill="#0d134b">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="canned food" textAlignment="CENTER" textFill="#0d134b">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="Detergent" textAlignment="CENTER" textFill="#0d134b">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="chocolate" textAlignment="CENTER" textFill="#0d134b">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
                </children>
                </AnchorPane>
             </HBox>

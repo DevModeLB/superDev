@@ -283,3 +283,14 @@
 }
 
 
+/*category in home page*/
+.categorisation{
+-fx-background-color: white;
+ -fx-background-radius: 15;
+}
+.categorisation:hover{
+  -fx-background-color:#00CBF9;
+  -fx-text-fill:white;
+  -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}

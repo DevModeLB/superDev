@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
 
     private static Stage primaryStage;
@@ -23,7 +25,7 @@ public class Main extends Application {
 
         // Set up the scene and stage
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/CSS/style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/CSS/style.css")).toExternalForm());
         primaryStage.setFullScreen(true);
         if(controller != null) {
 
