@@ -41,11 +41,16 @@ public class CategoryController {
     @FXML
     private TableColumn<Category, Void> actionColumn;
 
+    @FXML
+    private HBox categorisCOntainer;
+
 
     @FXML
     public void initialize() {
         AuthUtils authUtils = new AuthUtils();
         authUtils.checkAuthentication();
+
+
         if(categoryTable != null){
 
             // Initialize columns

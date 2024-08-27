@@ -13,11 +13,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
       <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
-         <!-- Navigation bar and Sidebar -->
+
          <top>
+
             <HBox>
+
                <fx:include source="./sideBar.fxml" />
                  <!-- Main content area -->
                       <AnchorPane prefHeight="870.0" prefWidth="1430.0" style="-fx-background-color: #f0f0f0bb;">
@@ -75,31 +77,12 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0">
+                  <HBox fx:id="categoriesContainer" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <children>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="Beverages" textAlignment="CENTER" textFill="#0d134b">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="canned food" textAlignment="CENTER" textFill="#0d134b">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="Detergent" textAlignment="CENTER" textFill="#0d134b">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="230.0" styleClass="categorisation" text="chocolate" textAlignment="CENTER" textFill="#0d134b">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Hyperlink>
+
                      </children>
                   </HBox>
                </children>
