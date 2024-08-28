@@ -56,7 +56,7 @@ public class DataFetcher {
     }
     public static ObservableList<Product> fetchAllProducts() {
         ObservableList<Product> products = FXCollections.observableArrayList();
-        String query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock, p.barCode AS barcode, " +
+        String query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock,p.image , p.description ,p.barCode AS barcode, " +
                 "c.name AS category, s.name AS supplier " +
                 "FROM Product p " +
                 "JOIN Category c ON p.categoryID = c.id " +
@@ -74,7 +74,9 @@ public class DataFetcher {
                 String barcode = rs.getString("barcode");
                 String category = rs.getString("category");
                 String supplier = rs.getString("supplier");
-                products.add(new Product(id, name, price, stock, barcode, category, supplier));
+                String imagePath = rs.getString("image");
+                String description = rs.getString("description");
+                products.add(new Product(id, name, price, stock, barcode, category, supplier, imagePath, description));
 
             }
         } catch (SQLException e) {

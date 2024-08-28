@@ -6,6 +6,7 @@ import com.devmode.superdev.models.Supplier;
 import com.devmode.superdev.utils.DataFetcher;
 import com.devmode.superdev.DatabaseConnector;
 import com.devmode.superdev.utils.ErrorDialog;
+import com.devmode.superdev.utils.RandomStringGenerator;
 import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +21,10 @@ import javafx.util.Callback;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -205,7 +210,7 @@ public class ProductController {
             preparedStatement.setInt(7, supplierId);
 
             if (selectedImageFile != null) {
-                String imagePath = "product_images/" + selectedImageFile.getName();
+                String imagePath = selectedImageFile.getName();
                 preparedStatement.setString(8, imagePath);
             } else {
                 preparedStatement.setNull(8, java.sql.Types.VARCHAR);
@@ -265,13 +270,32 @@ public class ProductController {
         File file = fileChooser.showOpenDialog(productImage.getScene().getWindow());
 
         if (file != null) {
-            selectedImageFile = file;
-            Image image = new Image(file.toURI().toString());
-            productImage.setImage(image);
-            productImage.setY(400);
-            productImage.setX(540);
+            try {
+
+                Path resourcesDir = Paths.get("src/main/resources/uploadedImages");
+                Files.createDirectories(resourcesDir);
+                String randomPrefix = RandomStringGenerator.generateRandomLetters(4);
+                String newFileName = randomPrefix + "_" + file.getName();
+                Path targetPath = resourcesDir.resolve(newFileName);
+                Files.copy(file.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Load the image from the new path
+                Image image = new Image(targetPath.toUri().toString());
+                productImage.setImage(image);
+                // Position the image view
+                productImage.setY(400);
+                productImage.setX(540);
+
+                // Store the selected image file reference
+                selectedImageFile = targetPath.toFile();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception (e.g., show an error message to the user)
+            }
         }
     }
+
 
     public void handleGetAddProduct(MouseEvent event) {
         new SceneSwitcher().switchScene(event, "/FXML/products/addProduct.fxml", "Add product");
