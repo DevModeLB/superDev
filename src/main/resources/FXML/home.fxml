@@ -16,12 +16,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
-    <BorderPane la      <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
-
+   <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
          <top>
-
             <HBox>
-
                <fx:include source="./sideBar.fxml" />
                  <!-- Main content area -->
                       <AnchorPane prefHeight="870.0" prefWidth="1430.0" style="-fx-background-color: #f0f0f0bb;">
@@ -79,7 +76,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <HBox fx:id="categoriesContainer" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0">
+                  <HBox fx:id="categoriesContainer" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0" style="-fx-background-color: #f0f0f0bb;">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -89,25 +86,16 @@
                         <Font size="78.0" />
                      </font>
                   </Label>
-               <ScrollPane layoutX="14.0" layoutY="186.0" prefHeight="668.0" prefWidth="1093.0" style="-fx-border-color: transparent; -fx-border-width: 0;" styleClass="custom-scroll-pane" vmax="0.0">
-               <content>
-                  <GridPane fx:id="gridPane" alignment="CENTER" hgap="15.0" layoutX="14.0" layoutY="186.0" minHeight="653.0" prefWidth="1088.0" vgap="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="324.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-
-                  </GridPane>
-               </content>
-             </ScrollPane>
+                  <ScrollPane layoutX="14.0" layoutY="186.0" hbarPolicy="NEVER" prefHeight="668.0"  prefWidth="1093.0" styleClass="custom-scroll-pane2">
+    <content>
+        <VBox fx:id="productsContainer" alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" 
+            AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </VBox>
+    </content>
+</ScrollPane>
                </children>
                </AnchorPane>
             </HBox>
