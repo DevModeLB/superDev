@@ -34,7 +34,7 @@
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </Label>
-                        <AnchorPane layoutX="7.0" layoutY="528.0" prefHeight="234.0" prefWidth="284.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 10;" styleClass="paymanetcontainer">
+                        <AnchorPane layoutX="4.0" layoutY="520.0" prefHeight="234.0" prefWidth="284.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 10;" styleClass="paymanetcontainer">
                            <children>
                               <Line endX="131.0" layoutX="145.0" layoutY="58.0" opacity="0.64" startX="-133.0" stroke="#0d134b94" strokeWidth="2.0" />
                               <Line endX="137.0" layoutX="145.0" layoutY="166.0" startX="-138.0" stroke="#0d134b" strokeWidth="2.0" />
@@ -67,14 +67,14 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="14.0" layoutY="777.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
+                        <Button layoutX="21.0" layoutY="799.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="55.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="223.0" layoutY="777.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="221.0" layoutY="804.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/print.png" />
+                              <Image url="@../../../../../../Downloads/plus.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -107,6 +107,12 @@
                   </GridPane>
                </content>
              </ScrollPane>
+                  <Label layoutX="14.0" layoutY="82.0" prefHeight="62.0" prefWidth="197.0" text="Products" />
+                  <ScrollPane layoutX="14.0" layoutY="144.0" prefHeight="728.0" prefWidth="1099.0">
+                     <content>
+                        <HBox prefHeight="726.0" prefWidth="1099.0" />
+                     </content>
+                  </ScrollPane>
                </children>
                </AnchorPane>
             </HBox>

@@ -295,3 +295,29 @@
   -fx-background-radius: 15;
     -fx-border-radius: 15;
 }
+
+
+/* .toggle-button */
+.toggle-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0D134B;
+    -fx-font-size: 14px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #00CBF9;
+    -fx-text-fill: white;
+}
+
+.toggle-button > .graphic > Rectangle {
+    -fx-fill: #0D134B;
+    -fx-stroke: #0D134B;
+    -fx-stroke-width: 2;
+    -fx-width: 20;
+    -fx-height: 20;
+}
+
+
