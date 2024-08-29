@@ -33,10 +33,8 @@
                     <Font size="32.0" />
                 </font>
             </Button>
-            <ScrollPane layoutX="129.0" layoutY="107.0" vmax="0.0" maxHeight="600.0" minHeight="600.0" prefHeight="600.0" prefWidth="1095.0" style="-fx-background-radius: 30; -fx-background-color: white;" styleClass="custom-scroll-pane" AnchorPane.bottomAnchor="90.59999999999991" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="202.20000000000005" AnchorPane.topAnchor="107.0">
-                <content>
-                    <TableView fx:id="supplierTable" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
-                        <!-- Define Table Columns -->
+            <TableView fx:id="supplierTable" layoutX="129.0" layoutY="111.0" prefHeight="600.0" prefWidth="1096.0" style="-fx-background-radius: 30;" styleClass="product-table">
+                 <!-- Define Table Columns -->
                         <columns>
                             <TableColumn fx:id="id" minWidth="0.0" prefWidth="294.3999729156494" text=" Supplier ID">
                                 <cellValueFactory>
@@ -57,8 +55,7 @@
                             </TableColumn>
                         </columns>
                     </TableView>
-                </content>
-            </ScrollPane>
+
             <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="961.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../../images/Plus.png" />
