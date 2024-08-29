@@ -3,7 +3,8 @@ module com.devmode.superdev {
     requires javafx.fxml;
     requires transitive javafx.graphics;
     requires java.sql;
-
+    requires java.desktop;
+    requires java.compiler;
 
 
     opens com.devmode.superdev to javafx.fxml;

@@ -12,8 +12,9 @@ public class Product {
     private final SimpleStringProperty barcode;
     private final SimpleStringProperty category;
     private final SimpleStringProperty supplier;
-
-    public Product(int productId, String name, double price, int stock, String barcode, String category, String supplier) {
+    private final SimpleStringProperty imagePath;
+    private final String description;
+    public Product(int productId, String name, double price, int stock, String barcode, String category, String supplier, String imagePath, String description) {
         this.productId = new SimpleIntegerProperty(productId);
         this.name = new SimpleStringProperty(name);
         this.price = new SimpleDoubleProperty(price);
@@ -21,6 +22,8 @@ public class Product {
         this.barcode = new SimpleStringProperty(barcode);
         this.category = new SimpleStringProperty(category);
         this.supplier = new SimpleStringProperty(supplier);
+        this.imagePath = new SimpleStringProperty(imagePath);
+        this.description = description;
     }
 
     public int getProductId() { return productId.get(); }
@@ -30,4 +33,9 @@ public class Product {
     public String getBarcode() { return barcode.get(); }
     public String getCategory() { return category.get(); }
     public String getSupplierId() { return supplier.get(); }
+    public String getImagePath() { return  imagePath.get();}
+
+    public String getDescription() {
+        return this.description;
+    }
 }

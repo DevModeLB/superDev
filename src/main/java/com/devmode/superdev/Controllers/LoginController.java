@@ -39,14 +39,14 @@ public class LoginController {
     private void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-
+        System.out.println(username);
+        System.out.println(password);
         if (username.isEmpty() || password.isEmpty()) {
             showErrorDialog("Username or Password cannot be empty.");
             return;
         }
 
         if (isValidCredentials(username, password)) {
-            System.out.println("Login successful!");
             SessionManager.getInstance().setUsername(username);
             switchView();
         } else {
@@ -58,7 +58,6 @@ public class LoginController {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-
         try {
             connection = DatabaseConnector.getConnection();
             String query = "SELECT * FROM user WHERE username = ? AND password = ?";
@@ -66,9 +65,7 @@ public class LoginController {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
-
-            return resultSet.next(); // Returns true if user is found
-
+            return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
             showErrorDialog("An error occurred while connecting to the database.");
