@@ -67,14 +67,14 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="21.0" layoutY="799.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
+                        <Button layoutX="14.0" layoutY="771.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="55.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="221.0" layoutY="804.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="221.0" layoutY="776.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../Downloads/plus.png" />
+                              <Image url="@../images/print.jpeg" />
                            </image>
                         </ImageView>
                      </children>
@@ -98,6 +98,7 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

@@ -82,31 +82,29 @@ public class HomeController {
         }
         ImageView imageView = new ImageView(new Image(imageStream));
         imageView.setFitHeight(115);
-        imageView.setFitWidth(93);
+        imageView.setFitWidth(102);
         imageView.setLayoutX(14);
-        imageView.setLayoutY(33);
+        imageView.setLayoutY(17);
 
         AnchorPane textPane = new AnchorPane();
-        textPane.setLayoutX(122);
-        textPane.setPrefSize(219, 115);
+        textPane.setLayoutX(131);
+        textPane.setLayoutY(17);
+        textPane.setPrefSize(210, 115);
 
         Label nameLabel = new Label(product.getName());
-        nameLabel.setLayoutX(7);
-        nameLabel.setLayoutY(5);
+        nameLabel.setLayoutY(2);
         nameLabel.setStyle("-fx-font-size: 32; -fx-wrap-text: true;");
         nameLabel.setWrapText(true);
 
         Label descriptionLabel = new Label(product.getDescription());
-        descriptionLabel.setLayoutX(7);
-        descriptionLabel.setLayoutY(48);
-        descriptionLabel.setStyle("-fx-font-size: 10; -fx-text-fill: #B5B7C0;");
+        descriptionLabel.setLayoutY(46);
+        descriptionLabel.setStyle("-fx-font-size: 10; -fx-text-fill: #B5B7C0;-fx-wrap-text: true;");
         descriptionLabel.setPadding(new javafx.geometry.Insets(10, 0, 0, 0));
 
         Label priceLabel = new Label(product.getPrice() + "$");
-        priceLabel.setLayoutX(7);
         priceLabel.setLayoutY(90);
         priceLabel.setStyle("-fx-font-size: 14; -fx-background-color: #0D134B; -fx-text-fill: white; -fx-background-radius: 5;");
-        priceLabel.setPadding(new javafx.geometry.Insets(2, 2, 2, 2));
+        priceLabel.setPadding(new javafx.geometry.Insets(3, 3, 3, 3));
 
         textPane.getChildren().addAll(nameLabel, descriptionLabel, priceLabel);
         pane.getChildren().addAll(imageView, textPane);
