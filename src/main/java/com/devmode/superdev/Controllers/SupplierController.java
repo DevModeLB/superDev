@@ -101,7 +101,8 @@ public class SupplierController {
     }
 
     private void handleUpdate(MouseEvent event, Supplier supplier) {
-
+        String id = ""+supplier.getId();
+        new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/editsupplier.fxml", id);
     }
 
     private void handleDelete(MouseEvent event, Supplier supplier) {

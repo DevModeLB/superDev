@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.SupplierController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.EditSupplierController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -41,7 +41,7 @@
 
                 </children>
             </AnchorPane>
-            <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleAddSupplier"  styleClass="add-product-button2" text="Update" textFill="WHITE">
+            <Button layoutX="627.0" layoutY="555.0" mnemonicParsing="false" onMouseClicked="#handleAddSupplier"  styleClass="add-product-button2" text="Update" textFill="WHITE">
                 <font>
                     <Font size="25.0" />
                 </font>

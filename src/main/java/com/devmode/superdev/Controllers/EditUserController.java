@@ -126,6 +126,14 @@ public class EditUserController implements Initializable {
             return;
         }
 
+        if (newUsername.equals(user.getUsername()) &&
+                role.equals(user.getRole()) &&
+                newPassword.trim().isEmpty())
+        {
+            errorDialog.showErrorDialog("Nothing to update", "Error");
+            return;
+        }
+
         if(newPassword.trim().isEmpty()){
             String query = "UPDATE User SET username = ?, role = ? WHERE id = ?";
             try (Connection connection = DatabaseConnector.getConnection();
