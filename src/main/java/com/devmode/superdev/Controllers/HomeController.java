@@ -3,15 +3,21 @@ package com.devmode.superdev.Controllers;
 import com.devmode.superdev.models.Product;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.utils.DataFetcher;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 import java.io.InputStream;
 import java.util.List;
@@ -24,8 +30,34 @@ public class HomeController {
     private VBox productsContainer;
 
     @FXML
+    private Rectangle background;
+
+    @FXML
+    private Circle toggle;
+
+    @FXML
+    private AnchorPane paymanetcontainer;
+
+    private boolean isOn = false;
+    private Label priceLabel;
+
+    @FXML
     public void initialize() {
-        
+
+        // Initialize the label once and add it to the payment container
+        priceLabel = new Label("0Lb");
+        priceLabel.setPrefSize(134, 52); // Set preferred width and height
+        priceLabel.setLayoutX(156); // Set X position
+        priceLabel.setLayoutY(176); // Set Y position
+        priceLabel.setStyle("-fx-font-size: 22;"); // Set font size
+        priceLabel.setTextFill(Color.web("#0d134b")); // Set text color
+        priceLabel.setAlignment(Pos.CENTER); // Center alignment
+        priceLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER); // Center text alignment
+        priceLabel.setFont(Font.font("Britannic Bold", 15));
+        paymanetcontainer.getChildren().add(priceLabel);
+
+
+
         ObservableList<Category> categories = DataFetcher.fetchCategories();
 
        
@@ -90,7 +122,7 @@ public class HomeController {
         AnchorPane textPane = new AnchorPane();
         textPane.setLayoutX(131);
         textPane.setLayoutY(17);
-        textPane.setPrefSize(210, 115);
+        textPane.setPrefSize(190, 115);
 
         Label nameLabel = new Label(product.getName());
         nameLabel.setLayoutY(2);
@@ -118,4 +150,20 @@ public class HomeController {
         String filter = "c.id = " + category.getId();
         populateProductsContainer(filter);
     }
+
+    public void handleToggle(MouseEvent mouseEvent) {
+        if (isOn) {
+            background.setFill(Color.web("#E0E0E0")); // Off background color
+            toggle.setTranslateX(0); // Move toggle knob to the left
+            priceLabel.setText("880.0Lb");
+
+        } else {
+            background.setFill(Color.web("#00CBF9")); // On background color
+            toggle.setTranslateX(25); // Move toggle knob to the right;
+            priceLabel.setText("10$");
+        }
+        isOn = !isOn;
+    }
+
+
 }

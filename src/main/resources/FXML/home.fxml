@@ -8,14 +8,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.VBox?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
          <top>
@@ -24,15 +23,15 @@
                  <!-- Main content area -->
                       <AnchorPane prefHeight="870.0" prefWidth="1430.0" style="-fx-background-color: #f0f0f0bb;">
                <children>
-                  <AnchorPane layoutX="1128.0" layoutY="-6.0" prefHeight="880.0" prefWidth="297.0" style="-fx-background-color: #FFFFFF;">
+                  <AnchorPane layoutX="1127.0" layoutY="5.0" prefHeight="870.0" prefWidth="298.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <ScrollPane layoutX="7.0" layoutY="58.0" prefHeight="456.0" prefWidth="283.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 0;" />
-                        <Label layoutX="7.0" layoutY="14.0" prefHeight="52.0" prefWidth="174.0" style="-fx-font-size: 30;" text="Invoice" textAlignment="CENTER" textFill="#0d134b">
+                        <ScrollPane layoutX="7.0" layoutY="45.0" prefHeight="442.0" prefWidth="283.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 0;" />
+                        <Label layoutX="7.0" prefHeight="52.0" prefWidth="174.0" style="-fx-font-size: 30;" text="Invoice" textAlignment="CENTER" textFill="#0d134b">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </Label>
-                        <AnchorPane layoutX="4.0" layoutY="520.0" prefHeight="234.0" prefWidth="284.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 10;" styleClass="paymanetcontainer">
+                        <AnchorPane fx:id="paymanetcontainer" layoutX="7.0" layoutY="490.0" prefHeight="234.0" prefWidth="280.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 10;" styleClass="paymanetcontainer">
                            <children>
                               <Line endX="131.0" layoutX="145.0" layoutY="58.0" opacity="0.64" startX="-133.0" stroke="#0d134b94" strokeWidth="2.0" />
                               <Line endX="137.0" layoutX="145.0" layoutY="166.0" startX="-138.0" stroke="#0d134b" strokeWidth="2.0" />
@@ -58,23 +57,28 @@
                                     <Font name="Britannic Bold" size="27.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="156.0" layoutY="176.0" prefHeight="52.0" prefWidth="134.0" style="-fx-font-size: 22;" text="13.32$" textAlignment="CENTER" textFill="#0d134b">
-                                 <font>
-                                    <Font name="Britannic Bold" size="15.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="14.0" layoutY="771.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
+                        <AnchorPane layoutX="9.0" layoutY="727.0" onMouseClicked="#handleToggle" prefHeight="34.0" prefWidth="52.0" xmlns:fx="http://javafx.com/fxml/1">
+                           <Rectangle fx:id="background" arcHeight="30" arcWidth="30" fill="#E0E0E0" height="26.0" layoutX="5.0" layoutY="4.0" width="52.0" />
+                           <Circle fx:id="toggle" fill="#FFFFFF" layoutX="18.0" layoutY="17.0" radius="10.0" />
+                        </AnchorPane>
+
+                        <Button layoutX="15.0" layoutY="777.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="55.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="221.0" layoutY="776.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="49.0" fitWidth="46.0" layoutX="220.0" layoutY="777.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/print.jpeg" />
                            </image>
                         </ImageView>
+                        <Label layoutX="80.0" layoutY="727.0" prefHeight="32.0" prefWidth="138.0" style="-fx-font-size: 18; -fx-font-weight: 400;" text="payment in USD">
+                           <font>
+                              <Font size="1.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <HBox fx:id="categoriesContainer" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0" style="-fx-background-color: #f0f0f0bb;">
@@ -82,15 +86,14 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <Label layoutX="14.0" layoutY="116.0" prefHeight="52.0" prefWidth="222.0" text="Products" textFill="#df1111">
+                  <Label layoutX="32.0" layoutY="110.0" prefHeight="52.0" prefWidth="222.0" text="Products" textFill="#df1111">
                      <font>
                         <Font size="78.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="14.0" layoutY="186.0" hbarPolicy="NEVER" prefHeight="668.0"  prefWidth="1093.0" styleClass="custom-scroll-pane2">
+                  <ScrollPane hbarPolicy="NEVER" layoutX="17.0" layoutY="162.0" prefHeight="688.0" prefWidth="1082.0" styleClass="custom-scroll-pane2">
                       <content>
-                          <VBox fx:id="productsContainer" alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;"
-                                AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
+                          <VBox fx:id="productsContainer" alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
                               <padding>
                                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                               </padding>
