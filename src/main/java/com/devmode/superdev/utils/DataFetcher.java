@@ -102,7 +102,7 @@ public class DataFetcher {
     public static ObservableList<User> fetchUsers() {
         ObservableList<User> users = FXCollections.observableArrayList();
 
-        String query = "SELECT id, username, role FROM user";
+        String query = "SELECT id, username, password,  role FROM user";
         try (Connection conn = DatabaseConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -110,8 +110,9 @@ public class DataFetcher {
             while (rs.next()) {
                 Integer userId = rs.getInt("id");
                 String username = rs.getString("username");
+                String password = rs.getString("password");
                 String role = rs.getString("role");
-                User user = new User(userId, username, role);
+                User user = new User(userId, username, password , role);
                 users.add(user);
             }
 

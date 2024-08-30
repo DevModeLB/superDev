@@ -168,7 +168,8 @@ public class UserController {
 
 
     private void handleUpdateAction(MouseEvent e, User user) {
-        System.out.println("Update user: " + user.getUserId());
+        String id = ""+user.getUserId();
+        new SceneSwitcher().switchScene(e, "/FXML/UsersAndSuppliers/editUser.fxml", id);
     }
 
     public void handleDeleteAction(MouseEvent event, User user){

@@ -3,12 +3,15 @@ package com.devmode.superdev.models;
 public class User {
     private Integer userId;
     private String username;
+    private String password;
     private String role;
 
+
     // Constructor
-    public User(Integer userId, String username, String role) {
+    public User(int userId, String username, String password, String role) {
         this.userId = userId;
         this.username = username;
+        this.password = password;
         this.role = role;
     }
 
