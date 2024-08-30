@@ -46,18 +46,15 @@ public class HomeController {
             categoriesContainer.getChildren().add(categoryLink);
         }
 
-        populateProductsContainer();
+        populateProductsContainer("none");
     }
 
-    private void populateProductsContainer() {
-        List<Product> products = DataFetcher.fetchAllProducts();
-
+    private void populateProductsContainer(String query) {
+        List<Product> products = DataFetcher.fetchAllProducts(query);
         int column = 0;
-        HBox row = new HBox(10); 
-
+        HBox row = new HBox(10);
         for (Product product : products) {
             AnchorPane productPane = createProductPane(product);
-
             row.getChildren().add(productPane);
             column++;
 
@@ -117,6 +114,8 @@ public class HomeController {
     }
 
     public void handleClickCategory(Category category) {
-        System.out.println(category.getId());
+        productsContainer.getChildren().clear();
+        String filter = "c.id = " + category.getId();
+        populateProductsContainer(filter);
     }
 }

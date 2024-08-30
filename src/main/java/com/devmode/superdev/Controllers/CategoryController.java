@@ -1,19 +1,16 @@
 package com.devmode.superdev.Controllers;
 
 import com.devmode.superdev.models.Category;
-import com.devmode.superdev.utils.DataFetcher;
+import com.devmode.superdev.utils.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import com.devmode.superdev.utils.ErrorDialog;
 
-import com.devmode.superdev.utils.AuthUtils;
 import com.devmode.superdev.DatabaseConnector;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
@@ -67,8 +64,8 @@ public class CategoryController {
                         private final Button deleteButton = new Button("");
 
                         {
-                            updateButton.setOnAction(e -> handleUpdateButton(getTableRow().getItem()));
-                            deleteButton.setOnAction(e -> handleDeleteButton(getTableRow().getItem()));
+                            updateButton.setOnMouseClicked(e -> handleUpdateButton(e,getTableRow().getItem()));
+                            deleteButton.setOnMouseClicked(e -> handleDeleteButton(e,getTableRow().getItem()));
 
                             // Style buttons if needed
                             updateButton.getStyleClass().add("updateButton");
@@ -150,12 +147,20 @@ public class CategoryController {
         new SceneSwitcher().switchScene(event, "/FXML/categories/addCategory.fxml", "Add Category");
     }
 
-    public void handleUpdateButton(Category category){
+    public void handleUpdateButton(MouseEvent e, Category category){
         System.out.println("Update");
     }
 
-    public void handleDeleteButton(Category category){
-        System.out.println("delete");
+    public void handleDeleteButton(MouseEvent e, Category category){
+        boolean confirmed = ConfirmationDialog.showConfirmation(
+                "Delete confirmation",
+                "Are u sure u want to delete this category?",
+                "Category: " + category.getName()
+        );
+        if(confirmed){
+            DeleteFromDatabase.deleteFromDatabase("category", category.getId() );
+            new SceneSwitcher().switchScene(e, "/FXML/categories/Category.fxml.fxml", "Categories");
+        }
     }
 
 }

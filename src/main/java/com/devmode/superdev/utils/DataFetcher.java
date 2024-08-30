@@ -1,6 +1,7 @@
 package com.devmode.superdev.utils;
 
 import java.sql.*;
+import java.util.Objects;
 
 import com.devmode.superdev.models.Product;
 import com.devmode.superdev.models.User;
@@ -54,13 +55,24 @@ public class DataFetcher {
         }
         return suppliers;
     }
-    public static ObservableList<Product> fetchAllProducts() {
+    public static ObservableList<Product> fetchAllProducts(String filter) {
         ObservableList<Product> products = FXCollections.observableArrayList();
-        String query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock,p.image , p.description ,p.barCode AS barcode, " +
-                "c.name AS category, s.name AS supplier " +
-                "FROM Product p " +
-                "JOIN Category c ON p.categoryID = c.id " +
-                "JOIN Supplier s ON p.supplierID = s.id";
+        String query;
+        if(!Objects.equals(filter, "none")){
+            query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock,p.image , p.description ,p.barCode AS barcode, " +
+                    "c.name AS category, s.name AS supplier " +
+                    "FROM Product p " +
+                    "JOIN Category c ON p.categoryID = c.id " +
+                    "JOIN Supplier s ON p.supplierID = s.id " +
+                    "WHERE " + filter;
+        }
+        else{
+            query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock,p.image , p.description ,p.barCode AS barcode, " +
+                    "c.name AS category, s.name AS supplier " +
+                    "FROM Product p " +
+                    "JOIN Category c ON p.categoryID = c.id " +
+                    "JOIN Supplier s ON p.supplierID = s.id";
+        }
 
         try (Connection conn = DatabaseConnector.getConnection();
              Statement stmt = conn.createStatement();

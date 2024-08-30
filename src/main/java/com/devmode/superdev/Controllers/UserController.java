@@ -2,9 +2,7 @@ package com.devmode.superdev.Controllers;
 
 import com.devmode.superdev.DatabaseConnector;
 import com.devmode.superdev.models.User;
-import com.devmode.superdev.utils.DataFetcher;
-import com.devmode.superdev.utils.ErrorDialog;
-import com.devmode.superdev.utils.SceneSwitcher;
+import com.devmode.superdev.utils.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -76,8 +74,8 @@ public class UserController {
                             updateButton.getStyleClass().add("updateButton");
                             deleteButton.getStyleClass().add("deleteButton");
 
-                            updateButton.setOnAction(e -> handleUpdateAction(getTableRow().getItem()));
-                            deleteButton.setOnAction(e -> handleDeleteAction(getTableRow().getItem()));
+                            updateButton.setOnMouseClicked(e -> handleUpdateAction(e, getTableRow().getItem()));
+                            deleteButton.setOnMouseClicked(e -> handleDeleteAction(e, getTableRow().getItem()));
                         }
 
                         @Override
@@ -169,16 +167,21 @@ public class UserController {
         }
 
 
-    private void handleUpdateAction(User user) {
+    private void handleUpdateAction(MouseEvent e, User user) {
         System.out.println("Update user: " + user.getUserId());
-        // Implement update logic here
     }
 
-    private void handleDeleteAction(User user) {
-        System.out.println("Delete user: " + user.getUserId());
-        // Implement delete logic here
+    public void handleDeleteAction(MouseEvent event, User user){
+            boolean confirmed = ConfirmationDialog.showConfirmation(
+                    "Delete confirmation",
+                    "Are u sure u want to delete this user?",
+                    "User: " + user.getUsername()
+            );
+            if(confirmed){
+                DeleteFromDatabase.deleteFromDatabase("user", user.getUserId() );
+                new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/getUser.fxml", "Products");
+            }
     }
-
     @FXML
     private void handleGetSuppliers(MouseEvent event){
         new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/supplier.fxml", "Suppliers");

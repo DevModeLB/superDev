@@ -15,6 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.VBox?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
          <top>
@@ -87,14 +88,14 @@
                      </font>
                   </Label>
                   <ScrollPane layoutX="14.0" layoutY="186.0" hbarPolicy="NEVER" prefHeight="668.0"  prefWidth="1093.0" styleClass="custom-scroll-pane2">
-    <content>
-        <VBox fx:id="productsContainer" alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" 
-            AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
-            <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-            </padding>
-        </VBox>
-    </content>
+                      <content>
+                          <VBox fx:id="productsContainer" alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;"
+                                AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
+                              <padding>
+                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              </padding>
+                          </VBox>
+                     </content>
 </ScrollPane>
                </children>
                </AnchorPane>

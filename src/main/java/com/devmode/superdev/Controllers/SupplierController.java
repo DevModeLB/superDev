@@ -1,14 +1,13 @@
 package com.devmode.superdev.Controllers;
 
 import com.devmode.superdev.models.Supplier;
-import com.devmode.superdev.utils.DataFetcher;
-import com.devmode.superdev.utils.ErrorDialog;
+import com.devmode.superdev.utils.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javafx.scene.control.TableCell;
-import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -76,14 +75,14 @@ public class SupplierController {
                 updateButton.getStyleClass().add("updateButton");
                 deleteButton.getStyleClass().add("deleteButton");
 
-                updateButton.setOnAction(event -> {
+                updateButton.setOnMouseClicked(event -> {
                     Supplier supplier = getTableView().getItems().get(getIndex());
-                    handleUpdate(supplier);
+                    handleUpdate(event ,supplier);
                 });
 
-                deleteButton.setOnAction(event -> {
+                deleteButton.setOnMouseClicked(event -> {
                     Supplier supplier = getTableView().getItems().get(getIndex());
-                    handleDelete(supplier);
+                    handleDelete(event ,supplier);
                 });
             }
 
@@ -101,12 +100,20 @@ public class SupplierController {
         });
     }
 
-    private void handleUpdate(Supplier supplier) {
-        // Implement update logic here
+    private void handleUpdate(MouseEvent event, Supplier supplier) {
+
     }
 
-    private void handleDelete(Supplier supplier) {
-        // Implement delete logic here
+    private void handleDelete(MouseEvent event, Supplier supplier) {
+        boolean confirmed = ConfirmationDialog.showConfirmation(
+                "Delete confirmation",
+                "Are u sure u want to delete this supplier?",
+                "Supplier: " + supplier.getName()
+        );
+        if(confirmed){
+            DeleteFromDatabase.deleteFromDatabase("supplier", supplier.getId() );
+            new SceneSwitcher().switchScene(event, "/FXML/UsersAndSuppliers/supplier.fxml", "Products");
+        }
     }
 
     @FXML

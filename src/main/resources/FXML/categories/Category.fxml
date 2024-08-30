@@ -50,10 +50,6 @@
                      </TableColumn>
                   </columns>
                </TableView>
-
-
-            </content>
-         </ScrollPane>
          <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="964.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../../images/Plus.png" />

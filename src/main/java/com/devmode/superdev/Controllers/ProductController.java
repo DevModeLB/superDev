@@ -3,11 +3,8 @@ package com.devmode.superdev.Controllers;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Product;
 import com.devmode.superdev.models.Supplier;
-import com.devmode.superdev.utils.DataFetcher;
+import com.devmode.superdev.utils.*;
 import com.devmode.superdev.DatabaseConnector;
-import com.devmode.superdev.utils.ErrorDialog;
-import com.devmode.superdev.utils.RandomStringGenerator;
-import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -96,8 +93,8 @@ public class ProductController {
                             updateButton.getStyleClass().add("updateButton");
                             deleteButton.getStyleClass().add("deleteButton");
 
-                            updateButton.setOnAction(e -> handleUpdateAction(getTableRow().getItem()));
-                            deleteButton.setOnAction(e -> handleDeleteAction(getTableRow().getItem()));
+                            updateButton.setOnMouseClicked(e -> handleUpdateAction(e,getTableRow().getItem()));
+                            deleteButton.setOnMouseClicked(e -> handleDeleteAction(e,getTableRow().getItem()));
                         }
 
                         @Override
@@ -122,7 +119,7 @@ public class ProductController {
     }
 
     private void loadProducts() {
-        ObservableList<Product> products = DataFetcher.fetchAllProducts();
+        ObservableList<Product> products = DataFetcher.fetchAllProducts("none");
         productTable.setItems(products);
     }
 
@@ -301,10 +298,19 @@ public class ProductController {
         new SceneSwitcher().switchScene(event, "/FXML/products/addProduct.fxml", "Add product");
     }
 
-    public void handleUpdateAction(Product product){
-        System.out.println("Update");
+    public void handleUpdateAction(MouseEvent e, Product product){
+        String id = ""+product.getProductId();
+        new SceneSwitcher().switchScene(e, "/FXML/products/editProduct.fxml", id);
     }
-    public void handleDeleteAction(Product product){
-        System.out.println("Delete");
+    public void handleDeleteAction(MouseEvent event, Product product){
+        boolean confirmed = ConfirmationDialog.showConfirmation(
+                "Delete confirmation",
+                "Are u sure u want to delete this product?",
+                        "Product: " + product.getName()
+        );
+        if(confirmed){
+            DeleteFromDatabase.deleteFromDatabase("product", product.getProductId());
+            new SceneSwitcher().switchScene(event, "/FXML/products/getProducts.fxml", "Products");
+        }
     }
 }
