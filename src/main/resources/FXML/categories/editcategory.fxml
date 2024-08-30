@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.CategoryController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.EditCategoryController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -37,7 +37,7 @@
                         </padding>
                     </TextField>
                     <Label layoutX="406.0" layoutY="77.0" text="Name" textFill="#0d134b" />
-                    <Button fx:id="addButton" layoutX="395.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleAddCategory"  styleClass="add-product-button2" text="Update" textFill="WHITE">
+                    <Button fx:id="addButton" layoutX="395.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#handleEditCategory"  styleClass="add-product-button2" text="Update" textFill="WHITE">
                         <font>
                             <Font size="18.0" />
                         </font>

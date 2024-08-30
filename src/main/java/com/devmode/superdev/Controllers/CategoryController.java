@@ -148,7 +148,8 @@ public class CategoryController {
     }
 
     public void handleUpdateButton(MouseEvent e, Category category){
-        System.out.println("Update");
+        String id = ""+category.getId();
+        new SceneSwitcher().switchScene(e, "/FXML/categories/editCategory.fxml", id);
     }
 
     public void handleDeleteButton(MouseEvent e, Category category){

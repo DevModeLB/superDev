@@ -179,7 +179,7 @@ public class EditProductController implements Initializable {
 
     @FXML
     public void handleEditProduct(ActionEvent event) {
-        System.out.println("Supplier: " + supplierComboBox.getValue());
+
         // Fetch the existing product image path before updating
         String oldImagePath = null;
         Product existingProduct = fetchProductFromDatabase(Integer.parseInt(productID));
@@ -197,15 +197,60 @@ public class EditProductController implements Initializable {
         String oldImagePath1 = existingProduct.getImagePath();
         String oldDescription = existingProduct.getDescription();
 
+        ErrorDialog errorDialog = new ErrorDialog();
+
         // Get current values from UI
         String newName = productName.getText();
-        double newPrice = Double.parseDouble(productPrice.getText());
-        int newStock = Integer.parseInt(productQuantity.getText());
+        double newPrice;
+        int newStock;
         String newBarCode = productBarCode.getText();
-        int newCategoryId = categoryComboBox.getValue().getId();
-        int newSupplierId = supplierComboBox.getValue().getId();
+        int newCategoryId;
+        int newSupplierId;
         String newImagePath = (selectedImageFile != null) ? selectedImageFile.getName() : oldImagePath;
         String newDescription = productDescription.getText();
+
+        // Validation
+        if (newName == null || newName.trim().isEmpty()) {
+            errorDialog.showErrorDialog("Product name cannot be empty", "Error");
+            return;
+        }
+
+        try {
+            newPrice = Double.parseDouble(productPrice.getText());
+        } catch (NumberFormatException e) {
+            errorDialog.showErrorDialog("Invalid price format", "Error");
+            return;
+        }
+
+        try {
+            newStock = Integer.parseInt(productQuantity.getText());
+        } catch (NumberFormatException e) {
+            errorDialog.showErrorDialog("Invalid stock quantity format", "Error");
+            return;
+        }
+
+        if (categoryComboBox.getValue() == null) {
+            errorDialog.showErrorDialog("Please select a category", "Error");
+            return;
+        }
+        newCategoryId = categoryComboBox.getValue().getId();
+
+        if (supplierComboBox.getValue() == null) {
+            errorDialog.showErrorDialog("Please select a supplier", "Error");
+            return;
+        }
+        newSupplierId = supplierComboBox.getValue().getId();
+
+        if (newBarCode == null || newBarCode.trim().isEmpty()) {
+            errorDialog.showErrorDialog("Bar code cannot be empty", "Error");
+            return;
+        }
+
+        if (newDescription == null || newDescription.trim().isEmpty()) {
+            errorDialog.showErrorDialog("Description cannot be empty", "Error");
+            return;
+        }
+
 
         // Check if any value has changed
         boolean hasChanges = !oldName.equals(newName) ||
