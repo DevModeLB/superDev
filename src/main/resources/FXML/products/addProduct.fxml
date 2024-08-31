@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ScrollPane?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.ProductController">
       <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
          <!-- Navigation bar and Sidebar -->
@@ -26,6 +27,7 @@
 
       </BorderPane>
       <!-- Main content area -->
+   <ScrollPane layoutX="100.0" layoutY="100.0" prefHeight="688.0" prefWidth="1426.0" styleClass="custom-scroll-pane2">
       <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
          <children>
             <Label layoutX="253.0" layoutY="25.0" text="Product info" />
@@ -71,7 +73,6 @@
                      </items>
                   </ComboBox>
 
-
                            <!--image-->
                   <Label layoutX="482.0" layoutY="431.0" style="-fx-font-size: 26;" text="Add Image " />
                   <ImageView fx:id="productImage"
@@ -92,19 +93,20 @@
                   <TextField fx:id="productDescription" layoutX="115.0" layoutY="472.0" prefHeight="50.0" prefWidth="325.0" promptText="add deacription" />
 
                         </children>
+               <Button layoutX="350.0" layoutY="560.0" mnemonicParsing="false" onAction="#handleAddProduct"  styleClass="add-product-button2" text="Add Product" textFill="WHITE">
+                  <font>
+                     <Font size="25.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+               </Button>
             </AnchorPane>
-            <Button layoutX="638.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleAddProduct"  styleClass="add-product-button2" text="Add Product" textFill="WHITE">
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </Button>
+
          </children>
       </AnchorPane>
-
+   </ScrollPane>
    </AnchorPane>

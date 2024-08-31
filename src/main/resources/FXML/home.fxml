@@ -91,9 +91,21 @@
                         <Font size="78.0" />
                      </font>
                   </Label>
-                  <ScrollPane hbarPolicy="NEVER" layoutX="17.0" layoutY="162.0" prefHeight="688.0" prefWidth="1082.0" styleClass="custom-scroll-pane2">
+                  <ScrollPane fx:id="productsContainer"
+                              hbarPolicy="NEVER"
+                              vbarPolicy="AS_NEEDED"
+                              layoutX="17.0"
+                              layoutY="162.0"
+                              prefHeight="688.0"
+                              prefWidth="1082.0"
+                              fitToWidth="true"
+                              styleClass="custom-scroll-pane2">
                       <content>
-                          <VBox fx:id="productsContainer" alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
+                         <VBox alignment="CENTER"
+                               spacing="15.0"
+                               style="-fx-background-color: #f0f0f0bb;"
+                               AnchorPane.leftAnchor="14.0"
+                               AnchorPane.rightAnchor="300.0">
                               <padding>
                                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                               </padding>
