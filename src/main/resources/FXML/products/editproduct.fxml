@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -60,14 +58,10 @@
 
                     <!--image-->
                     <Label layoutX="482.0" layoutY="431.0" style="-fx-font-size: 26;" text="Add Image " />
-                    <ImageView fx:id="productImage"
-                               fitWidth="200" fitHeight="200"
-                               layoutX="100" layoutY="50"
-                               preserveRatio="true"
-                               style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: white; -fx-background-insets: 0; -fx-padding: 5;" />
+                    <ImageView fx:id="productImage" fitHeight="200" fitWidth="200" layoutX="100" layoutY="50" preserveRatio="true" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: white; -fx-background-insets: 0; -fx-padding: 5;" />
 
                     <!-- Button to trigger image selection -->
-                    <Button onAction="#handleSelectImage" layoutX="489.0" layoutY="482.0" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #0D134B; -fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10; -fx-text-fill: #ffffff;" text="Select Image" />
+                    <Button layoutX="489.0" layoutY="482.0" onAction="#handleSelectImage" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #0D134B; -fx-border-color: #0D134B; -fx-border-width: 2; -fx-border-radius: 10; -fx-text-fill: #ffffff;" text="Select Image" />
                     <!--desc-->
                     <Label layoutX="115.0" layoutY="430.0" style="-fx-font-size: 27;" text="Description">
                         <font>
@@ -79,7 +73,7 @@
 
                 </children>
             </AnchorPane>
-            <Button layoutX="638.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleEditProduct"  styleClass="add-product-button2" text="Update" textFill="WHITE">
+            <Button layoutX="645.0" layoutY="660.0" mnemonicParsing="false" onAction="#handleEditProduct" styleClass="add-product-button2" text="Update" textFill="WHITE">
                 <font>
                     <Font size="25.0" />
                 </font>

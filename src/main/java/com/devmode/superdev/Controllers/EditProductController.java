@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.application.Platform;
-import javafx.scene.Scene;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
