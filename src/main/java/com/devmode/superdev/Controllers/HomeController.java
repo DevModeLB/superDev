@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.utils.DataFetcher;
@@ -71,9 +70,11 @@ public class HomeController {
         
         for (Category category : categories) {
             Hyperlink categoryLink = new Hyperlink(category.getName());
-            categoryLink.setStyle("-fx-font-size: 24;");
-            categoryLink.setPrefHeight(85.0);
-            categoryLink.setPrefWidth(230.0);
+            categoryLink.setStyle("-fx-font-size: 16; ");
+            categoryLink.setPadding(new Insets(10));
+            categoryLink.setPrefHeight(50.0);
+            categoryLink.setPrefWidth(150.0);
+            categoryLink.setAlignment(Pos.CENTER);
             categoryLink.getStyleClass().add("categorisation");
             categoryLink.setOnAction(event -> handleClickCategory(category));
 

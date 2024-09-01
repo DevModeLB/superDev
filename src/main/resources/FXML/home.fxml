@@ -81,37 +81,25 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <HBox fx:id="categoriesContainer" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="1099.0" spacing="25.0" style="-fx-background-color: #f0f0f0bb;">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Label layoutX="32.0" layoutY="110.0" prefHeight="52.0" prefWidth="222.0" text="Products" textFill="#df1111">
+                  <Label layoutX="32.0" layoutY="115.0" prefHeight="62.0" prefWidth="191.0" text="Products" textFill="#df1111">
                      <font>
                         <Font size="78.0" />
                      </font>
                   </Label>
-                  <ScrollPane fx:id="productsContainer"
-                              hbarPolicy="NEVER"
-                              vbarPolicy="AS_NEEDED"
-                              layoutX="17.0"
-                              layoutY="162.0"
-                              prefHeight="688.0"
-                              prefWidth="1082.0"
-                              fitToWidth="true"
-                              styleClass="custom-scroll-pane2">
+                  <ScrollPane fx:id="productsContainer" fitToWidth="true" hbarPolicy="NEVER" layoutX="17.0" layoutY="162.0" prefHeight="688.0" prefWidth="1099.0" styleClass="custom-scroll-pane2" vbarPolicy="AS_NEEDED">
                       <content>
-                         <VBox alignment="CENTER"
-                               spacing="15.0"
-                               style="-fx-background-color: #f0f0f0bb;"
-                               AnchorPane.leftAnchor="14.0"
-                               AnchorPane.rightAnchor="300.0">
+                         <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
                               <padding>
                                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                               </padding>
                           </VBox>
                      </content>
-</ScrollPane>
+                     </ScrollPane>
+                  <ScrollPane layoutX="23.0" layoutY="25.0" prefHeight="99.0" prefWidth="1087.0" styleClass="custom-scroll-pane2">
+                     <content>
+                        <HBox fx:id="categoriesContainer" prefHeight="80.0" prefWidth="1080.0" style="-fx-background-color: #f0f0f0bb;" />
+                     </content>
+                  </ScrollPane>
                </children>
                </AnchorPane>
             </HBox>
