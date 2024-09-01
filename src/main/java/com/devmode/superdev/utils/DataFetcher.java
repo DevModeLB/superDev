@@ -64,7 +64,7 @@ public class DataFetcher {
                     "JOIN Category c ON p.categoryID = c.id " +
                     "JOIN Supplier s ON p.supplierID = s.id " +
                     "WHERE " + filter +
-                    "AND p.deleted = 0";
+                    " AND p.deleted = 0";
         }
         else{
             query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock,p.image , p.description ,p.barCode AS barcode, " +
