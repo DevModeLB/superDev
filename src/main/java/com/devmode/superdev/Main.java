@@ -48,7 +48,6 @@ public class Main extends Application {
             scheduler.shutdown();
         }
     }
-
     private void setupInternetMonitor() {
         System.out.println("Trying to sync");
         scheduler = Executors.newScheduledThreadPool(1);
@@ -63,16 +62,12 @@ public class Main extends Application {
                 }
             }
         };
-
         // Schedule the task to run every 1 minute
         scheduler.scheduleAtFixedRate(checkInternetTask, 0, 1, TimeUnit.HOURS);
     }
-
-
     public static void main(String[] args) {
         launch(args);
     }
-
     public static Stage getPrimaryStage() {
         return primaryStage;
     }

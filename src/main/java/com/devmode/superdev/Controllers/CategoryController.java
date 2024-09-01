@@ -160,7 +160,7 @@ public class CategoryController {
         );
         if(confirmed){
             DeleteFromDatabase.deleteFromDatabase("category", category.getId() );
-            new SceneSwitcher().switchScene(e, "/FXML/categories/Category.fxml.fxml", "Categories");
+            new SceneSwitcher().switchScene(e, "/FXML/categories/Category.fxml", "Categories");
         }
     }
 
