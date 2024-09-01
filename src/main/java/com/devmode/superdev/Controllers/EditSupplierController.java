@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -69,7 +69,7 @@ public class EditSupplierController {
             new ErrorDialog().showErrorDialog("Nothing to update", "Error");
             return;
         }
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 
             preparedStatement.setString(1, name);
@@ -97,7 +97,7 @@ public class EditSupplierController {
         // Load supplier details from the database and populate the fields
         String query = "SELECT * FROM Supplier WHERE id = ?";
 
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, Integer.parseInt(supplierId));

@@ -7,7 +7,7 @@ import com.devmode.superdev.models.Product;
 import com.devmode.superdev.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Supplier;
 
@@ -18,7 +18,7 @@ public class DataFetcher {
     public static ObservableList<Category> fetchCategories() {
         ObservableList<Category> categories = FXCollections.observableArrayList();
         String query = "SELECT id, name FROM category";
-        try (Connection conn = DatabaseConnector.getConnection();
+        try (Connection conn = DatabaseManager.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
@@ -38,7 +38,7 @@ public class DataFetcher {
     public static ObservableList<Supplier> fetchSuppliers() {
         ObservableList<Supplier> suppliers = FXCollections.observableArrayList();
         String query = "SELECT id, name, phone_nb FROM supplier";
-        try (Connection conn = DatabaseConnector.getConnection();
+        try (Connection conn = DatabaseManager.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
@@ -74,7 +74,7 @@ public class DataFetcher {
                     "JOIN Supplier s ON p.supplierID = s.id";
         }
 
-        try (Connection conn = DatabaseConnector.getConnection();
+        try (Connection conn = DatabaseManager.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
@@ -103,7 +103,7 @@ public class DataFetcher {
         ObservableList<User> users = FXCollections.observableArrayList();
 
         String query = "SELECT id, username, password,  role FROM user";
-        try (Connection conn = DatabaseConnector.getConnection();
+        try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 

@@ -1,7 +1,7 @@
 package com.devmode.superdev.Controllers;
 
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.models.Category;
-import com.devmode.superdev.DatabaseConnector;
 import com.devmode.superdev.utils.ErrorDialog;
 import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.application.Platform;
@@ -47,7 +47,7 @@ public class EditCategoryController implements Initializable {
 
     private void loadCategoryDetails(String categoryId) {
         String query = "SELECT id, name FROM Category WHERE id = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, Integer.parseInt(categoryId));
@@ -86,7 +86,7 @@ public class EditCategoryController implements Initializable {
             return;
         }
         String query = "UPDATE Category SET name = ? WHERE id = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, newName);

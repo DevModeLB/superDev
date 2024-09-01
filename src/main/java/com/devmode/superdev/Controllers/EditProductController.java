@@ -1,6 +1,6 @@
 package com.devmode.superdev.Controllers;
 
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Supplier;
 import com.devmode.superdev.utils.DataFetcher;
@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -53,13 +52,13 @@ public class EditProductController implements Initializable {
     @FXML
     private TextField productDescription;
 
-    private DatabaseConnector databaseConnector;
+    private DatabaseManager databaseConnector;
     private File selectedImageFile;
     private String productID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        databaseConnector = new DatabaseConnector();
+        databaseConnector = new DatabaseManager();
 
         Platform.runLater(() -> {
             Stage stage = (Stage) productName.getScene().getWindow();
@@ -116,7 +115,7 @@ public class EditProductController implements Initializable {
                 "JOIN category c ON p.categoryID = c.id " +
                 "JOIN supplier s ON p.supplierID = s.id " +
                 "WHERE p.id = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, productId);
@@ -269,7 +268,7 @@ public class EditProductController implements Initializable {
 
 
         String query = "UPDATE product SET name = ?, price = ?, stockQuantity = ?, barCode = ?, categoryID = ?, supplierID = ?, image = ?, description = ? WHERE id = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, productName.getText());

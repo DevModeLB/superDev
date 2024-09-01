@@ -14,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -156,7 +156,7 @@ public class SupplierController {
     @FXML
     public boolean isPhoneNumberUnique(String phoneNumber) {
         String sql = "SELECT COUNT(*) FROM supplier WHERE phone_nb = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, phoneNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -173,7 +173,7 @@ public class SupplierController {
     private void addSupplierToDatabase(String name, String phone) throws SQLException, ClassNotFoundException {
         String insertSql = "INSERT INTO supplier (name, phone_nb) VALUES (?, ?)";
 
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(insertSql)) {
             statement.setString(1, name);
             statement.setString(2, phone);

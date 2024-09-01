@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -111,7 +111,7 @@ public class CategoryController {
             new ErrorDialog().showErrorDialog("Category already exists", "Error");
             return;
         }
-        try (Connection conn = DatabaseConnector.getConnection()) {
+        try (Connection conn = DatabaseManager.getConnection()) {
             String sql = "INSERT INTO category (name) VALUES (?)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, categoryName);
@@ -130,7 +130,7 @@ public class CategoryController {
 
     public boolean isCategoryNameUnique(String categoryName) {
         String validationSql = "SELECT * FROM category WHERE name = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(validationSql)) {
 
             statement.setString(1, categoryName);

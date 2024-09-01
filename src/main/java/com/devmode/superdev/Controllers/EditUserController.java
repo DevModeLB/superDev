@@ -1,7 +1,7 @@
 package com.devmode.superdev.Controllers;
 
 import com.devmode.superdev.models.User;
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.utils.ErrorDialog;
 import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.application.Platform;
@@ -82,7 +82,7 @@ public class EditUserController implements Initializable {
 
     private void loadUserDetails(String userId) {
         String query = "SELECT * FROM User WHERE id = ?";
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setInt(1, Integer.parseInt(userId));
@@ -136,7 +136,7 @@ public class EditUserController implements Initializable {
 
         if(newPassword.trim().isEmpty()){
             String query = "UPDATE User SET username = ?, role = ? WHERE id = ?";
-            try (Connection connection = DatabaseConnector.getConnection();
+            try (Connection connection = DatabaseManager.getConnection();
                  PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, newUsername);
                 preparedStatement.setString(2, role );
@@ -156,7 +156,7 @@ public class EditUserController implements Initializable {
         }
         else{
             String query = "UPDATE User SET username = ?, password = ?, role = ? WHERE id = ?";
-            try (Connection connection = DatabaseConnector.getConnection();
+            try (Connection connection = DatabaseManager.getConnection();
                  PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, newUsername);
                 preparedStatement.setString(2, newPassword);

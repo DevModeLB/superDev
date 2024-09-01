@@ -1,7 +1,7 @@
 package com.devmode.superdev.Controllers;
 
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.SessionManager;
-import com.devmode.superdev.DatabaseConnector;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -59,7 +59,7 @@ public class LoginController {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connection = DatabaseConnector.getConnection();
+            connection = DatabaseManager.getConnection();
             String query = "SELECT * FROM user WHERE username = ? AND password = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);

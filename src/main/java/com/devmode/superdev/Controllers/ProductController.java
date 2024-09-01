@@ -4,7 +4,7 @@ import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Product;
 import com.devmode.superdev.models.Supplier;
 import com.devmode.superdev.utils.*;
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -195,7 +195,7 @@ public class ProductController {
     private void saveProduct(String name, double price, int quantity, String barCode, String description, int categoryId, int supplierId) {
         String insertSQL = "INSERT INTO Product (name, price, stockQuantity, barCode, description, categoryID, supplierID, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = DatabaseConnector.getConnection();
+        try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
 
             preparedStatement.setString(1, name);

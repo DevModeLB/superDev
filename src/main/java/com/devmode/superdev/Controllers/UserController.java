@@ -1,6 +1,6 @@
 package com.devmode.superdev.Controllers;
 
-import com.devmode.superdev.DatabaseConnector;
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.models.User;
 import com.devmode.superdev.utils.*;
 import javafx.collections.ObservableList;
@@ -130,7 +130,7 @@ public class UserController {
         // Insert user into database
         String roles = isAdmin ? "admin" : "cashier";
 
-        try (Connection connection = DatabaseConnector.getConnection()) {
+        try (Connection connection = DatabaseManager.getConnection()) {
             String query = "INSERT INTO user (username, password, role) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
