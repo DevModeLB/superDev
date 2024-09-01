@@ -7,12 +7,11 @@ import com.devmode.superdev.DatabaseManager;
 
 public class DeleteFromDatabase {
     public static void deleteFromDatabase(String table, int id){
-        String query = "DELETE FROM " + table + " WHERE id = ?";
+        String query = "UPDATE " + table + " SET deleted = 1 WHERE id = ?";
         try (Connection connection = DatabaseManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             int rowsAffected = preparedStatement.executeUpdate();
-
             if (rowsAffected > 0) {
                 new ErrorDialog().showErrorDialog("Deleted successfully", "success");
             } else {

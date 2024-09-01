@@ -14,10 +14,9 @@ import com.devmode.superdev.models.Supplier;
 
 
 public class DataFetcher {
-
     public static ObservableList<Category> fetchCategories() {
         ObservableList<Category> categories = FXCollections.observableArrayList();
-        String query = "SELECT id, name FROM category";
+        String query = "SELECT id, name FROM category where deleted = 0";
         try (Connection conn = DatabaseManager.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -37,7 +36,7 @@ public class DataFetcher {
 
     public static ObservableList<Supplier> fetchSuppliers() {
         ObservableList<Supplier> suppliers = FXCollections.observableArrayList();
-        String query = "SELECT id, name, phone_nb FROM supplier";
+        String query = "SELECT id, name, phone_nb FROM supplier where deleted = 0";
         try (Connection conn = DatabaseManager.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -64,14 +63,16 @@ public class DataFetcher {
                     "FROM Product p " +
                     "JOIN Category c ON p.categoryID = c.id " +
                     "JOIN Supplier s ON p.supplierID = s.id " +
-                    "WHERE " + filter;
+                    "WHERE " + filter +
+                    "AND p.deleted = 0";
         }
         else{
             query = "SELECT p.id, p.name, p.price, p.stockQuantity AS stock,p.image , p.description ,p.barCode AS barcode, " +
                     "c.name AS category, s.name AS supplier " +
                     "FROM Product p " +
                     "JOIN Category c ON p.categoryID = c.id " +
-                    "JOIN Supplier s ON p.supplierID = s.id";
+                    "JOIN Supplier s ON p.supplierID = s.id " +
+                    "WHERE p.deleted = 0";
         }
 
         try (Connection conn = DatabaseManager.getConnection();

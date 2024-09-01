@@ -62,7 +62,7 @@ public class Main extends Application {
                 }
             }
         };
-        // Schedule the task to run every 1 minute
+        // Schedule the task to run every 1 hour
         scheduler.scheduleAtFixedRate(checkInternetTask, 0, 1, TimeUnit.HOURS);
     }
     public static void main(String[] args) {

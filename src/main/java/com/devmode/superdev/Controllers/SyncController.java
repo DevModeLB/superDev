@@ -40,14 +40,46 @@ public class SyncController {
     }
 
     private void syncTable(Connection sqliteConnection, Connection mysqlConnection, String tableName) throws SQLException {
-        // Step 2: Fetch unsynced records from the SQLite database
-        List<Map<String, Object>> unsyncedRecords = SyncUtils.fetchUnsyncedRecords(sqliteConnection, tableName);
+        // Use a transaction to ensure atomicity of the sync process
+        try {
+            sqliteConnection.setAutoCommit(false);
+            mysqlConnection.setAutoCommit(false);
 
-        // Step 3: Sync records with MySQL
-        SyncUtils.syncRecordsToMySQL(mysqlConnection, sqliteConnection, tableName, unsyncedRecords);
+            // Sync non-deleted records
+            List<Map<String, Object>> unsyncedRecords = SyncUtils.fetchUnsyncedNonDeletedRecords(sqliteConnection, tableName);
+            if (!unsyncedRecords.isEmpty()) {
+                SyncUtils.syncRecordsToMySQL(mysqlConnection, sqliteConnection, tableName, unsyncedRecords);
 
-        // Step 4: Mark records as synced in the SQLite database
-        List<Integer> recordIds = SyncUtils.getRecordIds(unsyncedRecords);
-        SyncUtils.markRecordsAsSynced(sqliteConnection, tableName, recordIds);
+                List<Integer> syncedRecordIds = SyncUtils.getRecordIds(unsyncedRecords);
+                SyncUtils.markRecordsAsSynced(sqliteConnection, tableName, syncedRecordIds);
+            }
+
+            // Handle deleted records
+            List<Map<String, Object>> deletedRecords = SyncUtils.fetchUnsyncedDeletedRecords(sqliteConnection, tableName);
+            if (!deletedRecords.isEmpty()) {
+                SyncUtils.deleteRecordsFromMySQL(mysqlConnection, tableName, deletedRecords);
+                SyncUtils.removeDeletedRecordsFromSQLite(sqliteConnection, tableName, deletedRecords);
+            }
+
+            // Handle records that are marked as synced but deleted
+            List<Map<String, Object>> syncedDeletedRecords = SyncUtils.fetchSyncedAndDeletedRecords(sqliteConnection, tableName);
+            if (!syncedDeletedRecords.isEmpty()) {
+                SyncUtils.deleteRecordsFromMySQL(mysqlConnection, tableName, syncedDeletedRecords);
+                SyncUtils.removeDeletedRecordsFromSQLite(sqliteConnection, tableName, syncedDeletedRecords);
+            }
+
+            // Commit transaction if all operations are successful
+            sqliteConnection.commit();
+            mysqlConnection.commit();
+        } catch (SQLException e) {
+            // Rollback transaction in case of error
+            sqliteConnection.rollback();
+            mysqlConnection.rollback();
+            throw e;  // rethrow the exception after rollback
+        } finally {
+            // Reset auto-commit mode to true
+            sqliteConnection.setAutoCommit(true);
+            mysqlConnection.setAutoCommit(true);
+        }
     }
 }
