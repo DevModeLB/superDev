@@ -17,15 +17,19 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
-         <top>
-            <HBox>
-               <fx:include source="./sideBar.fxml" />
-                 <!-- Main content area -->
-                      <AnchorPane prefHeight="870.0" prefWidth="1430.0" style="-fx-background-color: #f0f0f0bb;">
+      <top>
+         <HBox>
+            <fx:include source="./sideBar.fxml" />
+            <!-- Main content area -->
+            <AnchorPane prefHeight="870.0" prefWidth="1430.0" style="-fx-background-color: #f0f0f0bb;">
                <children>
                   <AnchorPane layoutX="1127.0" layoutY="5.0" prefHeight="870.0" prefWidth="298.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <ScrollPane layoutX="7.0" layoutY="45.0" prefHeight="442.0" prefWidth="283.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 0;" />
+                        <ScrollPane layoutX="7.0" layoutY="45.0" prefHeight="442.0" prefWidth="283.0" style="-fx-background-color: #f0f0f0bb; -fx-background-radius: 0;">
+                           <content>
+                              <VBox fx:id="productsininvoice" prefHeight="429.0" prefWidth="282.0" spacing="2.0" styleClass="productsininvoice" />
+                           </content>
+                        </ScrollPane>
                         <Label layoutX="7.0" prefHeight="52.0" prefWidth="174.0" style="-fx-font-size: 30;" text="Invoice" textAlignment="CENTER" textFill="#0d134b">
                            <font>
                               <Font name="System Bold" size="22.0" />
@@ -87,22 +91,22 @@
                      </font>
                   </Label>
                   <ScrollPane fx:id="productsContainer" fitToWidth="true" hbarPolicy="NEVER" layoutX="17.0" layoutY="162.0" prefHeight="688.0" prefWidth="1099.0" styleClass="custom-scroll-pane2" vbarPolicy="AS_NEEDED">
-                      <content>
-                         <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
-                              <padding>
-                                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                              </padding>
-                          </VBox>
+                     <content>
+                        <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #f0f0f0bb;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="300.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
                      </content>
-                     </ScrollPane>
+                  </ScrollPane>
                   <ScrollPane layoutX="23.0" layoutY="25.0" prefHeight="99.0" prefWidth="1087.0" styleClass="custom-scroll-pane2">
                      <content>
                         <HBox fx:id="categoriesContainer" prefHeight="80.0" prefWidth="1080.0" style="-fx-background-color: #f0f0f0bb;" />
                      </content>
                   </ScrollPane>
                </children>
-               </AnchorPane>
-            </HBox>
-         </top>
-      </BorderPane>
-   </AnchorPane>
+            </AnchorPane>
+         </HBox>
+      </top>
+   </BorderPane>
+</AnchorPane>
