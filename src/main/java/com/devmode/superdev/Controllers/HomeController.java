@@ -75,10 +75,10 @@ public class HomeController {
     public void initialize() {
         // Initialize the label once and add it to the payment container
         priceLabel = new Label(totalPrice + " L.L");
-        priceLabel.setPrefSize(134, 52); // Set preferred width and height
-        priceLabel.setLayoutX(95); // Set X position
+        priceLabel.setPrefSize(155, 52); // Set preferred width and height
+        priceLabel.setLayoutX(135); // Set X position
         priceLabel.setLayoutY(182); // Set Y position
-        priceLabel.setStyle("-fx-font-size: 18;"); // Set font size
+        priceLabel.setStyle("-fx-font-size: 19;"); // Set font size
         priceLabel.setTextFill(Color.web("#0d134b")); // Set text color
         priceLabel.setAlignment(Pos.CENTER); // Center alignment
         priceLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER); // Center text alignment
@@ -88,10 +88,10 @@ public class HomeController {
         categoriesContainer.getChildren().clear();
         for (Category category : categories) {
             Hyperlink categoryLink = new Hyperlink(category.getName());
-            categoryLink.setStyle("-fx-font-size: 16; ");
+            categoryLink.setStyle("-fx-font-size: 17; ");
             categoryLink.setPadding(new Insets(10));
             categoryLink.setPrefHeight(50.0);
-            categoryLink.setPrefWidth(150.0);
+            categoryLink.setPrefWidth(170.0);
             categoryLink.setAlignment(Pos.CENTER);
             categoryLink.getStyleClass().add("categorisation");
             categoryLink.setOnAction(event -> handleClickCategory(category));
@@ -140,11 +140,14 @@ public class HomeController {
         productsContainer.setVvalue(0);
     }
 
+
+
+
+
     private AnchorPane createProductPane(Product product, boolean isInvoice) {
         AnchorPane pane = new AnchorPane();
 
         if (isInvoice) {
-            // Style for products in the invoice
             pane.setPrefSize(278, 105);
             pane.setStyle("-fx-background-color: white; -fx-background-radius: 8; -fx-border-radius: 8;");
             DropShadow dropShadow = new DropShadow();
@@ -152,13 +155,10 @@ public class HomeController {
             dropShadow.setOffsetY(10);
             dropShadow.setColor(Color.GRAY);
             dropShadow.setRadius(15);
-
-            // Apply the shadow effect to the AnchorPane
             pane.setEffect(dropShadow);
         } else {
-            // Style for products on the main page
             pane.setPrefSize(120, 150);
-            pane.setStyle("-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-padding: 10;");
+            pane.setStyle("-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-padding: 10;-fx-cursor:Hand");
         }
 
         String imagePath = "/uploadedImages/" + product.getImagePath();
@@ -174,36 +174,85 @@ public class HomeController {
         imageView.setLayoutY(isInvoice ? 10 : 17);
 
         AnchorPane textPane = new AnchorPane();
-        textPane.setLayoutX(isInvoice ? 100 :131);
-        textPane.setLayoutY(isInvoice? 10 :17);
-        if (isInvoice) {
-            // Style for products in the invoice
-            textPane.setPrefSize(145,85);
-        } else {
-            // Style for products on the main page
-            textPane.setPrefSize(190, 115);
-        }
-
+        textPane.setLayoutX(isInvoice ? 100 : 131);
+        textPane.setLayoutY(isInvoice ? 10 : 17);
+        textPane.setPrefSize(isInvoice ? 145 : 190, isInvoice ? 85 : 115);
 
         Label nameLabel = new Label(product.getName());
         nameLabel.setStyle(isInvoice ? "-fx-font-size: 21;" : "-fx-font-size: 32; -fx-wrap-text: true;");
         nameLabel.setWrapText(true);
 
         Label descriptionLabel = new Label(product.getDescription());
-        descriptionLabel.setLayoutY(isInvoice?0 : 45);
+        descriptionLabel.setLayoutY(isInvoice ? 0 : 45);
         descriptionLabel.setStyle(isInvoice ? "-fx-opacity:0" : "-fx-font-size: 10; -fx-text-fill: #B5B7C0;-fx-wrap-text: true;");
         descriptionLabel.setPadding(new Insets(10, 0, 0, 0));
 
         Label priceLabel = new Label(product.getPrice() + "$");
-        priceLabel.setLayoutY(isInvoice? 45 :87);
+        priceLabel.setLayoutY(isInvoice ? 45 : 87);
         priceLabel.setStyle(isInvoice ? "-fx-font-size: 14; -fx-background-color: #0D134B; -fx-text-fill: white; -fx-background-radius: 5;" : "-fx-font-size: 14; -fx-background-color: #0D134B; -fx-text-fill: white; -fx-background-radius:5;");
         priceLabel.setPadding(new Insets(3, 3, 3, 3));
 
         textPane.getChildren().addAll(nameLabel, descriptionLabel, priceLabel);
+
         pane.getChildren().addAll(imageView, textPane);
 
-        pane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> addToInvoice(product, pane));
+        if (isInvoice) {
+            // Add remove button to remove the product
+            Label removeButton = new Label("x");
+            removeButton.setStyle("-fx-font-size: 18; -fx-text-fill: #0D134B;");
+            removeButton.setLayoutX(250);
+            removeButton.setLayoutY(10);
+            removeButton.setOnMouseClicked(event -> removeFromInvoice(product));
+            pane.getChildren().add(removeButton);
+
+            // Add decrease quantity button
+            Label decreaseButton = new Label("-");
+            decreaseButton.setStyle("-fx-font-size: 22; -fx-text-fill: #0D134B; ");
+            decreaseButton.setLayoutX(150);
+            decreaseButton.setLayoutY(55);
+            decreaseButton.setOnMouseClicked(event -> decreaseQuantity(product));
+            pane.getChildren().add(decreaseButton);
+
+            // Add increase quantity button (optional)
+            Label increaseButton = new Label("+");
+            increaseButton.setStyle("-fx-font-size: 20; -fx-text-fill: #0D134B; ");
+            increaseButton.setLayoutX(190);
+            increaseButton.setLayoutY(55);
+            increaseButton.setOnMouseClicked(event -> addToInvoice(product, pane));
+            pane.getChildren().add(increaseButton);
+        } else {
+            pane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> addToInvoice(product, pane));
+        }
+
         return pane;
+    }
+
+    private void addToInvoice(Product product, AnchorPane pane) {
+        if (productQuantities.containsKey(product)) {
+            int currentQuantity = productQuantities.get(product);
+            productQuantities.put(product, currentQuantity + 1);
+        } else {
+            productQuantities.put(product, 1);
+        }
+
+        updateInvoice();
+    }
+
+    private void removeFromInvoice(Product product) {
+        productQuantities.remove(product);
+        updateInvoice();
+    }
+
+    private void decreaseQuantity(Product product) {
+        if (productQuantities.containsKey(product)) {
+            int currentQuantity = productQuantities.get(product);
+            if (currentQuantity > 1) {
+                productQuantities.put(product, currentQuantity - 1);
+            } else {
+                productQuantities.remove(product);
+            }
+            updateInvoice();
+        }
     }
 
     private void updatePriceLabel(String formatedPrice) {
@@ -213,19 +262,6 @@ public class HomeController {
             priceLabel.setText(formatedPrice + (isOn ? " $" : " L.L" ));
         }
 
-    }
-
-    private void addToInvoice(Product product, AnchorPane originalPane) {
-        if (productQuantities.containsKey(product)) {
-            // Product is already in the list; update quantity
-            productQuantities.put(product, productQuantities.get(product) + 1);
-        } else {
-            // Create a copy of the originalPane for the invoice
-            AnchorPane copiedPane = createProductPane(product, true); // Pass true for invoice styling
-            productQuantities.put(product, 1);
-            productsininvoice.getChildren().add(copiedPane);
-        }
-        updateInvoice();
     }
 
     private void updateInvoice() {
@@ -241,14 +277,16 @@ public class HomeController {
                     .filter(node -> node instanceof Label && ((Label) node).getStyle().contains("quantity"))
                     .findFirst()
                     .orElseGet(() -> {
-                        Label newLabel = new Label(" x " + quantity);
+                        Label newLabel = new Label("" + quantity);
                         newLabel.setStyle("-fx-font-size: 14; -fx-text-fill: #0D134B; -fx-padding: 5;");
-                        newLabel.setLayoutY(42);
-                        newLabel.setLayoutX(30);
+                        newLabel.setLayoutY(45);
+                        newLabel.setLayoutX(65);
                         textPane.getChildren().add(newLabel);
                         return newLabel;
                     });
-            quantityLabel.setText(" x " + quantity);
+            quantityLabel.setText("" + quantity);
+            System.out.println(quantityLabel.getTranslateX());
+
 
             Label priceLabel = (Label) textPane.getChildren().get(2);
             double price = Double.parseDouble(priceLabel.getText().replace("$", "").trim());
@@ -256,9 +294,12 @@ public class HomeController {
 
             productsininvoice.getChildren().add(pane);
         }
-
-        priceLabel.setText(String.format(isOn ? "%.2f $" : "%.2f L.L", totalPrice));
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+        String formattedAmount = numberFormat.format(totalPrice);
+        priceLabel.setText(String.format(isOn ?  formattedAmount + " $" : formattedAmount + "L.L"));
     }
+
+
 
     public void handleClickCategory(Category category) {
         productsContainer.setContent(null);
@@ -315,6 +356,7 @@ public class HomeController {
             }
         }
     }
+
     public void refreshHomePage(Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/home.fxml"));
