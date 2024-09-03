@@ -49,16 +49,20 @@ public class Main extends Application {
         }
     }
     private void setupInternetMonitor() {
-        System.out.println("Trying to sync");
         scheduler = Executors.newScheduledThreadPool(1);
         Runnable checkInternetTask = new Runnable() {
             @Override
             public void run() {
                 if (NetworkUtils.isInternetAvailable()) {
+                    System.out.println("Internet found");
+                    System.out.println("Trying to sync");
                     SQLiteConnector sqliteConnector = new SQLiteConnector();
                     MySqlConnector mysqlConnector = new MySqlConnector();
                     SyncController syncController = new SyncController(sqliteConnector, mysqlConnector);
                     syncController.syncAllTables();
+                }
+                else{
+                    System.out.println("No internet");
                 }
             }
         };
