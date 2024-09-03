@@ -62,11 +62,13 @@ public class SyncUtils {
     }
 
     public static void syncRecordsToMySQL(Connection mysqlConnection, Connection sqliteConnection, String tableName, List<Map<String, Object>> records) throws SQLException {
+        // Escape tableName if it's a reserved keyword or has special characters
+        String escapedTableName = "`" + tableName + "`";
+
         for (Map<String, Object> record : records) {
             // Construct the SQL query for insert or update in MySQL
             StringBuilder sql = new StringBuilder("INSERT INTO ");
-            sql.append(tableName).append(" (");
-
+            sql.append(escapedTableName).append(" (");
             StringBuilder placeholders = new StringBuilder();
             StringBuilder updateClause = new StringBuilder();
 
@@ -76,9 +78,11 @@ public class SyncUtils {
                     placeholders.append(", ");
                     updateClause.append(", ");
                 }
-                sql.append(key);
+                // Escape key if it's a reserved keyword or has special characters
+                String escapedKey = "`" + key + "`";
+                sql.append(escapedKey);
                 placeholders.append("?");
-                updateClause.append(key).append(" = VALUES(").append(key).append(")");
+                updateClause.append(escapedKey).append(" = VALUES(").append(escapedKey).append(")");
             }
 
             sql.append(") VALUES (").append(placeholders).append(") ");
@@ -99,6 +103,7 @@ public class SyncUtils {
             }
         }
     }
+
 
     private static void updateSyncedStatusInSQLite(Connection sqliteConnection, String tableName, Object recordId) throws SQLException {
         String sql = "UPDATE " + tableName + " SET synced = 1 WHERE id = ?";

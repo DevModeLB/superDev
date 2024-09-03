@@ -41,35 +41,43 @@ public class LoginController {
         String password = passwordField.getText();
         System.out.println(username);
         System.out.println(password);
+
         if (username.isEmpty() || password.isEmpty()) {
             showErrorDialog("Username or Password cannot be empty.");
             return;
         }
 
-        if (isValidCredentials(username, password)) {
+        Integer userId = getUserId(username, password);
+        if (userId != null) {
             SessionManager.getInstance().setUsername(username);
+            SessionManager.getInstance().setId(userId);  // Set the user ID in the session
             switchView();
         } else {
             showErrorDialog("Invalid username or password!");
         }
     }
 
-    private boolean isValidCredentials(String username, String password) {
+
+    private Integer getUserId(String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
             connection = DatabaseManager.getConnection();
-            String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+            String query = "SELECT id FROM user WHERE username = ? AND password = ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            } else {
+                return null;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             showErrorDialog("An error occurred while connecting to the database.");
-            return false;
+            return null;
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
@@ -83,6 +91,7 @@ public class LoginController {
             }
         }
     }
+
 
     private void showErrorDialog(String message) {
         Alert alert = new Alert(AlertType.ERROR);

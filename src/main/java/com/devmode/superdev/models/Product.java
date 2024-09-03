@@ -38,4 +38,8 @@ public class Product {
     public String getDescription() {
         return this.description;
     }
+    @Override
+    public String toString() {
+        return "Product{id=" + getProductId() + ", name='" + getName() + "', price=" + getPrice() + "}";
+    }
 }
