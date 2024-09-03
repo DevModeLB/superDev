@@ -1,9 +1,14 @@
 package com.devmode.superdev.Controllers;
 
+
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -18,6 +23,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Product;
 import com.devmode.superdev.utils.DataFetcher;
@@ -28,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+
 
 public class HomeController {
     @FXML
@@ -261,4 +271,22 @@ public class HomeController {
         }
         isOn = !isOn;
     }
+
+    public void handleOpenCustomerInfo() {
+    try {
+        // Load the popup FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/costumer.fxml"));
+        Parent root = loader.load();
+
+        // Create a new stage
+        Stage stage = new Stage();
+        stage.setTitle("Customer Info");
+        stage.initModality(Modality.APPLICATION_MODAL); // Ensures that the popup blocks input to other windows
+        stage.setScene(new Scene(root));   
+        stage.show();
+        
+    } catch (Exception e) {
+        e.printStackTrace(); // Handle the exception appropriately
+    }
+}
 }
