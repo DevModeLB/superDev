@@ -52,13 +52,13 @@ public class EditProductController implements Initializable {
     @FXML
     private TextField productDescription;
 
-    private DatabaseManager databaseConnector;
+    // private DatabaseManager databaseConnector;
     private File selectedImageFile;
     private String productID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        databaseConnector = new DatabaseManager();
+        // databaseConnector = new DatabaseManager();
 
         Platform.runLater(() -> {
             Stage stage = (Stage) productName.getScene().getWindow();
