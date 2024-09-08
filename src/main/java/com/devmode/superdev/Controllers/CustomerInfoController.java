@@ -187,6 +187,7 @@ public class CustomerInfoController {
                 // If it's a new customer, calculate and add points
                 double pointsToAdd = calculatePoints(totalAmount);
                 DatabaseManager.createPointTransaction(customerID, pointsToAdd, orderID, "EARNED");
+                DatabaseManager.updateCustomerPoints(customerID, pointsToAdd);
                 pointsLabel.setText("New customer created with " + pointsToAdd + " points.");
             } else {
                 // If it's an existing customer, add points
