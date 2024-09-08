@@ -10,11 +10,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import com.devmode.superdev.DatabaseManager;
@@ -39,39 +44,66 @@ public class CustomerInfoController {
 
     @FXML
     private Button checkButton;
-    private boolean isDollar = true;
+
     @FXML
     private Button checkoutButton;
 
-    private Map<Product, Integer> productQuantities = new HashMap<>();
     @FXML
     private Label totalAmountLabel;
+
+    private boolean isDollar = true; // true for USD, false for LBP
+    private Map<Product, Integer> productQuantities = new HashMap<>();
     private double totalAmount;
     private int availablePoints;
     private int pointsUsed = 0;
+    private Stage stage;
 
-    private Stage stage; // Add a Stage variable
+    private static final double LBP_RATE = 89000.0; // 1 USD = 89,000 LBP
+    private static final double POINT_VALUE_USD = 0.11; // Each point equals 0.11 USD
+    private static final double POINT_VALUE_LBP = POINT_VALUE_USD * LBP_RATE; // Each point equals 10,000 LBP
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
 
     @FXML
     public void initialize() {
         AuthUtils auth = new AuthUtils();
         auth.checkAuthentication();
     }
-    public void setTotalAmount(double amount){
+
+    public void setTotalAmount(double amount) {
         this.totalAmount = amount;
-        totalAmountLabel.setText("Total amount: " + totalAmount);
+        updateTotalAmountLabel();
     }
-    public void setIsDollar(boolean isDollar){
+
+    public void setIsDollar(boolean isDollar) {
         this.isDollar = isDollar;
+        updateTotalAmountLabel();
     }
 
     public void setProductQuantities(Map<Product, Integer> productQuantities) {
         this.productQuantities = productQuantities;
+    }
+
+    // Update total amount label based on the currency
+    private void updateTotalAmountLabel() {
+        String currencySymbol = isDollar ? "$" : "L.L";
+
+        // Create a NumberFormat instance for currency formatting
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        if (!isDollar) {
+            // For L.L, we may need to format the number without the currency symbol and with custom locale
+            currencyFormat = NumberFormat.getNumberInstance(Locale.getDefault()); // Use default locale or create a custom one
+            currencyFormat.setGroupingUsed(true);
+            currencyFormat.setMaximumFractionDigits(2);
+        }
+
+        // Format the total amount
+        String formattedAmount = currencyFormat.format(totalAmount);
+
+        // Set the formatted amount to the label
+        totalAmountLabel.setText("Total amount: " + formattedAmount + " " + currencySymbol);
     }
 
     @FXML
@@ -89,18 +121,35 @@ public class CustomerInfoController {
                 pointsLabel.setText("No customer found with this phone number.");
                 checkoutButton.setVisible(true);
             } else {
-                pointsLabel.setText("" + availablePoints);
+                // Calculate points amount
+                BigDecimal pointsAmount = (isDollar) ?
+                        BigDecimal.valueOf(availablePoints).multiply(BigDecimal.valueOf(POINT_VALUE_USD)) :
+                        BigDecimal.valueOf(availablePoints).multiply(BigDecimal.valueOf(POINT_VALUE_LBP));
+
+                // Round to 3 decimal places
+                pointsAmount = pointsAmount.setScale(3, RoundingMode.HALF_UP);
+
+                // Format pointsAmount with commas for thousands separators
+                NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US); // Adjust locale as needed
+                numberFormat.setGroupingUsed(true);
+                numberFormat.setMaximumFractionDigits(3); // Set to 3 decimal places
+
+                // Format the amount
+                String formattedPointsAmount = numberFormat.format(pointsAmount);
+
+                // Update the pointsLabel text
+                pointsLabel.setText(availablePoints + " = " + formattedPointsAmount);
                 usePointsLabel.setVisible(true);
                 usePointsTextField.setVisible(true);
                 usePointsButton.setVisible(true);
                 checkoutButton.setVisible(true);
             }
+
         } catch (SQLException | ClassNotFoundException e) {
             pointsLabel.setText("Error retrieving points.");
             e.printStackTrace();
         }
     }
-
 
     @FXML
     public void handleUsePoints(MouseEvent event) {
@@ -120,102 +169,89 @@ public class CustomerInfoController {
             }
 
             // Calculate the discount
-            double discount = (isDollar) ? pointsToUse : (pointsToUse * 89000.0);
-            System.out.println("Discount: $" + discount);
-            double temo = totalAmount - discount;
-            if(temo < 0){
-                new ErrorDialog().showErrorDialog("Amount im negativ", "error");
+            double discount;
+            if (isDollar) {
+                discount = pointsToUse * POINT_VALUE_USD;
+            } else {
+                discount = pointsToUse * POINT_VALUE_LBP;
+            }
+
+            System.out.println("Discount: " + (isDollar ? "$" : "L.L") + discount);
+            double remainingAmount = totalAmount - discount;
+
+            if (remainingAmount < 0) {
+                new ErrorDialog().showErrorDialog("Negative total amount", "error");
                 return;
             }
-            totalAmount -= discount;
+
+            // Update total amount
+            totalAmount = remainingAmount;
+            updateTotalAmountLabel();
+
             // Update the points label to show the applied discount
             pointsLabel.setText("Discount applied: " + String.format("%.2f", discount));
+
             // Update available points
             availablePoints -= pointsToUse;
-            // Store the points used
             this.pointsUsed = pointsToUse;
-            // Reset the points text field
-            usePointsTextField.setText("0");
 
-            // Update the total amount label
-            totalAmountLabel.setText("Total Amount: " + String.format("%.2f", totalAmount));
+            // Reset points input field
+            usePointsTextField.setText("0");
 
         } catch (NumberFormatException e) {
             pointsLabel.setText("Please enter a valid number of points.");
         }
     }
 
-
     @FXML
     public void handleCheckout(MouseEvent event) {
         try {
-            totalAmountLabel.setText(String.valueOf(totalAmount));
             int userID = SessionManager.getInstance().getId();
-            // Create an invoice and get its ID
             int invoiceID = DatabaseManager.createInvoice(totalAmount);
 
-            // Retrieve phone number from the text field
             String phone = phoneTextField.getText().trim();
-
-            // Get points from database based on phone number
             int points = getPointsFromDatabase(phone);
             int customerID;
 
-            // Check if the customer exists
             if (points == -1) {
-                // Create a new customer if not found
                 customerID = DatabaseManager.createCustomer(phone);
             } else {
-                // Use existing customer ID
                 customerID = getCustomerIdFromPhone(phone);
             }
 
-            // Create the order and get its ID
             int orderID = DatabaseManager.createOrder(totalAmount, "paid", userID, invoiceID, customerID);
 
-            // Create order items based on productQuantities
             for (Map.Entry<Product, Integer> entry : productQuantities.entrySet()) {
                 Product product = entry.getKey();
                 int quantity = entry.getValue();
                 double subtotal = product.getPrice() * quantity;
-                System.out.println("Adding to order: " + product + " with quantity: " + quantity);
                 DatabaseManager.createOrderItem(orderID, product.getProductId(), subtotal);
+
+                // update product quantities:
+                DatabaseManager.updateProductQuantity(product.getProductId(), -quantity);
             }
 
-            // Handle points and point transactions
-            if (points == -1) {
-                // If it's a new customer, calculate and add points
-                double pointsToAdd = calculatePoints(totalAmount);
-                DatabaseManager.createPointTransaction(customerID, pointsToAdd, orderID, "EARNED");
-                DatabaseManager.updateCustomerPoints(customerID, pointsToAdd);
-                pointsLabel.setText("New customer created with " + pointsToAdd + " points.");
-            } else {
-                // If it's an existing customer, add points
-                double pointsToAdd = calculatePoints(totalAmount);
-                DatabaseManager.updateCustomerPoints(customerID, pointsToAdd);
-                DatabaseManager.createPointTransaction(customerID, pointsToAdd, orderID, "EARNED");
-                pointsLabel.setText("Checkout completed with total amount: $" + totalAmount + ". Points added: " + pointsToAdd);
-            }
+            int pointsToAdd = calculatePoints(totalAmount);
 
-            System.out.println("Points used: " + pointsUsed);
             if (pointsUsed > 0) {
+                System.out.println(pointsUsed);
                 DatabaseManager.updateCustomerPoints(customerID, -pointsUsed);
                 DatabaseManager.createPointTransaction(customerID, pointsUsed, orderID, "USED");
-                pointsLabel.setText("Checkout completed with total amount: $" + totalAmount + ". Points used: " + pointsUsed);
+                System.out.println("Points deducted: " + pointsUsed);
+                System.out.println("Remaining points for customer ID " + customerID + ": " + getPointsFromDatabase(phone));
+            }else{
+                DatabaseManager.updateCustomerPoints(customerID, pointsToAdd);
+                DatabaseManager.createPointTransaction(customerID, pointsToAdd, orderID, "EARNED");
             }
-            System.out.println("Order created with ID: " + orderID);
 
             if (stage != null) {
                 stage.close();
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             pointsLabel.setText("Error during checkout.");
-            e.printStackTrace(); // Handle exception appropriately
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
     }
 
     private int getPointsFromDatabase(String phone) throws SQLException, ClassNotFoundException {
@@ -230,60 +266,42 @@ public class CustomerInfoController {
                 }
             }
         }
+
         return points;
     }
 
-
     private int calculatePoints(double totalAmount) {
-        double percentage = 0.0;
-        if (totalAmount >= 1 && totalAmount <= 150) {
-            percentage = 0.5;
-        } else if (totalAmount > 150 && totalAmount <= 300) {
-            percentage = 0.8;
-        } else if (totalAmount > 300) {
-            percentage = 0.15;
+        // Define the amount threshold for points: 10 USD or its LBP equivalent
+        double thresholdUSD = 10.0;
+        double thresholdLBP = thresholdUSD * LBP_RATE; // 10 USD in LBP
+
+        // Number of points to give for every threshold amount
+        int pointsPerThreshold = 2;
+
+        // Calculate the points based on whether the total amount is in USD or LBP
+        if (isDollar) {
+            // Calculate points for USD
+            int points = (int) (totalAmount / thresholdUSD) * pointsPerThreshold;
+            return points;
+        } else {
+            // Calculate points for LBP
+            int points = (int) (totalAmount / thresholdLBP) * pointsPerThreshold;
+            return points;
         }
-        // Calculate points
-        double points = totalAmount * percentage / 0.5;
-        System.out.println(points);
-        // Round to nearest integer
-        return (int) Math.round(points);
     }
 
 
     public int getCustomerIdFromPhone(String phone) throws SQLException, ClassNotFoundException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            // Get a database connection
-            connection = DatabaseManager.getConnection();
-
-            // Define the SQL query to find the customer by phone number
-            String query = "SELECT id FROM customer WHERE phone = ?";
-
-            // Create a PreparedStatement to execute the query
-            preparedStatement = connection.prepareStatement(query);
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id FROM customer WHERE phone = ?")) {
             preparedStatement.setString(1, phone);
-
-            // Execute the query and get the result
-            resultSet = preparedStatement.executeQuery();
-
-            // Check if a result was found
-            if (resultSet.next()) {
-                // Return the customer ID
-                return resultSet.getInt("id");
-            } else {
-                // No customer found, return -1 or handle as needed
-                return -1;
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("id");
+                } else {
+                    return -1;
+                }
             }
-
-        } finally {
-            // Ensure resources are closed properly
-            if (resultSet != null) resultSet.close();
-            if (preparedStatement != null) preparedStatement.close();
-            if (connection != null) connection.close();
         }
     }
-
 }

@@ -98,20 +98,39 @@ public class DatabaseManager {
         }
     }
 
-    public static void updateCustomerPoints(int customerID, double points) throws SQLException {
-        String query = "UPDATE customer SET points = points + ? WHERE id = ?";
-        Connection connection = null;
-        try {
-            connection = getConnection();
+    public static void updateProductQuantity(int productId, int quantityChange) throws SQLException {
+        String query = "UPDATE product SET stockQuantity = stockQuantity + ? WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, quantityChange);
+            pstmt.setInt(2, productId);
+            pstmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-            pstmt.setDouble(1, points);
+    }
+    public static void updateCustomerPoints(int customerID, int points) throws SQLException {
+        String query = "UPDATE customer SET points = points + ? WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setDouble(1, points); // Points should be negative for deduction
             pstmt.setInt(2, customerID);
-            pstmt.executeUpdate();
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected == 0) {
+                System.out.println("No rows updated. Customer ID might be incorrect.");
+            } else {
+                System.out.println("Customer points updated successfully.");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class Not Found Exception: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 
     public static void createPointTransaction(int customerID, double points, int orderID, String type) throws SQLException {
         Connection connection = null;
