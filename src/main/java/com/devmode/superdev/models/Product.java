@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.Objects;
+
 public class Product {
     private final SimpleIntegerProperty productId;
     private final SimpleStringProperty name;
@@ -39,7 +41,20 @@ public class Product {
         return this.description;
     }
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return getProductId() == product.getProductId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getProductId()); // Ensure consistent hashing based on product id
+    }
+    @Override
     public String toString() {
         return "Product{id=" + getProductId() + ", name='" + getName() + "', price=" + getPrice() + "}";
     }
+
 }

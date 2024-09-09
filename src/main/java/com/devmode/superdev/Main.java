@@ -1,9 +1,11 @@
 package com.devmode.superdev;
 
+import com.devmode.superdev.Controllers.HomeController;
 import com.devmode.superdev.Controllers.LoginController;
 import com.devmode.superdev.Controllers.SyncController;
 import com.devmode.superdev.utils.NetworkUtils;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,6 +42,7 @@ public class Main extends Application {
         connector.initializeDatabase();
         setupInternetMonitor();
         primaryStage.show();
+
     }
     @Override
     public void stop() {

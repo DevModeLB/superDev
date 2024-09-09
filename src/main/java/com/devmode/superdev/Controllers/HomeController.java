@@ -4,13 +4,11 @@ package com.devmode.superdev.Controllers;
 
 import com.devmode.superdev.Main;
 import com.devmode.superdev.utils.ErrorDialog;
-import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -34,8 +32,6 @@ import javafx.stage.Stage;
 import com.devmode.superdev.models.Category;
 import com.devmode.superdev.models.Product;
 import com.devmode.superdev.utils.DataFetcher;
-import javafx.stage.WindowEvent;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.NumberFormat;
@@ -47,6 +43,7 @@ import java.util.Map;
 
 
 public class HomeController {
+    public AnchorPane anchorPane;
     @FXML
     private HBox categoriesContainer;
 
@@ -64,6 +61,7 @@ public class HomeController {
 
     @FXML
     private AnchorPane paymanetcontainer;
+    
 
     private boolean isOn = false;
     private double totalPrice = 0.0;
@@ -106,7 +104,15 @@ public class HomeController {
             String formattedAmount = numberFormat.format(totalPrice);
             updatePriceLabel(formattedAmount);
         }
+
+
+        ClipboardMonitorController clipboardMonitor = new ClipboardMonitorController(this);
+        clipboardMonitor.startMonitoring();
+
+
     }
+
+
 
     private void populateProductsContainer(String category) {
         VBox productList = new VBox(10); // 10 is the spacing between rows
@@ -144,7 +150,7 @@ public class HomeController {
 
 
 
-    private AnchorPane createProductPane(Product product, boolean isInvoice) {
+    public AnchorPane createProductPane(Product product, boolean isInvoice) {
         AnchorPane pane = new AnchorPane();
 
         if (isInvoice) {
@@ -227,16 +233,45 @@ public class HomeController {
         return pane;
     }
 
-    private void addToInvoice(Product product, AnchorPane pane) {
-        if (productQuantities.containsKey(product)) {
-            int currentQuantity = productQuantities.get(product);
-            productQuantities.put(product, currentQuantity + 1);
+    public void addToInvoice(Product product, AnchorPane pane) {
+        int productId = product.getProductId();
+
+        // Check if the product is already in the map by product ID
+        boolean productExists = productQuantities.keySet().stream()
+                .anyMatch(p -> p.getProductId() == productId);
+
+        System.out.println("Product to add: " + product);
+        System.out.println("Product exists in map: " + productExists);
+
+        if (productExists) {
+            // Find the product with the matching ID
+            Product existingProduct = productQuantities.keySet().stream()
+                    .filter(p -> p.getProductId() == productId)
+                    .findFirst()
+                    .orElse(null);
+
+            if (existingProduct != null) {
+                Integer currentQuantity = productQuantities.get(existingProduct);
+                System.out.println("Current quantity: " + currentQuantity);
+
+                if (currentQuantity != null) {
+                    // Update quantity
+                    productQuantities.put(existingProduct, currentQuantity + 1);
+                } else {
+                    System.err.println("Unexpected null quantity for product: " + existingProduct);
+                    productQuantities.put(existingProduct, 1);
+                }
+            }
         } else {
+            // Add new product with initial quantity of 1
             productQuantities.put(product, 1);
         }
 
+        // Call updateInvoice to reflect changes
         updateInvoice();
     }
+
+
 
     private void removeFromInvoice(Product product) {
         productQuantities.remove(product);
