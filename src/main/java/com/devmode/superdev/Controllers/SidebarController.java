@@ -41,4 +41,13 @@ public class SidebarController {
     private void handleHomePage(MouseEvent event){
         new SceneSwitcher().switchScene(event, "/FXML/home.fxml", "Home");
     }
+
+    public void handleSettings(MouseEvent event) {
+        new SceneSwitcher().switchScene(event, "/FXML/settings.fxml", "Settings");
+    }
+
+    public void handleGetStatistics(MouseEvent event) {
+        SceneSwitcher switcher = new SceneSwitcher();
+        switcher.switchScene(event, "/FXML/statistics.fxml", "Statistics");
+    }
 }

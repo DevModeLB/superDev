@@ -36,7 +36,7 @@
             <!-- Statistics Button -->
             <AnchorPane layoutX="20.0" layoutY="220.0" styleClass="link">
                 <children>
-                    <Hyperlink>
+                    <Hyperlink onMouseClicked="#handleGetStatistics">
                         <graphic>
                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
