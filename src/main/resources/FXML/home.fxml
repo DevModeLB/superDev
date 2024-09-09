@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -15,6 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
       <top>
@@ -68,7 +69,7 @@
                            <Circle fx:id="toggle" fill="#FFFFFF" layoutX="18.0" layoutY="17.0" radius="10.0" />
                         </AnchorPane>
 
-                        <Button layoutX="15.0" layoutY="777.0" fx:id="openPopupButton" mnemonicParsing="false" prefHeight="55.0"   onAction="#handleOpenCustomerInfo" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="openPopupButton" layoutX="15.0" layoutY="777.0" mnemonicParsing="false" onAction="#handleOpenCustomerInfo" prefHeight="55.0" prefWidth="185.0" style="-fx-background-color: #0D134B; -fx-font-size: 26;" text="Checkout" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="55.0" />
                            </font>
@@ -101,7 +102,7 @@
                   </ScrollPane>
                   <ScrollPane layoutX="23.0" layoutY="25.0" prefHeight="99.0" prefWidth="1087.0" styleClass="custom-scroll-pane2">
                      <content>
-                        <HBox fx:id="categoriesContainer" prefHeight="80.0" prefWidth="1080.0" style="-fx-background-color: #f0f0f0bb;" />
+                        <HBox fx:id="categoriesContainer" prefHeight="80.0" prefWidth="1080.0" spacing="10.0" style="-fx-background-color: #f0f0f0bb;" />
                      </content>
                   </ScrollPane>
                </children>

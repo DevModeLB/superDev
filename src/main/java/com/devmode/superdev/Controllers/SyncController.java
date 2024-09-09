@@ -23,14 +23,12 @@ public class SyncController {
         try (Connection sqliteConnection = sqliteConnector.getConnection();
              Connection mysqlConnection = mysqlConnector.getConnection()) {
 
-            String[] tables = {"category", "customer", "invoice", "orderitem", "'order'", "pointstransaction", "supplier" , "product", "user"};
-
+            String[] tables = {"category", "supplier", "user" ,"product", "invoice", "customer","orders" ,"orderitem", "pointstransaction"};
             for (String tableName : tables) {
                 System.out.println("Syncing " + tableName );
                 syncTable(sqliteConnection, mysqlConnection, tableName);
             }
             System.out.println("All tables synced successfully!");
-
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Sync failed: " + e.getMessage());

@@ -3,6 +3,7 @@ package com.devmode.superdev;
 public class SessionManager {
     private static SessionManager instance;
     private String username;
+    private int id;
 
     private SessionManager() {}
 
@@ -13,6 +14,13 @@ public class SessionManager {
         return instance;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public int getId(){
+        return this.id;
+    }
     public void setUsername(String username) {
         this.username = username;
     }

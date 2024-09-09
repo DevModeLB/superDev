@@ -20,11 +20,39 @@
             </padding>
         </TextField>
         <Label layoutX="30.0" layoutY="224.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #0d134b;" text="Points:" />
-        <Label layoutX="105.0"  fx:id="pointsLabel" layoutY="224.0" prefHeight="25.0" prefWidth="26.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #000000;" text="0" />
-        <Button fx:id="checkButton" layoutX="346.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleCheckPoints" style="-fx-background-color: #0D134B; -fx-text-fill: WHITE; -fx-font-size: 18; -fx-cursor: hand;" text="Check">
+        <Label layoutX="105.0"  fx:id="pointsLabel" layoutY="224.0" prefHeight="25.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #000000;" text="0" />
+        <Button fx:id="checkButton" layoutX="346.0" layoutY="145.0" mnemonicParsing="false"
+                onMouseClicked="#handleCheckPoints"
+                style="-fx-background-color: #0D134B; -fx-text-fill: WHITE; -fx-font-size: 18; -fx-cursor: hand;"
+                text="Check">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
+
+        <!-- Use Points Section -->
+        <Label fx:id="usePointsLabel" layoutX="30.0" layoutY="264.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #0d134b;" text="Use Points:" visible="false" />
+        <TextField fx:id="usePointsTextField" layoutX="150.0" layoutY="264.0" prefHeight="25.0" prefWidth="100.0" text="0" visible="false" />
+        <Button fx:id="usePointsButton" layoutX="260.0" layoutY="264.0" mnemonicParsing="false"
+                onMouseClicked="#handleUsePoints"
+                style="-fx-background-color: #0D134B; -fx-text-fill: WHITE; -fx-font-size: 18; -fx-cursor: hand;"
+                text="Use Points" visible="false">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+
+        <!-- Checkout Button -->
+        <Button fx:id="checkoutButton" layoutX="346.0" layoutY="324.0" mnemonicParsing="false"
+                onMouseClicked="#handleCheckout"
+                style="-fx-background-color: #0D134B; -fx-text-fill: WHITE; -fx-font-size: 18; -fx-cursor: hand;"
+                text="Checkout" visible="false">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+
+        <!-- Total Amount Label -->
+        <Label fx:id="totalAmountLabel" layoutX="40.0" layoutY="320.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #0d134b;" />
     </children>
 </AnchorPane>
