@@ -1,8 +1,10 @@
 package com.devmode.superdev.Controllers;
 
 import com.devmode.superdev.SessionManager;
+import com.devmode.superdev.models.PointsSettings;
 import com.devmode.superdev.models.Product;
 import com.devmode.superdev.utils.AuthUtils;
+import com.devmode.superdev.utils.DataFetcher;
 import com.devmode.superdev.utils.ErrorDialog;
 import com.devmode.superdev.utils.SceneSwitcher;
 import javafx.fxml.FXML;
@@ -56,11 +58,14 @@ public class CustomerInfoController {
     private double totalAmount;
     private int availablePoints;
     private int pointsUsed = 0;
-    private Stage stage;
 
-    private static final double LBP_RATE = 89000.0; // 1 USD = 89,000 LBP
-    private static final double POINT_VALUE_USD = 0.11; // Each point equals 0.11 USD
-    private static final double POINT_VALUE_LBP = POINT_VALUE_USD * LBP_RATE; // Each point equals 10,000 LBP
+    private double LBP_RATE = 89000.0;
+    double thresholdUSD = 10.0;
+    double thresholdLBP = thresholdUSD * LBP_RATE;
+    int pointsPerThreshold = 2;
+    private Stage stage;
+    private double POINT_VALUE_USD;
+    private double POINT_VALUE_LBP;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -68,8 +73,50 @@ public class CustomerInfoController {
 
     @FXML
     public void initialize() {
-        AuthUtils auth = new AuthUtils();
-        auth.checkAuthentication();
+        try {
+            AuthUtils auth = new AuthUtils();
+            auth.checkAuthentication();
+
+            // Fetch and parse currency rate
+            String currencyRateStr = DataFetcher.fetchCurrencyRate();
+            LBP_RATE = Double.parseDouble(currencyRateStr);
+
+            // Fetch and parse points settings
+            PointsSettings settings = DataFetcher.fetchPointsSettings();
+            if (settings == null) {
+                throw new IllegalStateException("Failed to fetch points settings.");
+            }
+
+            String pointsStepStr = settings.getPointsStep();
+            thresholdUSD = Double.parseDouble(pointsStepStr);
+            thresholdLBP = thresholdUSD * LBP_RATE;
+
+            String pointAmountStr = settings.getPointAmount();
+            POINT_VALUE_USD = Double.parseDouble(pointAmountStr);
+
+            // Recalculate POINT_VALUE_LBP after POINT_VALUE_USD is set
+            POINT_VALUE_LBP = POINT_VALUE_USD * LBP_RATE;
+
+            String stepPointsStr = settings.getStepPoints();
+            pointsPerThreshold = Integer.parseInt(stepPointsStr);
+
+            // Debug statements
+            System.out.println("LBP_RATE: " + LBP_RATE);
+            System.out.println("thresholdUSD: " + thresholdUSD);
+            System.out.println("POINT_VALUE_USD: " + POINT_VALUE_USD);
+            System.out.println("POINT_VALUE_LBP: " + POINT_VALUE_LBP);
+            System.out.println("pointsPerThreshold: " + pointsPerThreshold);
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("Invalid number format in settings.", "Error");
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("Failed to fetch points settings.", "Error");
+        } catch (Exception e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("An unexpected error occurred during initialization.", "Error");
+        }
     }
 
     public void setTotalAmount(double amount) {
@@ -109,7 +156,6 @@ public class CustomerInfoController {
     @FXML
     public void handleCheckPoints(MouseEvent event) {
         String phone = phoneTextField.getText().trim();
-
         if (phone.isEmpty()) {
             pointsLabel.setText("Please enter a phone number.");
             return;
@@ -272,11 +318,9 @@ public class CustomerInfoController {
 
     private int calculatePoints(double totalAmount) {
         // Define the amount threshold for points: 10 USD or its LBP equivalent
-        double thresholdUSD = 10.0;
-        double thresholdLBP = thresholdUSD * LBP_RATE; // 10 USD in LBP
+
 
         // Number of points to give for every threshold amount
-        int pointsPerThreshold = 2;
 
         // Calculate the points based on whether the total amount is in USD or LBP
         if (isDollar) {

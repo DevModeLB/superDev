@@ -280,7 +280,63 @@ public class DataFetcher {
         return orders;
     }
 
+    public static PointsSettings fetchPointsSettings() {
+        String query = "SELECT setting_name, setting_value FROM settings WHERE setting_name IN ('points_step', 'step_points', 'point_amount', 'points_activation')";
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst()) { // check if no rows
+                System.out.println("No results found for the query.");
+            }
+            String pointsStep = null;
+            String stepPoints = null;
+            String pointAmount = null;
+            boolean isActive = false;
+
+            while (rs.next()) {
+                String settingName = rs.getString("setting_name");
+                String settingValue = rs.getString("setting_value");
 
 
+                switch (settingName) {
+                    case "points_step":
+                        pointsStep = settingValue;
+                        break;
+                    case "step_points":
+                        stepPoints = settingValue;
+                        break;
+                    case "point_amount":
+                        pointAmount = settingValue;
+                        break;
+                    case "points_activation":
+                        isActive = "active".equalsIgnoreCase(settingValue);
+                        break;
+                }
+            }
+
+            return new PointsSettings(pointsStep, stepPoints, pointAmount, isActive);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static String fetchCurrencyRate() {
+        String currencyRate = null;
+        String query = "SELECT setting_value FROM settings WHERE setting_name = 'currency_rate'";
+
+        try (Connection conn = DatabaseManager.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet resultSet = stmt.executeQuery();
+            if (resultSet.next()) {
+                currencyRate = resultSet.getString("setting_value");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } ;
+        return currencyRate;
+    }
 
 }

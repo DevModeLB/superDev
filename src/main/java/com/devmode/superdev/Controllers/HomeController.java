@@ -66,11 +66,14 @@ public class HomeController {
     private boolean isOn = false;
     private double totalPrice = 0.0;
     private Label priceLabel;
+    private double currencyRate = 89000.0;
     // Map to track products and their quantities
     private final Map<Product, Integer> productQuantities = new HashMap<>();
 
     @FXML
     public void initialize() {
+        // Fetch the currency rate
+        currencyRate = Double.parseDouble(DataFetcher.fetchCurrencyRate());
         // Initialize the label once and add it to the payment container
         priceLabel = new Label(totalPrice + " L.L");
         priceLabel.setPrefSize(155, 52); // Set preferred width and height
@@ -325,7 +328,7 @@ public class HomeController {
 
             Label priceLabel = (Label) textPane.getChildren().get(2);
             double price = Double.parseDouble(priceLabel.getText().replace("$", "").trim());
-            totalPrice += isOn ? price * quantity : (price * 89000) * quantity;
+            totalPrice += isOn ? price * quantity : (price * currencyRate) * quantity;
 
             productsininvoice.getChildren().add(pane);
         }
@@ -346,11 +349,11 @@ public class HomeController {
         String formattedAmount = "!";
         isOn = !isOn;
         if(isOn){
-            totalPrice /= 89000;
+            totalPrice /= currencyRate;
         }
         else{
             NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
-            totalPrice *= 89000;
+            totalPrice *= currencyRate;
             formattedAmount = numberFormat.format(totalPrice);
         }
         background.setFill(isOn ? Color.web("#00CBF9") : Color.web("#E0E0E0"));
