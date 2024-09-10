@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.AboutController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -37,7 +37,7 @@
                     <Font name="System Bold" size="39.0" />
                 </font>
             </Label>
-         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="925.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView onMouseClicked="#handleInstagram" fitHeight="56.0" fitWidth="56.0" layoutX="925.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/instagram.png" />
             </image>
@@ -45,7 +45,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </ImageView>
-         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="845.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView onMouseClicked="#handleTiktok" fitHeight="56.0" fitWidth="56.0" layoutX="845.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/tiktok.png" />
             </image>
@@ -53,7 +53,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </ImageView>
-         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="765.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView onMouseClicked="#handleWebsite" fitHeight="56.0" fitWidth="56.0" layoutX="765.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/web.png" />
             </image>
