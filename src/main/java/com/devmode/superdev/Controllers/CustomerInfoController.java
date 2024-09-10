@@ -145,7 +145,6 @@ public class CustomerInfoController {
             currencyFormat.setGroupingUsed(true);
             currencyFormat.setMaximumFractionDigits(2);
         }
-
         // Format the total amount
         String formattedAmount = currencyFormat.format(totalAmount);
 

@@ -339,4 +339,18 @@ public class DataFetcher {
         return currencyRate;
     }
 
+    public static int fetchDefaultCustomerId() throws SQLException, ClassNotFoundException {
+        int customerId = -1;
+        String query = "SELECT id FROM customer WHERE phone = '0000000'";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                customerId = resultSet.getInt("id");
+            }
+        }
+        return customerId;
+    }
+
+
 }

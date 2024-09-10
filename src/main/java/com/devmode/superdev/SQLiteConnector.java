@@ -58,6 +58,12 @@ public class SQLiteConnector implements DatabaseConn {
                 (1, '1234', 'admin', 'admin', 'active');
                 """;
         stmt.execute(insertDefaultUser);
+
+        String insertDefaultCustomer = """
+            INSERT OR IGNORE INTO customer (phone, points, synced, deleted) VALUES
+            ('0000000', 0, 0, 0);
+            """;
+        stmt.execute(insertDefaultCustomer);
     }
 
 }

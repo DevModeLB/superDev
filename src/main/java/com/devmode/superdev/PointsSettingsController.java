@@ -39,8 +39,6 @@ public class PointsSettingsController {
     @FXML
     private void initialize() {
         PointsSettings settings = DataFetcher.fetchPointsSettings();
-        System.out.println("Settings  " + settings);
-
         if (settings != null) {
             pointsStepField.setText(settings.getPointsStep());
             stepPointsField.setText(settings.getStepPoints());

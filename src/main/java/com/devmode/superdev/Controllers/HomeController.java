@@ -2,7 +2,10 @@ package com.devmode.superdev.Controllers;
 
 
 
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.Main;
+import com.devmode.superdev.SessionManager;
+import com.devmode.superdev.models.PointsSettings;
 import com.devmode.superdev.utils.ErrorDialog;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,6 +37,7 @@ import com.devmode.superdev.models.Product;
 import com.devmode.superdev.utils.DataFetcher;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -362,38 +366,75 @@ public class HomeController {
     }
 
     public void handleOpenCustomerInfo() {
-        if(totalPrice == 0.0){
+        if (totalPrice == 0.0) {
             new ErrorDialog().showErrorDialog("No products in the invoice", "Error");
-        }else{
-            try {
+            return;
+        }
+
+        try {
+            // Fetch points settings to check if activation is on
+            PointsSettings settings = DataFetcher.fetchPointsSettings();
+            if (settings == null) {
+                new ErrorDialog().showErrorDialog("Failed to fetch points settings.", "Error");
+                return;
+            }
+
+            boolean isOn = settings.isActive(); // Assuming isActivationOn() exists in PointsSettings
+            if (!isOn) {
+                // If activation is off, proceed with checkout without customer info
+                checkoutWithoutCustomerInfo();
+            } else {
+                // Load the customer info window
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/costumer.fxml"));
                 Parent root = loader.load();
 
                 CustomerInfoController controller = loader.getController();
-
-
                 controller.setTotalAmount(totalPrice);
                 controller.setProductQuantities(productQuantities);
-                if(isOn){
-                    controller.setIsDollar(true);
-                }
-                else{
-                    controller.setIsDollar(false);
-                }
+                controller.setIsDollar(isOn);
+
                 Stage stage = new Stage();
                 stage.setTitle("Customer Info");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 controller.setStage(stage);
-                Stage stage1 = Main.getPrimaryStage();
-                stage.setOnHidden(e -> refreshHomePage(stage1));
-                stage.show();
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                Stage primaryStage = Main.getPrimaryStage();
+                stage.setOnHidden(e -> refreshHomePage(primaryStage));
+                stage.show();
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("An error occurred while processing.", "Error");
         }
     }
+
+    private void checkoutWithoutCustomerInfo() {
+        try {
+            int userID = SessionManager.getInstance().getId();
+            int invoiceID = DatabaseManager.createInvoice(totalPrice);
+            int defaultCustomerID = DataFetcher.fetchDefaultCustomerId();
+            int orderID = DatabaseManager.createOrder(totalPrice, "paid", userID, invoiceID, defaultCustomerID);
+            for (Map.Entry<Product, Integer> entry : productQuantities.entrySet()) {
+                Product product = entry.getKey();
+                int quantity = entry.getValue();
+                double subtotal = product.getPrice() * quantity;
+                DatabaseManager.createOrderItem(orderID, product.getProductId(), subtotal);
+
+                // Update product quantities
+                DatabaseManager.updateProductQuantity(product.getProductId(), -quantity);
+            }
+
+            Stage primaryStage = Main.getPrimaryStage();
+            refreshHomePage(primaryStage);
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("Error during checkout.", "Error");
+        }
+    }
+
 
     public void refreshHomePage(Stage stage) {
         try {
