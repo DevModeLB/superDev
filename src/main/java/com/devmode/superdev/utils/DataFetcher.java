@@ -309,7 +309,6 @@ public class DataFetcher {
                         pointAmount = settingValue;
                         break;
                     case "points_activation":
-                        System.out.println(settingValue);
                         isActive = "active".equalsIgnoreCase(settingValue);
                         break;
                 }

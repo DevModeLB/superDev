@@ -1,5 +1,6 @@
-package com.devmode.superdev;
+package com.devmode.superdev.Controllers;
 
+import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.models.PointsSettings;
 import com.devmode.superdev.utils.DataFetcher;
 import com.devmode.superdev.utils.ErrorDialog;
@@ -32,9 +33,9 @@ public class PointsSettingsController {
     private TextField pointAmountField; // TextField for "1 Point Amount" (e.g., 1$)
 
     @FXML
-    private Button applyButton; // Button to apply changes
+    private Button applyButton;
 
-    private boolean isOn = true; // Track the toggle state
+    private boolean isOn = true;
 
     @FXML
     private void initialize() {
@@ -44,17 +45,15 @@ public class PointsSettingsController {
             stepPointsField.setText(settings.getStepPoints());
             pointAmountField.setText(settings.getPointAmount());
             isOn = settings.isActive();
-            System.out.println("IS ACTIVE: ");
-            System.out.println(settings.isActive());
             updateToggle();
         }
 
-        // Add listeners to TextFields
+
         pointsStepField.textProperty().addListener((observable, oldValue, newValue) -> checkForChanges());
         stepPointsField.textProperty().addListener((observable, oldValue, newValue) -> checkForChanges());
         pointAmountField.textProperty().addListener((observable, oldValue, newValue) -> checkForChanges());
 
-        // Initialize Apply button state
+
         checkForChanges();
     }
 
