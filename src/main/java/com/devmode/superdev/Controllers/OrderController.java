@@ -43,7 +43,7 @@ public class OrderController {
     public void initialize() {
         // Set up columns
         orderId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        customer.setCellValueFactory(new PropertyValueFactory<>("user")); // Update if needed
+        customer.setCellValueFactory(new PropertyValueFactory<>("customerPhone")); // Update if needed
         orderItems.setCellValueFactory(cellData -> {
             List<OrderItem> items = cellData.getValue().getOrderItems();
             return new SimpleStringProperty(items.stream()

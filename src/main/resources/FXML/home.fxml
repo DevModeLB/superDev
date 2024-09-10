@@ -55,8 +55,8 @@
                                     <Font name="Calibri Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="184.0" layoutY="88.0" prefHeight="20.0" prefWidth="100.0" style="-fx-font-size: 16;" text="12$" textAlignment="CENTER" textFill="#0d134b" />
-                              <Label alignment="CENTER" layoutX="184.0" layoutY="131.0" prefHeight="20.0" prefWidth="100.0" style="-fx-font-size: 16;" text="11%" textAlignment="CENTER" textFill="#0d134b" />
+                              <Label fx:id="subtotal" alignment="CENTER" layoutX="184.0" layoutY="88.0" prefHeight="20.0" prefWidth="100.0" style="-fx-font-size: 16;" text="12$" textAlignment="CENTER" textFill="#0d134b" />
+                              <Label alignment="CENTER" layoutX="184.0" layoutY="131.0" prefHeight="20.0" prefWidth="100.0" style="-fx-font-size: 16;" text="0%" textAlignment="CENTER" textFill="#0d134b" />
                               <Label layoutX="14.0" layoutY="185.0" prefHeight="34.0" prefWidth="98.0" style="-fx-font-size: 28;" text="Total" textFill="#0d134b">
                                  <font>
                                     <Font name="Britannic Bold" size="27.0" />

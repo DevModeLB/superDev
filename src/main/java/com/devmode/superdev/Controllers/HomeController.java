@@ -49,6 +49,7 @@ import java.util.Map;
 
 public class HomeController {
     public AnchorPane anchorPane;
+    public Label subtotal;
     @FXML
     private HBox categoriesContainer;
 
@@ -325,11 +326,12 @@ public class HomeController {
 
     private void updatePriceLabel(String formatedPrice) {
         if(formatedPrice == "!"){
+            subtotal.setText(String.format(isOn ? "%.2f $" : "%.2f L.L", totalPrice));
             priceLabel.setText(String.format(isOn ? "%.2f $" : "%.2f L.L", totalPrice));
         }else{
+            subtotal.setText(formatedPrice + (isOn ? " $" : " L.L" ));
             priceLabel.setText(formatedPrice + (isOn ? " $" : " L.L" ));
         }
-
     }
 
     private void updateInvoice() {
@@ -365,6 +367,7 @@ public class HomeController {
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
         String formattedAmount = numberFormat.format(totalPrice);
         priceLabel.setText(String.format(isOn ?  formattedAmount + " $" : formattedAmount + "L.L"));
+        subtotal.setText(String.format(isOn ?  formattedAmount + " $" : formattedAmount + "L.L"));
     }
 
 
