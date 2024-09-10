@@ -379,26 +379,23 @@ public class HomeController {
                 return;
             }
 
-            boolean isOn = settings.isActive(); // Assuming isActivationOn() exists in PointsSettings
-            if (!isOn) {
+            boolean isActive = settings.isActive(); // Assuming isActivationOn() exists in PointsSettings
+            if (!isActive) {
                 // If activation is off, proceed with checkout without customer info
                 checkoutWithoutCustomerInfo();
             } else {
                 // Load the customer info window
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/costumer.fxml"));
                 Parent root = loader.load();
-
                 CustomerInfoController controller = loader.getController();
                 controller.setTotalAmount(totalPrice);
                 controller.setProductQuantities(productQuantities);
                 controller.setIsDollar(isOn);
-
                 Stage stage = new Stage();
                 stage.setTitle("Customer Info");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 controller.setStage(stage);
-
                 Stage primaryStage = Main.getPrimaryStage();
                 stage.setOnHidden(e -> refreshHomePage(primaryStage));
                 stage.show();

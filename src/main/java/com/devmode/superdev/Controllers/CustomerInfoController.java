@@ -53,7 +53,7 @@ public class CustomerInfoController {
     @FXML
     private Label totalAmountLabel;
 
-    private boolean isDollar = true; // true for USD, false for LBP
+    private boolean isDollar = false; // true for USD, false for LBP
     private Map<Product, Integer> productQuantities = new HashMap<>();
     private double totalAmount;
     private int availablePoints;
@@ -316,15 +316,10 @@ public class CustomerInfoController {
     }
 
     private int calculatePoints(double totalAmount) {
-        // Define the amount threshold for points: 10 USD or its LBP equivalent
-
-
-        // Number of points to give for every threshold amount
-
-        // Calculate the points based on whether the total amount is in USD or LBP
+        System.out.println(isDollar);
         if (isDollar) {
-            // Calculate points for USD
             int points = (int) (totalAmount / thresholdUSD) * pointsPerThreshold;
+            System.out.println(points);
             return points;
         } else {
             // Calculate points for LBP
