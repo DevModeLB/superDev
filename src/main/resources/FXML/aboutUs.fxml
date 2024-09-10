@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
+        <!-- Navigation bar and Sidebar -->
+        <top>
+            <HBox>
+                <fx:include source="./sideBar.fxml" />
+                <fx:include source="./navBar.fxml" />
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            </HBox>
+        </top>
+    </BorderPane>
+    <AnchorPane prefHeight="875.0" prefWidth="1533.0">
+        <children>
+            <ImageView fitHeight="377.0" fitWidth="556.0" layoutX="150.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/devmode.png" />
+                </image>
+            </ImageView>
+            <Label layoutX="763.0" layoutY="295.0" prefHeight="350.0" prefWidth="522.0" text="At DevMode, we are passionate about technology and innovation. Our mission is to provide you with the tools, knowledge, and services you need to excel in the world of web and mobile application development and programming. With years of experience and a team of experts, we are here to support your journey from coding novice to web development pro." textAlignment="JUSTIFY" wrapText="true">
+                <font>
+                    <Font name="Centaur" size="27.0" />
+                </font>
+            </Label>
+            <Label layoutX="763.0" layoutY="239.0" text="Who We Are:">
+                <font>
+                    <Font name="System Bold" size="39.0" />
+                </font>
+            </Label>
+         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="925.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/instagram.png" />
+            </image>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ImageView>
+         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="845.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/tiktok.png" />
+            </image>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ImageView>
+         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="765.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/web.png" />
+            </image>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </ImageView>
+        </children>
+    </AnchorPane>
+
+
+</AnchorPane>
