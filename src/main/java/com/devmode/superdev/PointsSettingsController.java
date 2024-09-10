@@ -44,6 +44,8 @@ public class PointsSettingsController {
             stepPointsField.setText(settings.getStepPoints());
             pointAmountField.setText(settings.getPointAmount());
             isOn = settings.isActive();
+            System.out.println("IS ACTIVE: ");
+            System.out.println(settings.isActive());
             updateToggle();
         }
 

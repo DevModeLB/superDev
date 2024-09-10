@@ -70,7 +70,8 @@ public class SQLiteConnector implements DatabaseConn {
                 "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('currency_rate', '89000');",
                 "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('points_step', '10');",
                 "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('step_points', '1');",
-                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('point_amount', '0.11235');"
+                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('point_amount', '0.11235');",
+                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('points_activation', 'active');"
         };
 
         for (String sql : defaultSettings) {
