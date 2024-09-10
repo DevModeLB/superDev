@@ -85,7 +85,8 @@ public class HomeController {
             // Fetch the currency rate as a string
             String currencyRateStr = DataFetcher.fetchCurrencyRate();
             if (currencyRateStr == null || currencyRateStr.trim().isEmpty()) {
-                throw new IllegalStateException("Currency rate is missing or empty.");
+                new ErrorDialog().showErrorDialog("Currency is missing in the settings", "Error");
+                return;
             }
 
             // Parse the currency rate

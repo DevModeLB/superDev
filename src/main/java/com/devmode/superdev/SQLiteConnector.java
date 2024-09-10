@@ -63,7 +63,19 @@ public class SQLiteConnector implements DatabaseConn {
             INSERT OR IGNORE INTO customer (phone, points, synced, deleted) VALUES
             ('0000000', 0, 0, 0);
             """;
+
         stmt.execute(insertDefaultCustomer);
+
+        String[] defaultSettings = {
+                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('currency_rate', '89000');",
+                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('points_step', '10');",
+                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('step_points', '1');",
+                "INSERT OR IGNORE INTO settings (setting_name, setting_value) VALUES ('point_amount', '0.11235');"
+        };
+
+        for (String sql : defaultSettings) {
+            stmt.execute(sql);
+        }
     }
 
 }

@@ -78,13 +78,24 @@ public class CustomerInfoController {
             auth.checkAuthentication();
 
             // Fetch and parse currency rate
-            String currencyRateStr = DataFetcher.fetchCurrencyRate();
-            LBP_RATE = Double.parseDouble(currencyRateStr);
+            String currencyRateStr = null;
+            try {
+                currencyRateStr = DataFetcher.fetchCurrencyRate();
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                LBP_RATE = Double.parseDouble(currencyRateStr);
+            } catch (NumberFormatException e) {
+                throw new RuntimeException(e);
+            }
 
             // Fetch and parse points settings
             PointsSettings settings = DataFetcher.fetchPointsSettings();
             if (settings == null) {
-                throw new IllegalStateException("Failed to fetch points settings.");
+                new ErrorDialog().showErrorDialog("Update the point settings", "Error");
+                return;
             }
 
             String pointsStepStr = settings.getPointsStep();
