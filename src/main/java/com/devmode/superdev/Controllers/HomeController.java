@@ -6,6 +6,7 @@ import com.devmode.superdev.DatabaseManager;
 import com.devmode.superdev.Main;
 import com.devmode.superdev.SessionManager;
 import com.devmode.superdev.models.PointsSettings;
+import com.devmode.superdev.utils.AuthUtils;
 import com.devmode.superdev.utils.ErrorDialog;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -77,47 +78,71 @@ public class HomeController {
     @FXML
     public void initialize() {
         // Fetch the currency rate
-        currencyRate = Double.parseDouble(DataFetcher.fetchCurrencyRate());
-        // Initialize the label once and add it to the payment container
-        priceLabel = new Label(totalPrice + " L.L");
-        priceLabel.setPrefSize(155, 52); // Set preferred width and height
-        priceLabel.setLayoutX(135); // Set X position
-        priceLabel.setLayoutY(182); // Set Y position
-        priceLabel.setStyle("-fx-font-size: 19;"); // Set font size
-        priceLabel.setTextFill(Color.web("#0d134b")); // Set text color
-        priceLabel.setAlignment(Pos.CENTER); // Center alignment
-        priceLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER); // Center text alignment
-        priceLabel.setFont(Font.font("Britannic Bold", 15));
-        paymanetcontainer.getChildren().add(priceLabel);
-        ObservableList<Category> categories = DataFetcher.fetchCategories();
-        categoriesContainer.getChildren().clear();
-        for (Category category : categories) {
-            Hyperlink categoryLink = new Hyperlink(category.getName());
-            categoryLink.setStyle("-fx-font-size: 17; ");
-            categoryLink.setPadding(new Insets(10));
-            categoryLink.setPrefHeight(50.0);
-            categoryLink.setPrefWidth(170.0);
-            categoryLink.setAlignment(Pos.CENTER);
-            categoryLink.getStyleClass().add("categorisation");
-            categoryLink.setOnAction(event -> handleClickCategory(category));
+        try {
+            AuthUtils auth = new AuthUtils();
+            auth.checkAuthentication();
 
-            categoriesContainer.getChildren().add(categoryLink);
+            // Fetch the currency rate as a string
+            String currencyRateStr = DataFetcher.fetchCurrencyRate();
+            if (currencyRateStr == null || currencyRateStr.trim().isEmpty()) {
+                throw new IllegalStateException("Currency rate is missing or empty.");
+            }
+
+            // Parse the currency rate
+            try {
+                currencyRate = Double.parseDouble(currencyRateStr);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                new ErrorDialog().showErrorDialog("Invalid currency rate format.", "Error");
+                return; // Exit the method or handle appropriately
+            }
+
+
+            // Initialize the label once and add it to the payment container
+            priceLabel = new Label(totalPrice + " L.L");
+            priceLabel.setPrefSize(155, 52); // Set preferred width and height
+            priceLabel.setLayoutX(135); // Set X position
+            priceLabel.setLayoutY(182); // Set Y position
+            priceLabel.setStyle("-fx-font-size: 19;"); // Set font size
+            priceLabel.setTextFill(Color.web("#0d134b")); // Set text color
+            priceLabel.setAlignment(Pos.CENTER); // Center alignment
+            priceLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER); // Center text alignment
+            priceLabel.setFont(Font.font("Britannic Bold", 15));
+            paymanetcontainer.getChildren().add(priceLabel);
+            ObservableList<Category> categories = DataFetcher.fetchCategories();
+            categoriesContainer.getChildren().clear();
+            for (Category category : categories) {
+                Hyperlink categoryLink = new Hyperlink(category.getName());
+                categoryLink.setStyle("-fx-font-size: 17; ");
+                categoryLink.setPadding(new Insets(10));
+                categoryLink.setPrefHeight(50.0);
+                categoryLink.setPrefWidth(170.0);
+                categoryLink.setAlignment(Pos.CENTER);
+                categoryLink.getStyleClass().add("categorisation");
+                categoryLink.setOnAction(event -> handleClickCategory(category));
+
+                categoriesContainer.getChildren().add(categoryLink);
+            }
+            populateProductsContainer("none");
+            if (isOn) {
+                updatePriceLabel("!");
+            } else {
+                NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+                String formattedAmount = numberFormat.format(totalPrice);
+                updatePriceLabel(formattedAmount);
+            }
+
+
+            ClipboardMonitorController clipboardMonitor = new ClipboardMonitorController(this);
+            clipboardMonitor.startMonitoring();
         }
-        populateProductsContainer("none");
-        if(isOn){
-           updatePriceLabel("!");
-        }else{
-            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
-            String formattedAmount = numberFormat.format(totalPrice);
-            updatePriceLabel(formattedAmount);
-        }
-
-
-        ClipboardMonitorController clipboardMonitor = new ClipboardMonitorController(this);
-        clipboardMonitor.startMonitoring();
-
-
+        catch (Exception e) {
+            e.printStackTrace();
+            new ErrorDialog().showErrorDialog("An unexpected error occurred during initialization.", "Error");
     }
+
+
+}
 
 
 
