@@ -31,7 +31,7 @@ public class Main extends Application {
         // Set up the scene and stage
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/CSS/style.css")).toExternalForm());
-        primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
         if(controller != null) {
 
             if (controller instanceof LoginController) {
