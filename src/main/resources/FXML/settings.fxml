@@ -27,6 +27,13 @@
     <!-- Main content area -->
     <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
         <children>
+            <!-- New Expiry Date Label -->
+            <Label fx:id="expiryDate" layoutX="950.0" layoutY="90.0" style="-fx-font-size: 16;" text="Expiry date:" textFill="#0d134b">
+                <font>
+                    <Font name="System" size="14.0" />
+                </font>
+            </Label>
+
             <Label layoutX="245.0" layoutY="74.0" style="-fx-font-size: 50;" text="Settings" textFill="#0d134b">
                 <font>
                     <Font name="System Bold" size="24.0" />
@@ -42,7 +49,7 @@
                             <Font name="System Bold" size="0.5" />
                         </font>
                     </Label>
-                    
+
                     <!-- Text Field for inputting rate -->
                     <TextField fx:id="rateTextField" layoutX="468.0" layoutY="72.0" prefHeight="48.0" prefWidth="297.0" promptText="Enter rate">
                         <padding>
@@ -77,16 +84,16 @@
                             </font>
                         </Hyperlink>
                     </HBox>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="803.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
-                         <image>
-                     <Image url="@../images/next.png" />
-                         </image>
-                     </ImageView>
-                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="803.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
-                         <image>
-                             <Image url="@../images/next.png" />
-                         </image>
-                     </ImageView>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="803.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/next.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="803.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/next.png" />
+                        </image>
+                    </ImageView>
                 </children>
             </AnchorPane>
         </children>
