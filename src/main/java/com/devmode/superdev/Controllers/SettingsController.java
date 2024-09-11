@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -16,6 +17,7 @@ import java.sql.PreparedStatement;
 
 public class SettingsController {
 
+    public Label expiryDate;
     @FXML
     private TextField rateTextField;
 
@@ -28,6 +30,9 @@ public class SettingsController {
         if (currency_value != null) {
             rateTextField.setText(currency_value);
         }
+
+        String expiryDateStr = DataFetcher.expireDate();
+        expiryDate.setText("Licence Expiry Date: " + expiryDateStr);
 
         // Initially hide the Apply button
         applyButton.setVisible(false);

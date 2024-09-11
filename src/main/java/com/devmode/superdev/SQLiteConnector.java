@@ -43,9 +43,9 @@ public class SQLiteConnector implements DatabaseConn {
                 "CREATE TABLE IF NOT EXISTS product (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT, price DECIMAL(10,2) NOT NULL, stockQuantity INTEGER NOT NULL, barCode TEXT NOT NULL UNIQUE, categoryID INTEGER, supplierID INTEGER, image TEXT NOT NULL, synced INTEGER DEFAULT 0, deleted INTEGER DEFAULT 0, FOREIGN KEY (categoryID) REFERENCES category(id) ON DELETE CASCADE, FOREIGN KEY (supplierID) REFERENCES supplier(id) ON DELETE CASCADE);",
                 "CREATE TABLE IF NOT EXISTS supplier (id INTEGER PRIMARY KEY AUTOINCREMENT, phone_nb TEXT, name TEXT NOT NULL, synced INTEGER DEFAULT 0, deleted INTEGER DEFAULT 0);",
                 "CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY AUTOINCREMENT, password TEXT NOT NULL, username TEXT NOT NULL UNIQUE, role TEXT CHECK(role IN ('admin', 'cashier')), status TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active', 'inactive')), synced INTEGER DEFAULT 0, deleted INTEGER DEFAULT 0);",
-                "CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT, setting_name TEXT NOT NULL UNIQUE, setting_value TEXT NOT NULL, synced INTEGER DEFAULT 0, deleted INTEGER DEFAULT 0);"
+                "CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT, setting_name TEXT NOT NULL UNIQUE, setting_value TEXT NOT NULL, synced INTEGER DEFAULT 0, deleted INTEGER DEFAULT 0);",
+                "CREATE TABLE IF NOT EXISTS license (id INTEGER PRIMARY KEY AUTOINCREMENT, licenseKey TEXT NOT NULL UNIQUE, expiresAt TEXT NOT NULL);"
         };
-
         for (String query : tableCreationQueries) {
             stmt.execute(query);
         }

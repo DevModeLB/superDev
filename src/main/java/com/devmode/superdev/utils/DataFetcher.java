@@ -352,5 +352,25 @@ public class DataFetcher {
         return customerId;
     }
 
+    public static String expireDate() {
+        String sql = "SELECT expiresAt FROM license LIMIT 1";
+
+        try (Connection conn = DatabaseManager.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            if (rs.next()) {
+                String expiresAt = rs.getString("expiresAt");
+                String datePart = expiresAt.substring(0, 10); // Extract "yyyy-MM-dd"
+                LocalDate expiryDate = LocalDate.parse(datePart, DateTimeFormatter.ISO_DATE);
+                return datePart;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        new ErrorDialog().showErrorDialog("Expired Licence", "Error");
+        System.exit(1);
+        return "";
+    }
 
 }
