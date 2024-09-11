@@ -303,3 +303,29 @@
     -fx-border-radius: 15;
 }
 
+.licenseLabel{
+    -fx-text-fill: #0d134b;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+
+}
+.licenseButtun{
+    -fx-background-color: #0d134b;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+}
+.licenseButtun:hover{
+    -fx-background-color: #00CBF9;
+}
+.licensetextfeild{
+    -fx-border-color: #0D134B;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-color: transparent;
+    -fx-text-fill: #0D134B;
+}
