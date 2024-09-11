@@ -8,25 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/22"
-            fx:controller="com.devmode.superdev.Controllers.LicenseController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.LicenseController">
    <children>
-      <ImageView fitHeight="76.0" fitWidth="92.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="62.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/devmode.png" />
          </image>
       </ImageView>
-      <Label layoutX="100.0" layoutY="60.0" prefHeight="44.0" prefWidth="420.0" text="Enter Your License Key" textFill="#0d134b">
+      <Label layoutX="130.0" layoutY="55.0" prefHeight="44.0" prefWidth="352.0" styleClass="licenseLabel" text="Enter Your License Key" textFill="#0d134b">
          <font>
-            <Font name="Franklin Gothic Demi Cond" size="10.0" />
+            <Font name="Franklin Gothic Demi Cond" size="38.0" />
          </font>
       </Label>
-      <TextField fx:id="licenseKey" layoutX="131.0" layoutY="119.0" prefHeight="44.0" prefWidth="341.0" promptText="License Key..." style="-fx-border-color: #0D134B;" />
-      <Button fx:id="submitButton" onMouseClicked="#handleValidateKey" layoutX="232.0" layoutY="189.0" mnemonicParsing="false"
-              prefHeight="38.0" prefWidth="136.0"
-              style="-fx-background-color: #0D134B; -fx-text-fill: #ffffff; -fx-background-radius: 5; -fx-font-size: 16;"
-              text="Confirm"/>
+      <TextField fx:id="licenseKey" styleClass="licensetextfeild" layoutX="131.0" layoutY="119.0" prefHeight="44.0" prefWidth="341.0" promptText="License Key..." style="-fx-border-color: #0D134B;" />
+      <Button fx:id="submitButton" layoutX="221.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#handleValidateKey" prefHeight="38.0" prefWidth="136.0" styleClass="licenseButtun" text="Confirm" />
    </children>
 </AnchorPane>
