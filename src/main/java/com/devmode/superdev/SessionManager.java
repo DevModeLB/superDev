@@ -4,6 +4,7 @@ public class SessionManager {
     private static SessionManager instance;
     private String username;
     private int id;
+    private String role;
 
     private SessionManager() {}
 
@@ -27,6 +28,14 @@ public class SessionManager {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setRole(String role){
+        this.role = role;
+    }
+
+    public String getRole(){
+        return this.role;
     }
 
     public void clearSession() {

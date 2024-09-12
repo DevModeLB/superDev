@@ -66,7 +66,6 @@ public class Main extends Application {
         // Show the primary stage
         primaryStage.show();
 
-        // Setup the network monitor to sync data
         setupInternetMonitor();
     }
 

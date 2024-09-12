@@ -6,6 +6,8 @@ import javafx.scene.input.MouseEvent;
 import com.devmode.superdev.SessionManager;
 import com.devmode.superdev.utils.SceneSwitcher;
 
+import java.util.Objects;
+
 public class SidebarController {
 
     @FXML
@@ -39,7 +41,14 @@ public class SidebarController {
 
     @FXML
     private void handleHomePage(MouseEvent event){
-        new SceneSwitcher().switchScene(event, "/FXML/home.fxml", "Home");
+        String role = SessionManager.getInstance().getRole();
+        SceneSwitcher switcher = new SceneSwitcher();
+        if(Objects.equals(role, "admin")){
+            switcher.switchScene(event, "/FXML/home.fxml", "Home");
+        }
+        else{
+            switcher.switchScene(event, "/FXML/Cashierhome.fxml", "Home");
+        }
     }
 
     public void handleSettings(MouseEvent event) {
