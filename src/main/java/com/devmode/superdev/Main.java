@@ -5,6 +5,9 @@ import com.devmode.superdev.Controllers.LicenseValidator;
 import com.devmode.superdev.Controllers.LoginController;
 import com.devmode.superdev.Controllers.LicenseController;
 import com.devmode.superdev.Controllers.SyncController;
+import com.devmode.superdev.models.LicenseData;
+import com.devmode.superdev.utils.DataFetcher;
+import com.devmode.superdev.utils.ErrorDialog;
 import com.devmode.superdev.utils.NetworkUtils;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -13,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -35,7 +39,7 @@ public class Main extends Application {
             loader = new FXMLLoader(getClass().getResource("/FXML/Login.fxml"));
             primaryStage.setFullScreen(true);
         } else {
-            System.out.println("LISCENCE STILL VALID");
+            System.out.println("LISCENCE NOT VALID");
             loader = new FXMLLoader(getClass().getResource("/FXML/license.fxml"));
             primaryStage.setMinWidth(200.0);
             primaryStage.setMinHeight(400.0);
@@ -47,8 +51,6 @@ public class Main extends Application {
         Object controller = loader.getController();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/CSS/style.css")).toExternalForm());
-
-
 
         // Handle controller setup
         if (controller != null) {
@@ -84,6 +86,19 @@ public class Main extends Application {
                 if (NetworkUtils.isInternetAvailable()) {
                     System.out.println("Internet found");
                     System.out.println("Trying to sync");
+                    String key = DataFetcher.fetchLicenseKey();
+                    if (!LicenseValidator.stillActive(key)) {
+                        Platform.runLater(() -> {
+                            ErrorDialog errorDialog = new ErrorDialog();
+                            errorDialog.setOnOkAction(() -> {
+                                // Close the main window and open the license page
+                                closeMainWindowAndShowLicensePage();
+                            });
+                            errorDialog.showErrorDialog("Expired Licence", "Error");
+                        });
+                    } else {
+                        System.out.println("Still Active");
+                    }
                     SQLiteConnector sqliteConnector = new SQLiteConnector();
                     MySqlConnector mysqlConnector = new MySqlConnector();
                     SyncController syncController = new SyncController(sqliteConnector, mysqlConnector);
@@ -104,4 +119,28 @@ public class Main extends Application {
     public static Stage getPrimaryStage() {
         return primaryStage;
     }
-}
+
+    private void closeMainWindowAndShowLicensePage() {
+        Platform.runLater(() -> {
+            Stage primaryStage = getPrimaryStage(); // Access the primary stage
+            if (primaryStage != null) {
+                primaryStage.close(); // Close the main window
+            }
+
+            try {
+                // Load and show the license page
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/license.fxml"));
+                Parent root = loader.load();
+                Stage newStage = new Stage();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/CSS/style.css")).toExternalForm());
+                newStage.setScene(scene);
+                newStage.setMinWidth(200.0);
+                newStage.setMinHeight(400.0);
+                newStage.setFullScreen(false);
+                newStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }}

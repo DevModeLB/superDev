@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 public class SettingsController {
 
     public Label expiryDate;
+    public Label key;
     @FXML
     private TextField rateTextField;
 
@@ -32,7 +33,9 @@ public class SettingsController {
         }
 
         String expiryDateStr = DataFetcher.expireDate();
-        expiryDate.setText("Licence Expiry Date: " + expiryDateStr);
+        String keyStr = DataFetcher.fetchLicenseKey();
+        expiryDate.setText("License Expiry Date: " + expiryDateStr);
+        key.setText("License Key: " + keyStr);
 
         // Initially hide the Apply button
         applyButton.setVisible(false);

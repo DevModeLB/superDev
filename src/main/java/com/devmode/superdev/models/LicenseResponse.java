@@ -4,6 +4,8 @@ public class LicenseResponse {
     private String status;
     private String message;
     private LicenseData data;
+    private boolean isActive;
+
 
     // Getters
     public String getStatus() {
@@ -16,5 +18,13 @@ public class LicenseResponse {
 
     public LicenseData getData() {
         return data;
+    }
+
+    public boolean isActive(){
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive){
+        this.isActive = isActive;
     }
 }

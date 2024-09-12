@@ -28,7 +28,13 @@
     <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
         <children>
             <!-- New Expiry Date Label -->
-            <Label fx:id="expiryDate" layoutX="950.0" layoutY="90.0" style="-fx-font-size: 16;" text="Expiry date:" textFill="#0d134b">
+            <Label fx:id="expiryDate" layoutX="750.0" layoutY="120.0" style="-fx-font-size: 16;" text="Expiry date:" textFill="#0d134b">
+            <font>
+                    <Font name="System" size="14.0" />
+                </font>
+            </Label>
+
+            <Label fx:id="key" layoutX="750.0" layoutY="90.0" style="-fx-font-size: 16;" text="License Key: " textFill="#0d134b">
                 <font>
                     <Font name="System" size="14.0" />
                 </font>

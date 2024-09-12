@@ -373,4 +373,20 @@ public class DataFetcher {
         return "";
     }
 
+    public static String fetchLicenseKey() {
+        String sql = "SELECT licenseKey FROM license LIMIT 1";
+        try (Connection conn = DatabaseManager.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getString("licenseKey");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        new ErrorDialog().showErrorDialog("Expired Licence", "Error");
+        System.exit(1);
+        return "";
+    }
+
 }
