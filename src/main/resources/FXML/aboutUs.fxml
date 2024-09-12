@@ -20,32 +20,33 @@
             </HBox>
         </top>
     </BorderPane>
-    <AnchorPane prefHeight="870.0" prefWidth="1530.0">
+    <AnchorPane layoutX="116.0" layoutY="97.0" prefHeight="773.0" prefWidth="1414.0">
         <children>
-            <ImageView fitHeight="377.0" fitWidth="556.0" layoutX="150.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="377.0" fitWidth="556.0" layoutX="14.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../images/devmode.png" />
                 </image>
             </ImageView>
-            <Label layoutX="763.0" layoutY="295.0" prefHeight="350.0" prefWidth="522.0" text="At DevMode, we are passionate about technology and innovation. Our mission is to provide you with the tools, knowledge, and services you need to excel in the world of web and mobile application development and programming. With years of experience and a team of experts, we are here to support your journey from coding novice to web development pro." textAlignment="JUSTIFY" textFill="#0d134b" wrapText="true">
+            <Label layoutX="644.0" layoutY="211.0" prefHeight="350.0" prefWidth="522.0" text="At DevMode, we are passionate about technology and innovation. Our mission is to provide you with the tools, knowledge, and services you need to excel in the world of web and mobile application development and programming. With years of experience and a team of experts, we are here to support your journey from coding novice to web development pro." textAlignment="JUSTIFY" textFill="#0d134b" wrapText="true">
                 <font>
                     <Font name="Cambria Math" size="27.0" />
                 </font>
             </Label>
-            <Label layoutX="763.0" layoutY="252.0" text="Who We Are:" textFill="#0d134b">
+            <Label layoutX="644.0" layoutY="145.0" text="Who We Are:" textFill="#0d134b">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font>
             </Label>
-         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="1081.0" layoutY="645.0" onMouseClicked="#handleInstagram" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../images/instagram.png" />
-            </image>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </ImageView>
-         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="978.0" layoutY="645.0" onMouseClicked="#handleTiktok" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="801.0" layoutY="561.0" onMouseClicked="#handleInstagram" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/instagram.png" />
+                </image>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </ImageView>
+
+                  <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="722.0" layoutY="561.0" onMouseClicked="#handleTiktok" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/tiktok.png" />
             </image>
@@ -53,7 +54,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </ImageView>
-         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="857.0" layoutY="645.0" onMouseClicked="#handleWebsite" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="644.0" layoutY="561.0" onMouseClicked="#handleWebsite" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/web.png" />
             </image>
