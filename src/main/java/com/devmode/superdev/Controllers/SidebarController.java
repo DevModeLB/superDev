@@ -44,19 +44,19 @@ public class SidebarController {
         String role = SessionManager.getInstance().getRole();
         SceneSwitcher switcher = new SceneSwitcher();
         if(Objects.equals(role, "admin")){
-            switcher.switchScene(event, "/FXML/home.fxml", "Home");
+            switcher.switchScene(event, "/FXML/home/home.fxml", "Home");
         }
         else{
-            switcher.switchScene(event, "/FXML/Cashierhome.fxml", "Home");
+            switcher.switchScene(event, "/FXML/home/Cashierhome.fxml", "Home");
         }
     }
 
     public void handleSettings(MouseEvent event) {
-        new SceneSwitcher().switchScene(event, "/FXML/settings.fxml", "Settings");
+        new SceneSwitcher().switchScene(event, "/FXML/settings/settings.fxml", "Settings");
     }
 
     public void handleGetStatistics(MouseEvent event) {
         SceneSwitcher switcher = new SceneSwitcher();
-        switcher.switchScene(event, "/FXML/statistics.fxml", "Statistics");
+        switcher.switchScene(event, "/FXML/settings/settings.fxml", "Statistics");
     }
 }

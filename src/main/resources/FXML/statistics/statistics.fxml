@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,19 +17,19 @@
         <!-- Navigation bar and Sidebar -->
         <top>
             <HBox>
-                <fx:include source="./sideBar.fxml" />
-                <fx:include source="./navBar.fxml" />
+                <fx:include source="../sideBar.fxml" />
+                <fx:include source="../navBar.fxml" />
             </HBox>
         </top>
     </BorderPane>
     
-    <!-- Main content area -->
-    <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0" style="-fx-background-color: #f0f0f0bb;">
+                   <!-- Main content area -->
+    <AnchorPane layoutX="120.0" layoutY="77.0" prefHeight="777.0" prefWidth="1401.0" style="-fx-background-color: #f0f0f0bb;">
         <children>
             <!-- Label for LineChart -->
             <Label layoutX="50.0" layoutY="32.0" prefHeight="48.0" prefWidth="329.0" style="-fx-text-fill: #0D134B; -fx-font-size: 30px; -fx-font-weight: bold;" text="Best Selling Products" />
         
-            <!-- LineChart with in-line styling -->
+                           <!-- LineChart with in-line styling -->
             <LineChart fx:id="lineChart" layoutX="50.0" layoutY="99.0" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #f0f0f0bb; -fx-border-color: #0D134B; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10;">
                 <xAxis>
                     <CategoryAxis side="BOTTOM" style="-fx-tick-label-fill: #00CBF9; -fx-font-size: 14px;" />
@@ -37,15 +39,22 @@
                 </yAxis>
             </LineChart>
   
-            <!-- TableView with in-line styling -->
-            <TableView fx:id="productTable" layoutX="950.0" layoutY="99.0" prefHeight="600.0" prefWidth="420.0" style="-fx-text-fill: #00CBF9; -fx-background-color: #f0f0f0bb; -fx-border-color: #0D134B; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10;">
-                <columns>
-                    <TableColumn fx:id="productNameColumn" prefWidth="200.0" style="-fx-background-color: #00CBF9; -fx-text-fill: #0D134B; -fx-font-size: 14px; -fx-alignment: CENTER-LEFT;" text="Product Name" />
-                    <TableColumn fx:id="unitsSoldColumn" prefWidth="200.0" style="-fx-background-color: #00CBF9; -fx-text-fill: #0D134B; -fx-font-size: 14px; -fx-alignment: CENTER-RIGHT;" text="Units Sold" />
-                </columns>
-            </TableView>
+                           <!-- TableView with in-line styling -->
+<TableView fx:id="productTable" layoutX="950.0" layoutY="99.0" prefHeight="600.0" prefWidth="400.0" styleClass="stat-table" stylesheets="@../../CSS/style.css">
+    <columns>
+        <TableColumn fx:id="productNameColumn" prefWidth="200.0" text="Product Name" />
+        <TableColumn fx:id="unitsSoldColumn" prefWidth="200.0" text="Units Sold" />
+    </columns>
+</TableView>
+         <Button layoutX="1012.0" layoutY="30.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="276.0" styleClass="add-product-button2" text="Check Daily statistics">
+            <stylesheets>
+               <URL value="@../CSS/style.css" />
+               <URL value="@../../CSS/style.css" />
+            </stylesheets></Button>
 
-
-        </children>
+               
+               
+               
+                       </children>
     </AnchorPane>
 </AnchorPane>

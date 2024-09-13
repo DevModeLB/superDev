@@ -329,3 +329,51 @@
     -fx-background-color: transparent;
     -fx-text-fill: #0D134B;
 }
+
+/* Styling the entire TableView */
+.stat-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #0D134B;
+    -fx-border-width: 2;
+    -fx-border-radius: 7;
+}
+
+/* Styling the header of the TableView */
+.stat-table .column-header {
+    -fx-background-color: #00CBF9;
+    -fx-text-fill: #0D134B;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+
+.stat-table .column-header .label {
+    -fx-text-fill: #0D134B;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+/* Styling the rows and cells */
+.stat-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #0D134B transparent;
+}
+
+.stat-table .table-row-cell:filled:selected {
+    -fx-background-color: #00CBF9;
+    -fx-text-fill: #0D134B;
+}
+
+.stat-table .table-cell {
+    -fx-text-fill: #0D134B;
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    
+}
+
+/* Row hover effect */
+.stat-table .table-row-cell:hover {
+    -fx-background-color: #00CBF9;
+    -fx-text-fill: #0D134B;
+}

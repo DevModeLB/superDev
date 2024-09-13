@@ -51,12 +51,12 @@ public class SettingsController {
     }
     public void handlePoints(MouseEvent event) {
         SceneSwitcher switcher = new SceneSwitcher();
-        switcher.switchScene(event, "/FXML/pointssettings.fxml", "Points settings");
+        switcher.switchScene(event, "/FXML/settings/pointssettings.fxml", "Points settings");
     }
 
     public void handleAboutUs(MouseEvent event) {
         SceneSwitcher switcher = new SceneSwitcher();
-        switcher.switchScene(event, "/FXML/aboutUs.fxml", "About US");
+        switcher.switchScene(event, "/FXML/settings/aboutUs.fxml", "About US");
     }
 
     public void handleApplyRate(MouseEvent event) {

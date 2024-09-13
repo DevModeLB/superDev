@@ -49,9 +49,9 @@ public class LoginController {
             SessionManager.getInstance().setId(userId);
             SessionManager.getInstance().setRole(role);
             if(Objects.equals(role, "admin")) {
-                switchView("/FXML/home.fxml");
+                switchView("/FXML/home/home.fxml");
             }else{
-                switchView("/FXML/CashierHome.fxml");
+                switchView("/FXML/home/CashierHome.fxml");
             }
         } else {
             showErrorDialog("Invalid username or password!");
