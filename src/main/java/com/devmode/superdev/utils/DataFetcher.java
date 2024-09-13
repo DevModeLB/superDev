@@ -389,4 +389,61 @@ public class DataFetcher {
         return "";
     }
 
+    public static Map<String, Double> getOrderStatisticsForYear(String year) {
+        Map<String, Double> ordersTotalPerMonth = new HashMap<>();
+
+        String query = "SELECT strftime('%m', orderDate) AS month, SUM(totalAmount) AS total " +
+                "FROM orders WHERE strftime('%Y', orderDate) = ? " +
+                "GROUP BY strftime('%m', orderDate);";
+
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, year);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String month = rs.getString("month");
+                Double total = rs.getDouble("total");
+                ordersTotalPerMonth.put(month, total);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return ordersTotalPerMonth;
+    }
+
+    public static Map<String, Double> getBestSellingProducts() {
+        String query = "SELECT p.name, SUM(oi.subtotal) AS units_sold " +
+                "FROM orderitem oi " +
+                "JOIN product p ON oi.productID = p.id " +
+                "GROUP BY oi.productID " +
+                "ORDER BY units_sold DESC " +
+                "LIMIT 10;";
+
+        Map<String, Double> bestSellingProducts = new HashMap<>();
+
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                String productName = rs.getString("name");
+                Double unitsSold = rs.getDouble("units_sold");
+                bestSellingProducts.put(productName, unitsSold);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return bestSellingProducts;
+    }
+
+
 }

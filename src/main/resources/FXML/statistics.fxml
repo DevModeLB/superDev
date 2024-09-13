@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.StatisticsController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
@@ -28,7 +28,7 @@
             <Label layoutX="50.0" layoutY="32.0" prefHeight="48.0" prefWidth="329.0" style="-fx-text-fill: #0D134B; -fx-font-size: 30px; -fx-font-weight: bold;" text="Best Selling Products" />
         
             <!-- LineChart with in-line styling -->
-            <LineChart layoutX="50.0" layoutY="99.0" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #f0f0f0bb; -fx-border-color: #0D134B; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10;">
+            <LineChart fx:id="lineChart" layoutX="50.0" layoutY="99.0" prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #f0f0f0bb; -fx-border-color: #0D134B; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10;">
                 <xAxis>
                     <CategoryAxis side="BOTTOM" style="-fx-tick-label-fill: #00CBF9; -fx-font-size: 14px;" />
                 </xAxis>
@@ -38,12 +38,14 @@
             </LineChart>
   
             <!-- TableView with in-line styling -->
-            <TableView layoutX="950.0" layoutY="99.0" prefHeight="600.0" prefWidth="420.0" style="-fx-text-fill: #00CBF9; -fx-background-color: #f0f0f0bb; -fx-border-color: #0D134B; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10;">
+            <TableView fx:id="productTable" layoutX="950.0" layoutY="99.0" prefHeight="600.0" prefWidth="420.0" style="-fx-text-fill: #00CBF9; -fx-background-color: #f0f0f0bb; -fx-border-color: #0D134B; -fx-border-radius: 15; -fx-border-width: 2; -fx-padding: 10;">
                 <columns>
-                    <TableColumn prefWidth="200.0" style="-fx-background-color: #00CBF9; -fx-text-fill: #0D134B; -fx-font-size: 14px; -fx-alignment: CENTER-LEFT;" text="Product Name" />
-                    <TableColumn prefWidth="200.0" style="-fx-background-color: #00CBF9; -fx-text-fill: #0D134B; -fx-font-size: 14px; -fx-alignment: CENTER-RIGHT;" text="Units Sold" />
+                    <TableColumn fx:id="productNameColumn" prefWidth="200.0" style="-fx-background-color: #00CBF9; -fx-text-fill: #0D134B; -fx-font-size: 14px; -fx-alignment: CENTER-LEFT;" text="Product Name" />
+                    <TableColumn fx:id="unitsSoldColumn" prefWidth="200.0" style="-fx-background-color: #00CBF9; -fx-text-fill: #0D134B; -fx-font-size: 14px; -fx-alignment: CENTER-RIGHT;" text="Units Sold" />
                 </columns>
             </TableView>
+
+
         </children>
     </AnchorPane>
 </AnchorPane>
