@@ -46,7 +46,7 @@
         <TableColumn fx:id="unitsSoldColumn" prefWidth="200.0" text="Units Sold" />
     </columns>
 </TableView>
-         <Button layoutX="1012.0" layoutY="30.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="276.0" styleClass="add-product-button2" text="Check Daily statistics">
+         <Button onMouseClicked="#handleGetDailyStat" layoutX="1012.0" layoutY="30.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="276.0" styleClass="add-product-button2" text="Check Daily statistics">
             <stylesheets>
                <URL value="@../CSS/style.css" />
                <URL value="@../../CSS/style.css" />

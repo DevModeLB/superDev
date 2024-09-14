@@ -14,8 +14,8 @@
         <!-- Navigation bar and Sidebar -->
         <top>
             <HBox>
-                <fx:include source="./sideBar.fxml" />
-                <fx:include source="./navBar.fxml" />
+                <fx:include source="../sideBar.fxml" />
+                <fx:include source="../navBar.fxml" />
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" />
             </HBox>
         </top>
@@ -24,7 +24,7 @@
         <children>
             <ImageView fitHeight="377.0" fitWidth="556.0" layoutX="14.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../images/devmode.png" />
+                    <Image url="@../../images/devmode.png" />
                 </image>
             </ImageView>
             <Label layoutX="644.0" layoutY="211.0" prefHeight="350.0" prefWidth="522.0" text="At DevMode, we are passionate about technology and innovation. Our mission is to provide you with the tools, knowledge, and services you need to excel in the world of web and mobile application development and programming. With years of experience and a team of experts, we are here to support your journey from coding novice to web development pro." textAlignment="JUSTIFY" textFill="#0d134b" wrapText="true">
@@ -39,7 +39,7 @@
             </Label>
             <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="801.0" layoutY="561.0" onMouseClicked="#handleInstagram" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../images/instagram.png" />
+                    <Image url="@../../images/instagram.png" />
                 </image>
                 <cursor>
                     <Cursor fx:constant="HAND" />
@@ -48,7 +48,7 @@
 
                   <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="722.0" layoutY="561.0" onMouseClicked="#handleTiktok" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../images/tiktok.png" />
+               <Image url="@../../images/tiktok.png" />
             </image>
             <cursor>
                <Cursor fx:constant="HAND" />
@@ -56,7 +56,7 @@
          </ImageView>
          <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="644.0" layoutY="561.0" onMouseClicked="#handleWebsite" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../images/web.png" />
+               <Image url="@../../images/web.png" />
             </image>
             <cursor>
                <Cursor fx:constant="HAND" />

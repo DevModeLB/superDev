@@ -464,7 +464,7 @@ public class HomeController {
 
     public void refreshHomePage(Stage stage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/home.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/home/home.fxml"));
             Parent root = loader.load();
 
             // Update the stage with the new scene

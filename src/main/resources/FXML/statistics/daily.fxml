@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.StatisticsController">
+   <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
+      <!-- Navigation bar and Sidebar -->
+      <top>
+         <HBox>
+            <fx:include source="../sideBar.fxml" />
+            <fx:include source="../navBar.fxml" />
+         </HBox>
+      </top>
+    </BorderPane>
+
+   <AnchorPane layoutX="108.0" layoutY="77.0" prefHeight="797.0" prefWidth="1426.0">
+      <children>
+         <Label layoutX="162.0" layoutY="33.0" styleClass="product-title" text="Daily orders" />
+
+                  <TableView fx:id="orderTableView" layoutX="231.0" layoutY="120.0" prefHeight="600.0"  prefWidth="900" style="-fx-background-radius: 30;" styleClass="product-table">
+                      <!-- Define Table Columns -->
+                      <columns>
+                          <TableColumn fx:id="orderProductIdColumn"  prefWidth="300" text="Product ID">
+                              <cellValueFactory>
+                                  <PropertyValueFactory property="productId" />
+                              </cellValueFactory>
+                          </TableColumn>
+                          <TableColumn fx:id="orderProductNameColumn" prefWidth="300" style="-fx-font-size: 10;" text="Name">
+                              <cellValueFactory>
+                                  <PropertyValueFactory property="name" />
+                              </cellValueFactory>
+                          </TableColumn>
+                          <TableColumn fx:id="totalPriceSold" prefWidth="300.0" text="Total">
+                              <cellValueFactory>
+                                  <PropertyValueFactory property="price" />
+                              </cellValueFactory>
+                          </TableColumn>
+                      </columns>
+                  </TableView>
+          <Label fx:id="date" layoutX="602.0" layoutY="60.0" text="Date" />
+          <Label fx:id="totalAmount" layoutX="900" layoutY="60.0" text="Total: " />
+      </children>
+   </AnchorPane>
+</AnchorPane>

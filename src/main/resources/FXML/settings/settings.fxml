@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.SettingsController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1530.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.SettingsController">
     <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
         <!-- Navigation bar and Sidebar -->
         <top>
             <HBox>
-                <fx:include source="./sideBar.fxml" />
-                <fx:include source="./navBar.fxml" />
+                <fx:include source="../sideBar.fxml" />
+                <fx:include source="../navBar.fxml" />
             </HBox>
         </top>
     </BorderPane>
@@ -92,12 +92,12 @@
                     </HBox>
                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="803.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                            <Image url="@../images/next.png" />
+                            <Image url="@../../images/next.png" />
                         </image>
                     </ImageView>
                     <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="803.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                            <Image url="@../images/next.png" />
+                            <Image url="@../../images/next.png" />
                         </image>
                     </ImageView>
                 </children>

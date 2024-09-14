@@ -445,5 +445,44 @@ public class DataFetcher {
         return bestSellingProducts;
     }
 
+    public static List<DailyOrderStatistics> fetchDailyStatistics() {
+        List<DailyOrderStatistics> dailyOrderStatisticsList = new ArrayList<>();
+
+        String query = """
+            SELECT p.id AS productId, p.name AS productName, SUM(oi.subtotal) AS totalPrice, SUM(o.totalAmount) AS totalOrderAmount
+            FROM orders o
+            JOIN orderitem oi ON o.id = oi.orderID
+            JOIN product p ON oi.productID = p.id
+            WHERE date(o.orderDate) = ?
+            GROUP BY p.id, p.name
+            """;
+
+        LocalDate today = LocalDate.now();
+
+        try (Connection conn = DatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Use the LocalDate formatted as 'YYYY-MM-DD' for the query
+            pstmt.setString(1, today.toString());
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int productId = rs.getInt("productId");
+                    String productName = rs.getString("productName");
+                    double totalPrice = rs.getDouble("totalPrice");
+                    double totalOrderAmount = rs.getDouble("totalOrderAmount"); // Get the total amount for all items
+
+                    // Create a new DailyOrderStatistics object and add it to the list
+                    DailyOrderStatistics stats = new DailyOrderStatistics(productId, productName, totalPrice, totalOrderAmount);
+                    dailyOrderStatisticsList.add(stats);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); // You can improve this by logging the error in your logging system
+        }
+
+        return dailyOrderStatisticsList;
+    }
+
 
 }

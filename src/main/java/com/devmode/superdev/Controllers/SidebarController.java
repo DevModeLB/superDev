@@ -57,6 +57,6 @@ public class SidebarController {
 
     public void handleGetStatistics(MouseEvent event) {
         SceneSwitcher switcher = new SceneSwitcher();
-        switcher.switchScene(event, "/FXML/settings/settings.fxml", "Statistics");
+        switcher.switchScene(event, "/FXML/statistics/statistics.fxml", "Statistics");
     }
 }
