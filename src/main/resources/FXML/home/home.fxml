@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.TextField?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1526.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devmode.superdev.Controllers.HomeController">
    <BorderPane layoutY="-6.0" prefHeight="870.0" prefWidth="1530.0">
       <top>
          <HBox>
-            <fx:include source="./sideBar.fxml" />
+            <fx:include source="../sideBar.fxml" />
             <!-- Main content area -->
             <AnchorPane prefHeight="870.0" prefWidth="1430.0" style="-fx-background-color: #f0f0f0bb;">
                <children>
