@@ -9,6 +9,8 @@ module com.devmode.superdev {
     requires java.net.http;
     requires jdk.httpserver;
     requires okhttp3;
+    requires twilio;
+    requires dotenv.java;
 
     // Open the package to Gson for reflection
     opens com.devmode.superdev.models to com.google.gson, javafx.base;

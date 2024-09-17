@@ -3,10 +3,7 @@ package com.devmode.superdev.Controllers;
 import com.devmode.superdev.SessionManager;
 import com.devmode.superdev.models.PointsSettings;
 import com.devmode.superdev.models.Product;
-import com.devmode.superdev.utils.AuthUtils;
-import com.devmode.superdev.utils.DataFetcher;
-import com.devmode.superdev.utils.ErrorDialog;
-import com.devmode.superdev.utils.SceneSwitcher;
+import com.devmode.superdev.utils.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -300,10 +297,26 @@ public class CustomerInfoController {
                 DatabaseManager.createPointTransaction(customerID, pointsToAdd, orderID, "EARNED");
             }
 
+
             if (stage != null) {
                 stage.close();
             }
-
+            int remaining = getPointsFromDatabase(phone);
+            if(remaining < 0){
+                remaining = 0;
+            }
+            String currency = isDollar ? " $" : " L.L";
+            NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
+            if (!isDollar) {
+                // For L.L, we may need to format the number without the currency symbol and with custom locale
+                currencyFormat = NumberFormat.getNumberInstance(Locale.getDefault()); // Use default locale or create a custom one
+                currencyFormat.setGroupingUsed(true);
+                currencyFormat.setMaximumFractionDigits(2);
+            }
+            // Format the total amount
+            String formattedAmount = currencyFormat.format(totalAmount);
+            String body = "Your order completed successfully\nTotal: " + formattedAmount + currency + "\nRemaining Points: " + remaining;
+            SmsSender.sendSms(phone, body);
         } catch (SQLException | ClassNotFoundException e) {
             pointsLabel.setText("Error during checkout.");
             e.printStackTrace();
@@ -354,3 +367,8 @@ public class CustomerInfoController {
         }
     }
 }
+
+
+
+
+

@@ -41,3 +41,4 @@ superdev.db
 
 
 /src/main/resources/uploadedImages/
+/.env
